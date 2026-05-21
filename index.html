@@ -6,238 +6,146 @@
   <title>Trazabilidad PNT · CAOG840906RG3</title>
   <style>
     :root {
-      --bg:        #0b0f1a;
-      --surface:   #111827;
-      --border:    #1e2d45;
-      --accent:    #00d4ff;
-      --accent2:   #6e003c;
-      --text:      #e2e8f0;
-      --muted:     #64748b;
-      --ok:        #22c55e;
-      --warn:      #f59e0b;
-      --err:       #ef4444;
-      --info:      #3b82f6;
-      --tag:       #7c3aed;
+      --bg:      #0b0f1a;
+      --surface: #111827;
+      --border:  #1e2d45;
+      --accent:  #00d4ff;
+      --accent2: #6e003c;
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --ok:      #22c55e;
+      --warn:    #f59e0b;
+      --err:     #ef4444;
+      --info:    #3b82f6;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-      min-height: 100vh;
+      background: var(--bg); color: var(--text);
+      font-family: 'Courier New', monospace; font-size: 13px; min-height: 100vh;
     }
 
     /* ── HEADER ─────────────────────────────── */
     header {
       border-bottom: 1px solid var(--border);
       padding: 18px 28px 14px;
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
+      display: flex; align-items: flex-start; gap: 20px;
       background: linear-gradient(135deg, #0d1829 0%, #111827 100%);
     }
     .logo-block { flex-shrink: 0; }
     .logo-block .sigla {
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: var(--accent);
-      line-height: 1;
+      font-size: 32px; font-weight: 900; letter-spacing: -1px;
+      color: var(--accent); line-height: 1;
     }
-    .logo-block .sub {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+    .logo-block .sub { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
     .header-meta { flex: 1; }
-    .header-meta h1 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: .5px;
+    .header-meta h1 { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: .5px; }
+    .header-meta p { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.6; }
+    .badge {
+      display: inline-block; background: var(--accent2); color: #fff;
+      font-size: 10px; padding: 2px 8px; border-radius: 3px;
+      margin-right: 6px; letter-spacing: 1px; text-transform: uppercase;
     }
-    .header-meta p {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 4px;
-      line-height: 1.6;
-    }
-    .header-meta .badge {
-      display: inline-block;
-      background: var(--accent2);
-      color: #fff;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 3px;
-      margin-right: 6px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+    .badge.green { background: #14532d; }
 
     /* ── STATS BAR ───────────────────────────── */
     .stats-bar {
-      display: flex;
-      gap: 1px;
-      border-bottom: 1px solid var(--border);
-      background: var(--border);
+      display: flex; gap: 1px; border-bottom: 1px solid var(--border); background: var(--border);
     }
-    .stat {
-      flex: 1;
-      background: var(--surface);
-      padding: 12px 16px;
-      text-align: center;
-    }
-    .stat .num {
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--accent);
-    }
-    .stat .label {
-      font-size: 10px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 2px;
-    }
+    .stat { flex: 1; background: var(--surface); padding: 12px 16px; text-align: center; }
+    .stat .num { font-size: 22px; font-weight: 900; color: var(--accent); }
+    .stat .label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
     /* ── CONTROLS ────────────────────────────── */
     .controls {
-      display: flex;
-      gap: 10px;
-      padding: 14px 20px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-      align-items: center;
+      display: flex; gap: 10px; padding: 12px 20px;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      flex-wrap: wrap; align-items: flex-end;
     }
+    .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+    .ctrl-group label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
     .controls input, .controls select {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 6px 12px;
-      font-family: inherit;
-      font-size: 12px;
-      border-radius: 4px;
-      outline: none;
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); padding: 6px 12px;
+      font-family: inherit; font-size: 12px; border-radius: 4px; outline: none;
     }
     .controls input { min-width: 240px; }
-    .controls input:focus, .controls select:focus {
-      border-color: var(--accent);
-    }
-    .controls label {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    .controls input:focus, .controls select:focus { border-color: var(--accent); }
+    #countLabel { font-size: 11px; color: var(--muted); align-self: flex-end; margin-left: auto; padding-bottom: 6px; }
 
     /* ── TABLE ───────────────────────────────── */
-    .table-wrap {
-      overflow-x: auto;
-      padding: 0 0 40px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    .table-wrap { overflow-x: auto; padding-bottom: 60px; }
+    table { width: 100%; border-collapse: collapse; }
     thead th {
-      background: #0d1422;
-      color: var(--muted);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      padding: 10px 14px;
-      text-align: left;
+      background: #0d1422; color: var(--muted);
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 10px 14px; text-align: left;
       border-bottom: 2px solid var(--border);
-      white-space: nowrap;
-      cursor: pointer;
-      user-select: none;
+      white-space: nowrap; cursor: pointer; user-select: none;
     }
     thead th:hover { color: var(--accent); }
     thead th.sorted { color: var(--accent); }
     thead th.sorted::after { content: ' ↕'; }
-
-    tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background .1s;
-    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
     tbody tr:hover { background: #162032; }
+    td { padding: 9px 14px; vertical-align: middle; font-size: 12px; }
 
-    td {
-      padding: 9px 14px;
-      vertical-align: top;
-      font-size: 12px;
-    }
+    .folio-cell { font-family: monospace; font-size: 11px; color: var(--accent); white-space: nowrap; }
+    .inst-cell  { max-width: 240px; line-height: 1.5; font-size: 11px; }
 
-    .folio-cell {
-      font-family: monospace;
-      font-size: 11px;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-    .inst-cell {
-      max-width: 260px;
-      line-height: 1.5;
-    }
+    /* tipo solicitud chips */
     .tipo-chip {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 3px;
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      white-space: nowrap;
+      font-size: 10px; padding: 2px 7px; border-radius: 3px;
+      text-transform: uppercase; letter-spacing: .5px; white-space: nowrap;
     }
     .tipo-ip { background: #1e3a5f; color: #60a5fa; }
     .tipo-dp { background: #3b1a5f; color: #c084fc; }
 
     .date-cell { color: var(--muted); white-space: nowrap; font-size: 11px; }
-    .date-cell.overdue { color: var(--err); }
+    .date-cell.overdue { color: var(--err); font-weight: 700; }
 
-    /* STATUS CHIPS */
+    /* estatus chips */
     .status-chip {
-      display: inline-block;
-      font-size: 10px;
-      padding: 3px 8px;
-      border-radius: 3px;
-      white-space: nowrap;
-      font-weight: 700;
-      letter-spacing: .3px;
+      display: inline-block; font-size: 10px; padding: 3px 8px;
+      border-radius: 3px; white-space: nowrap; font-weight: 700; letter-spacing: .3px;
     }
-    .s-term    { background: #14532d; color: #86efac; }
-    .s-proc    { background: #1e3a5f; color: #93c5fd; }
-    .s-pend    { background: #451a03; color: #fca5a5; }
-    .s-prev    { background: #3b1a00; color: #fcd34d; }
-    .s-prorr   { background: #1a1a3b; color: #a5b4fc; }
-    .s-parc    { background: #1a2e1a; color: #6ee7b7; }
+    .s-term  { background: #14532d; color: #86efac; }
+    .s-proc  { background: #1e3a5f; color: #93c5fd; }
+    .s-pend  { background: #451a03; color: #fca5a5; }
+    .s-prev  { background: #3b1a00; color: #fcd34d; }
+    .s-prorr { background: #1a1a3b; color: #a5b4fc; }
+    .s-parc  { background: #1a2e1a; color: #6ee7b7; }
 
-    .link-cell a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 11px;
+    /* doc tipo chips */
+    .doc-chip {
+      display: inline-block; font-size: 9px; padding: 2px 7px;
+      border-radius: 3px; white-space: nowrap; letter-spacing: .3px; font-weight: 700;
     }
-    .link-cell a:hover { color: var(--accent); }
+    .doc-rr   { background: #431407; color: #fb923c; }
+    .doc-ac   { background: #0f2922; color: #34d399; }
+    .doc-comp { background: #1a1507; color: #fbbf24; }
+    .doc-none { color: #334155; font-size: 11px; }
+
+    /* link cells */
+    .links-cell { white-space: nowrap; }
+    .links-cell a {
+      display: inline-block; font-size: 10px; padding: 3px 8px;
+      border-radius: 3px; text-decoration: none; margin-right: 4px;
+      transition: opacity .15s;
+    }
+    .links-cell a:hover { opacity: .75; }
+    .lnk-pnt   { background: #1e3a5f; color: #93c5fd; }
+    .lnk-drive { background: #1a2e1a; color: #6ee7b7; }
+    .lnk-none  { color: #334155; font-size: 11px; }
 
     /* ── FOOTER ──────────────────────────────── */
     footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 10px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      letter-spacing: 1px;
+      text-align: center; padding: 20px;
+      font-size: 10px; color: var(--muted);
+      border-top: 1px solid var(--border); letter-spacing: 1px;
     }
     footer span { color: var(--accent2); }
 
-    /* ── EMPTY STATE ─────────────────────────── */
-    .empty {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--muted);
-    }
+    .empty { text-align: center; padding: 60px 20px; color: var(--muted); }
 
     @media (max-width: 700px) {
       .stats-bar { flex-wrap: wrap; }
@@ -257,60 +165,66 @@
     <h1>Repositorio de Folios PNT · Expediente CAOG840906RG3</h1>
     <p style="margin-top:8px">
       <span class="badge">NCU</span>
-      <span class="badge" style="background:#14532d">Estrategia Multi-institucional</span>
+      <span class="badge green">Estrategia Multi-institucional</span>
     </p>
     <p>
-      Solicitudes de acceso a la información y datos personales interpuestas ante instituciones federales y locales
-      en el marco del caso <strong>Narcea / Tucán / R-Control</strong> — Bloqueo laboral desde 15/12/2025 ·
-      Lucro cesante acumulado en proceso activo.
+      Solicitudes de acceso a la información y datos personales ante instituciones federales y locales —
+      caso <strong>Narcea / Tucán / R-Control</strong> · Bloqueo laboral desde 15/12/2025.
     </p>
-    <p style="margin-top:6px">
+    <p style="margin-top:4px">
       RFC: CAOG840906RG3 &nbsp;|&nbsp; CURP: CAOG840906HVZRZN08 &nbsp;|&nbsp;
       NSS: 67038434972 &nbsp;|&nbsp; Licencia: VER 0406090
     </p>
   </div>
 </header>
 
-<!-- STATS BAR -->
-<div class="stats-bar" id="statsBar">
+<div class="stats-bar">
   <div class="stat"><div class="num" id="statTotal">—</div><div class="label">Total Folios</div></div>
   <div class="stat"><div class="num" id="statTerm" style="color:var(--ok)">—</div><div class="label">Terminadas</div></div>
   <div class="stat"><div class="num" id="statProc" style="color:var(--info)">—</div><div class="label">En Proceso</div></div>
-  <div class="stat"><div class="num" id="statPend" style="color:var(--err)">—</div><div class="label">Pendientes ID</div></div>
-  <div class="stat"><div class="num" id="statPrev" style="color:var(--warn)">—</div><div class="label">Con Prevención</div></div>
+  <div class="stat"><div class="num" id="statPend" style="color:var(--err)">—</div><div class="label">Pend. ID</div></div>
+  <div class="stat"><div class="num" id="statRR"   style="color:#fb923c">—</div><div class="label">R. Revisión</div></div>
+  <div class="stat"><div class="num" id="statDrive" style="color:#34d399">—</div><div class="label">Con Drive</div></div>
 </div>
 
-<!-- CONTROLS -->
 <div class="controls">
-  <div>
-    <label>Buscar</label><br>
+  <div class="ctrl-group">
+    <label>Buscar</label>
     <input type="text" id="searchBox" placeholder="Folio, institución, estatus…" oninput="render()" />
   </div>
-  <div>
-    <label>Tipo</label><br>
+  <div class="ctrl-group">
+    <label>Tipo solicitud</label>
     <select id="filterTipo" onchange="render()">
       <option value="">Todos</option>
-      <option value="Información pública">Información Pública</option>
+      <option value="Información pública">Info. Pública</option>
       <option value="Datos Personales">Datos Personales</option>
     </select>
   </div>
-  <div>
-    <label>Estatus</label><br>
+  <div class="ctrl-group">
+    <label>Estatus</label>
     <select id="filterEstatus" onchange="render()">
       <option value="">Todos</option>
       <option value="Terminada">Terminada</option>
       <option value="En proceso">En proceso</option>
-      <option value="Pendiente de acreditación">Pendiente ID</option>
-      <option value="Con prevención">Con prevención</option>
+      <option value="Pendiente">Pend. identidad</option>
+      <option value="prevención">Con prevención</option>
       <option value="prórroga">Con prórroga</option>
+      <option value="parcialmente">Parcialmente comp.</option>
     </select>
   </div>
-  <div style="margin-left:auto; align-self:flex-end">
-    <span id="countLabel" style="color:var(--muted);font-size:11px"></span>
+  <div class="ctrl-group">
+    <label>Documento</label>
+    <select id="filterDoc" onchange="render()">
+      <option value="">Todos</option>
+      <option value="Recurso de Revisión">Recurso de Revisión</option>
+      <option value="Acuse de solicitud">Acuse</option>
+      <option value="drive">Con Drive</option>
+      <option value="sin_drive">Sin Drive</option>
+    </select>
   </div>
+  <span id="countLabel"></span>
 </div>
 
-<!-- TABLE -->
 <div class="table-wrap">
   <table>
     <thead>
@@ -320,8 +234,9 @@
         <th onclick="sortBy('institucion')">Institución</th>
         <th onclick="sortBy('fecha_recepcion')">Recepción</th>
         <th onclick="sortBy('fecha_limite')">Límite</th>
-        <th onclick="sortBy('estatus')">Estatus</th>
-        <th>Adjunto</th>
+        <th onclick="sortBy('estatus')">Estatus PNT</th>
+        <th onclick="sortBy('doc_tipo')">Documento</th>
+        <th>Fuentes</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -330,34 +245,47 @@
 </div>
 
 <footer>
-  Repositorio generado a partir de la Plataforma Nacional de Transparencia ·
-  Expediente <span>CAOG840906RG3</span> · <span>geozunac3536@gmail.com</span> ·
-  Actualización: 21/05/2026
+  Repositorio de trazabilidad pública · Expediente <span>CAOG840906RG3</span> ·
+  <span>geozunac3536@gmail.com</span> · Actualización: 21/05/2026
 </footer>
 
 <script src="data.js"></script>
 <script>
 let sortCol = 'fecha_recepcion';
 let sortDir = 1;
-const today = new Date('2026-05-21');
+const TODAY = new Date('2026-05-21');
 
 function parseDate(str) {
   if (!str) return null;
   const [d, m, y] = str.split('/');
-  return new Date(`${y}-${m}-${d}`);
+  return new Date(`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`);
 }
 
 function statusClass(s) {
-  if (s.includes('Terminada')) return 's-term';
-  if (s.includes('prórroga')) return 's-prorr';
-  if (s.includes('parcialmente')) return 's-parc';
-  if (s.includes('prevención')) return 's-prev';
-  if (s.includes('Pendiente')) return 's-pend';
+  if (s.includes('Terminada'))       return 's-term';
+  if (s.includes('prórroga'))        return 's-prorr';
+  if (s.includes('parcialmente'))    return 's-parc';
+  if (s.includes('prevención'))      return 's-prev';
+  if (s.includes('Pendiente'))       return 's-pend';
   return 's-proc';
 }
 
-function tipoClass(t) {
-  return t.includes('Datos') ? 'tipo-dp' : 'tipo-ip';
+function docChip(tipo) {
+  if (!tipo) return '<span class="doc-none">—</span>';
+  if (tipo === 'Recurso de Revisión') return `<span class="doc-chip doc-rr">RR</span>`;
+  if (tipo === 'Compendio respuestas') return `<span class="doc-chip doc-comp">Compendio</span>`;
+  return `<span class="doc-chip doc-ac">Acuse</span>`;
+}
+
+function linksCell(r) {
+  let html = '';
+  if (r.url)
+    html += `<a class="lnk-pnt" href="${r.url}" target="_blank" rel="noopener" title="Respuesta PNT">PNT ↗</a>`;
+  if (r.drive_url)
+    html += `<a class="lnk-drive" href="${r.drive_url}" target="_blank" rel="noopener" title="${r.drive_file || 'Documento Drive'}">Drive ↗</a>`;
+  if (!r.url && !r.drive_url)
+    html = '<span class="lnk-none">—</span>';
+  return html;
 }
 
 function sortBy(col) {
@@ -367,20 +295,23 @@ function sortBy(col) {
 }
 
 function getFiltered() {
-  const q = document.getElementById('searchBox').value.toLowerCase().trim();
+  const q    = document.getElementById('searchBox').value.toLowerCase().trim();
   const tipo = document.getElementById('filterTipo').value;
-  const est = document.getElementById('filterEstatus').value.toLowerCase();
+  const est  = document.getElementById('filterEstatus').value.toLowerCase();
+  const doc  = document.getElementById('filterDoc').value;
 
   return FOLIOS.filter(r => {
-    const text = `${r.folio} ${r.institucion} ${r.estatus} ${r.tipo}`.toLowerCase();
+    const text = `${r.folio} ${r.institucion} ${r.estatus} ${r.tipo} ${r.doc_tipo}`.toLowerCase();
     if (q && !text.includes(q)) return false;
     if (tipo && r.tipo !== tipo) return false;
     if (est && !r.estatus.toLowerCase().includes(est)) return false;
+    if (doc === 'drive' && !r.drive_url) return false;
+    if (doc === 'sin_drive' && r.drive_url) return false;
+    if (doc === 'Recurso de Revisión' && r.doc_tipo !== 'Recurso de Revisión') return false;
+    if (doc === 'Acuse de solicitud' && r.doc_tipo !== 'Acuse de solicitud') return false;
     return true;
   }).sort((a, b) => {
-    let va = a[sortCol] || '';
-    let vb = b[sortCol] || '';
-    // date sorting
+    let va = a[sortCol] || '', vb = b[sortCol] || '';
     if (sortCol === 'fecha_recepcion' || sortCol === 'fecha_limite') {
       va = parseDate(va) || new Date(0);
       vb = parseDate(vb) || new Date(0);
@@ -391,20 +322,20 @@ function getFiltered() {
 }
 
 function render() {
-  const data = getFiltered();
+  const data  = getFiltered();
   const tbody = document.getElementById('tbody');
   const empty = document.getElementById('emptyMsg');
 
-  // Stats
-  document.getElementById('statTotal').textContent = FOLIOS.length;
-  document.getElementById('statTerm').textContent = FOLIOS.filter(r => r.estatus.includes('Terminada')).length;
-  document.getElementById('statProc').textContent = FOLIOS.filter(r => r.estatus.startsWith('En proceso')).length;
-  document.getElementById('statPend').textContent = FOLIOS.filter(r => r.estatus.includes('Pendiente')).length;
-  document.getElementById('statPrev').textContent = FOLIOS.filter(r => r.estatus.includes('prevención')).length;
+  // Stats (always over full dataset)
+  document.getElementById('statTotal').textContent  = FOLIOS.length;
+  document.getElementById('statTerm').textContent   = FOLIOS.filter(r => r.estatus.includes('Terminada')).length;
+  document.getElementById('statProc').textContent   = FOLIOS.filter(r => r.estatus.startsWith('En proceso')).length;
+  document.getElementById('statPend').textContent   = FOLIOS.filter(r => r.estatus.includes('Pendiente')).length;
+  document.getElementById('statRR').textContent     = FOLIOS.filter(r => r.doc_tipo === 'Recurso de Revisión').length;
+  document.getElementById('statDrive').textContent  = FOLIOS.filter(r => r.drive_url).length;
+  document.getElementById('countLabel').textContent = `Mostrando ${data.length} de ${FOLIOS.length}`;
 
-  document.getElementById('countLabel').textContent = `Mostrando ${data.length} de ${FOLIOS.length} registros`;
-
-  if (data.length === 0) {
+  if (!data.length) {
     tbody.innerHTML = '';
     empty.style.display = 'block';
     return;
@@ -413,20 +344,21 @@ function render() {
 
   tbody.innerHTML = data.map(r => {
     const limDate = parseDate(r.fecha_limite);
-    const overdue = limDate && limDate < today && !r.estatus.includes('Terminada');
+    const overdue = limDate && limDate < TODAY && !r.estatus.includes('Terminada');
     const limClass = overdue ? 'date-cell overdue' : 'date-cell';
-    const adjunto = r.url
-      ? `<a href="${r.url}" target="_blank" rel="noopener">&#8599; PDF</a>`
-      : '<span style="color:#334155">—</span>';
+    const tipoChip = r.tipo.includes('Datos')
+      ? '<span class="tipo-chip tipo-dp">Datos Pers.</span>'
+      : '<span class="tipo-chip tipo-ip">Info. Pública</span>';
 
     return `<tr>
       <td class="folio-cell">${r.folio}</td>
-      <td><span class="tipo-chip ${tipoClass(r.tipo)}">${r.tipo.includes('Datos') ? 'Datos Pers.' : 'Info. Pública'}</span></td>
+      <td>${tipoChip}</td>
       <td class="inst-cell">${r.institucion}</td>
       <td class="date-cell">${r.fecha_recepcion || '—'}</td>
       <td class="${limClass}">${r.fecha_limite || '—'}${overdue ? ' ⚠' : ''}</td>
       <td><span class="status-chip ${statusClass(r.estatus)}">${r.estatus}</span></td>
-      <td class="link-cell">${adjunto}</td>
+      <td>${docChip(r.doc_tipo)}</td>
+      <td class="links-cell">${linksCell(r)}</td>
     </tr>`;
   }).join('');
 }
