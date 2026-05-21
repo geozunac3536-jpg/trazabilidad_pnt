@@ -1,0 +1,420 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[margin=1.25cm]{geometry}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue!50!black}
+\definecolor{AzulFederal}{HTML}{173B6C}
+\definecolor{RojoFiscal}{HTML}{8B1E1E}
+\definecolor{VerdeCierre}{HTML}{1B7F5A}
+\definecolor{AmbarAlerta}{HTML}{B7791F}
+\definecolor{GrisTecnico}{HTML}{374151}
+\pagestyle{plain}
+\newcommand{\folio}[1]{\textbf{#1}}
+\newcommand{\inst}[1]{\textsc{#1}}
+\newcommand{\tstamp}{2026-05-19 18:50:24}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries Matriz de Deflexiones y Estatus PNT}\\[3pt]
+{\large Organigrama cromático por folio, sujeto obligado, fecha de recepción y fecha límite}\\[4pt]
+{\small Fuente: \texttt{pnt\_estatus.xlsx}. Timestamp técnico de generación: \tstamp}
+\end{center}
+
+\begin{tcolorbox}[colback=AzulFederal!6,colframe=AzulFederal,title={Lectura ejecutiva del mapa},fonttitle=\bfseries]
+La matriz contiene \textbf{53} folios. El eje superior separa el universo en estatus procesales; cada nodo inferior conserva el sujeto obligado, el folio y sus fechas operativas. En clave TCDS: \textbf{Q} es la presión documental ejercida por la solicitud; \textbf{$\Sigma$} es la sincronización institucional observable por respuesta, trámite o prevención; \textbf{$\varphi$} es la fricción administrativa expresada como identidad pendiente, información adicional, prevención, competencia parcial o prórroga. El E--Veto se aplica aquí como lectura de prudencia: un folio no se interpreta como prueba sustantiva hasta que su respuesta reduzca ambigüedad documental.
+\end{tcolorbox}
+
+\begin{landscape}
+\section*{Mapa matriz general}
+\begin{tikzpicture}[
+  root/.style={draw=black, fill=AzulFederal, text=white, rounded corners=3pt, minimum width=9.5cm, minimum height=1cm, font=\bfseries},
+  status/.style={draw=black!40, rounded corners=4pt, text width=3.25cm, minimum height=2.2cm, align=center, font=\footnotesize, inner sep=4pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!50}
+]
+\node[root] (root) at (11.4,2.6) {Matriz de Deflexiones PNT: 53 folios};
+\node[status,colTerminada] (s0) at (0,0) {\textbf{Terminada}\\[2pt]\Large 17\\[2pt]\scriptsize Cierre / salida formal};
+\node[status,colProceso] (s1) at (3.8,0) {\textbf{En proceso}\\[2pt]\Large 23\\[2pt]\scriptsize Trámite activo};
+\node[status,colInfo] (s2) at (7.6,0) {\textbf{Información adicional}\\[2pt]\Large 3\\[2pt]\scriptsize Carga adicional};
+\node[status,colIdentidad] (s3) at (11.4,0) {\textbf{Pendiente identidad}\\[2pt]\Large 5\\[2pt]\scriptsize Fricción por identidad};
+\node[status,colPrevencion] (s4) at (15.2,0) {\textbf{Prevención / identidad}\\[2pt]\Large 3\\[2pt]\scriptsize Prevención crítica};
+\node[status,colParcial] (s5) at (19.0,0) {\textbf{Parcialmente competente}\\[2pt]\Large 1\\[2pt]\scriptsize Competencia parcial};
+\node[status,colProrroga] (s6) at (22.8,0) {\textbf{Con prórroga}\\[2pt]\Large 1\\[2pt]\scriptsize Extensión de plazo};
+\draw[arrow] (root.south) -- (s0.north);
+\draw[arrow] (root.south) -- (s1.north);
+\draw[arrow] (root.south) -- (s2.north);
+\draw[arrow] (root.south) -- (s3.north);
+\draw[arrow] (root.south) -- (s4.north);
+\draw[arrow] (root.south) -- (s5.north);
+\draw[arrow] (root.south) -- (s6.north);
+\end{tikzpicture}
+
+\vspace{0.4cm}
+\begin{tcolorbox}[colback=white,colframe=GrisTecnico,title={Leyenda cromática},fonttitle=\bfseries]
+\begin{tabular}{>{\bfseries}p{4.5cm}p{17cm}}
+Verde & Terminada: existe salida formal; requiere análisis de fondo de la respuesta.\\
+Azul & En proceso: trámite activo; aún no hay cierre material.\\
+Naranja & Información adicional: el sujeto obligado desplaza carga al solicitante.\\
+Amarillo & Identidad pendiente: fricción de acreditación; riesgo de bloqueo procedimental.\\
+Rojo & Prevención con identidad no acreditada: fricción crítica, exige control documental.\\
+Morado & Competencia parcial: salida mixta; útil para detectar deflexión competencial.\\
+Gris & Prórroga: extensión temporal; no es negativa, pero sí aumenta fricción de plazo.
+\end{tabular}
+\end{tcolorbox}
+\end{landscape}
+\clearpage
+
+
+\begin{landscape}
+\section*{Organigrama cromático: Terminada (17 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- Terminada};
+\node[leaf,colTerminada] (n0) at (0.0,0.0) {\textbf{INFO CDMX}\\{\scriptsize Folio: 090165926000296}\\{\scriptsize Rec: 14/04/2026 | Lím: 27/04/2026}};
+\node[leaf,colTerminada] (n1) at (7.8,0.0) {\textbf{IMSS}\\{\scriptsize Folio: 340018001223026}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colTerminada] (n2) at (15.6,0.0) {\textbf{SICT-Instituto Mexicano del Transporte (*I}\\{\scriptsize Folio: 340018100002626}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colTerminada] (n3) at (0.0,-2.05) {\textbf{Procuraduría de la Defensa del Contribuyen}\\{\scriptsize Folio: 340024200005626}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colTerminada] (n4) at (7.8,-2.05) {\textbf{SICT}\\{\scriptsize Folio: 340025500060126}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colTerminada] (n5) at (15.6,-2.05) {\textbf{SAT}\\{\scriptsize Folio: 340027700062326}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colTerminada] (n6) at (0.0,-4.1) {\textbf{FGR}\\{\scriptsize Folio: 450024600096126}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colTerminada] (n7) at (7.8,-4.1) {\textbf{Transparencia para el Pueblo}\\{\scriptsize Folio: 343224900038026}\\{\scriptsize Rec: 16/04/2026 | Lím: 18/05/2026}};
+\node[leaf,colTerminada] (n8) at (15.6,-4.1) {\textbf{Consejo Nacional para Prevenir la Discrimi}\\{\scriptsize Folio: 340011300005926}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n9) at (0.0,-6.1499999999999995) {\textbf{SAT}\\{\scriptsize Folio: 340027700068926}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n10) at (7.8,-6.1499999999999995) {\textbf{Oficina de la Presidencia de la República}\\{\scriptsize Folio: 341000100043626}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n11) at (15.6,-6.1499999999999995) {\textbf{SSPC-GN}\\{\scriptsize Folio: 342259800048026}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n12) at (0.0,-8.2) {\textbf{CFCRL}\\{\scriptsize Folio: 342589700015526}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n13) at (7.8,-8.2) {\textbf{Agencia de Transformación Digital y Teleco}\\{\scriptsize Folio: 343204900019026}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n14) at (15.6,-8.2) {\textbf{Fondo para el Desarrollo de Recursos Human}\\{\scriptsize Folio: 420015000001126}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colTerminada] (n15) at (0.0,-10.25) {\textbf{Prevención y Reinserción Social}\\{\scriptsize Folio: 340024000011226}\\{\scriptsize Rec: 08/05/2026 | Lím: 05/06/2026}};
+\node[leaf,colTerminada] (n16) at (7.8,-10.25) {\textbf{Fondo CEAV}\\{\scriptsize Folio: 341020400001026}\\{\scriptsize Rec: 14/05/2026 | Lím: 11/06/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\draw[arrow] (root.south) |- (n1.west);
+\draw[arrow] (root.south) |- (n2.west);
+\draw[arrow] (root.south) |- (n3.west);
+\draw[arrow] (root.south) |- (n4.west);
+\draw[arrow] (root.south) |- (n5.west);
+\draw[arrow] (root.south) |- (n6.west);
+\draw[arrow] (root.south) |- (n7.west);
+\draw[arrow] (root.south) |- (n8.west);
+\draw[arrow] (root.south) |- (n9.west);
+\draw[arrow] (root.south) |- (n10.west);
+\draw[arrow] (root.south) |- (n11.west);
+\draw[arrow] (root.south) |- (n12.west);
+\draw[arrow] (root.south) |- (n13.west);
+\draw[arrow] (root.south) |- (n14.west);
+\draw[arrow] (root.south) |- (n15.west);
+\draw[arrow] (root.south) |- (n16.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: En proceso (23 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- En proceso};
+\node[leaf,colProceso] (n0) at (0.0,0.0) {\textbf{FGR}\\{\scriptsize Folio: 450024600099626}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colProceso] (n1) at (7.8,0.0) {\textbf{SCJN}\\{\scriptsize Folio: 1550030526000856}\\{\scriptsize Rec: 06/05/2026 | Lím: 03/06/2026}};
+\node[leaf,colProceso] (n2) at (15.6,0.0) {\textbf{SEGOB}\\{\scriptsize Folio: 340026200089726}\\{\scriptsize Rec: 06/05/2026 | Lím: 03/06/2026}};
+\node[leaf,colProceso] (n3) at (0.0,-2.05) {\textbf{VER - Poder Judicial del Estado de Veracru}\\{\scriptsize Folio: 771277626000139}\\{\scriptsize Rec: 05/05/2026 | Lím: 03/06/2026}};
+\node[leaf,colProceso] (n4) at (7.8,-2.05) {\textbf{Comisión Nacional para la Protección y Def}\\{\scriptsize Folio: 340009900012226}\\{\scriptsize Rec: 14/05/2026 | Lím: 11/06/2026}};
+\node[leaf,colProceso] (n5) at (15.6,-2.05) {\textbf{INEGI}\\{\scriptsize Folio: 490031200040126}\\{\scriptsize Rec: 14/05/2026 | Lím: 11/06/2026}};
+\node[leaf,colProceso] (n6) at (0.0,-4.1) {\textbf{Centro Nacional de Inteligencia}\\{\scriptsize Folio: 340005000007626}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n7) at (7.8,-4.1) {\textbf{Centro Nacional de Metrología (CENAM)}\\{\scriptsize Folio: 340005900000626}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n8) at (15.6,-4.1) {\textbf{CENAPRED}\\{\scriptsize Folio: 340006100001726}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n9) at (0.0,-6.1499999999999995) {\textbf{Consejo Nacional para Prevenir la Discrimi}\\{\scriptsize Folio: 340011300007026}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n10) at (7.8,-6.1499999999999995) {\textbf{Instituto Mexicano de la Propiedad Industr}\\{\scriptsize Folio: 340017600031026}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n11) at (15.6,-6.1499999999999995) {\textbf{IPN}\\{\scriptsize Folio: 340021800165326}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n12) at (0.0,-8.2) {\textbf{CULTURA-Instituto Nacional del Derecho de }\\{\scriptsize Folio: 341000500005726}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n13) at (7.8,-8.2) {\textbf{INFOTEC Centro de Investigación e Innovaci}\\{\scriptsize Folio: 341043300005026}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n14) at (15.6,-8.2) {\textbf{Agencia de Transformación Digital y Teleco}\\{\scriptsize Folio: 343204900024226}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n15) at (0.0,-10.25) {\textbf{Transparencia para el Pueblo}\\{\scriptsize Folio: 343224900049926}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n16) at (7.8,-10.25) {\textbf{ASF}\\{\scriptsize Folio: 400030100034126}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n17) at (15.6,-10.25) {\textbf{Cámara Diputados}\\{\scriptsize Folio: 400030200057126}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\draw[arrow] (root.south) |- (n1.west);
+\draw[arrow] (root.south) |- (n2.west);
+\draw[arrow] (root.south) |- (n3.west);
+\draw[arrow] (root.south) |- (n4.west);
+\draw[arrow] (root.south) |- (n5.west);
+\draw[arrow] (root.south) |- (n6.west);
+\draw[arrow] (root.south) |- (n7.west);
+\draw[arrow] (root.south) |- (n8.west);
+\draw[arrow] (root.south) |- (n9.west);
+\draw[arrow] (root.south) |- (n10.west);
+\draw[arrow] (root.south) |- (n11.west);
+\draw[arrow] (root.south) |- (n12.west);
+\draw[arrow] (root.south) |- (n13.west);
+\draw[arrow] (root.south) |- (n14.west);
+\draw[arrow] (root.south) |- (n15.west);
+\draw[arrow] (root.south) |- (n16.west);
+\draw[arrow] (root.south) |- (n17.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: En proceso (23 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- En proceso};
+\node[leaf,colProceso] (n0) at (0.0,0.0) {\textbf{UNAM}\\{\scriptsize Folio: 410031900125326}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n1) at (7.8,0.0) {\textbf{Instituto Nacional de Ciencias Penales (IN}\\{\scriptsize Folio: 450018900010926}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n2) at (15.6,0.0) {\textbf{INEGI}\\{\scriptsize Folio: 490031200041226}\\{\scriptsize Rec: 18/05/2026 | Lím: 15/06/2026}};
+\node[leaf,colProceso] (n3) at (0.0,-2.05) {\textbf{CJEF}\\{\scriptsize Folio: 340010700011826}\\{\scriptsize Rec: 19/05/2026 | Lím: 16/06/2026}};
+\node[leaf,colProceso] (n4) at (7.8,-2.05) {\textbf{Consejo de la Judicatura Federal (CJF)}\\{\scriptsize Folio: 470030400200926}\\{\scriptsize Rec: 22/06/2026 | Lím: 05/08/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\draw[arrow] (root.south) |- (n1.west);
+\draw[arrow] (root.south) |- (n2.west);
+\draw[arrow] (root.south) |- (n3.west);
+\draw[arrow] (root.south) |- (n4.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: Información adicional (3 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- Información adicional};
+\node[leaf,colInfo] (n0) at (0.0,0.0) {\textbf{Comisión Nacional de los Derechos Humanos }\\{\scriptsize Folio: 360030900033426}\\{\scriptsize Rec: 17/04/2026 | Lím: 26/05/2026}};
+\node[leaf,colInfo] (n1) at (7.8,0.0) {\textbf{SSPC-GN}\\{\scriptsize Folio: 342259800055226}\\{\scriptsize Rec: 08/05/2026 | Lím: 11/06/2026}};
+\node[leaf,colInfo] (n2) at (15.6,0.0) {\textbf{Secretaría de Relaciones Exteriores (SRE)}\\{\scriptsize Folio: 340026800118026}\\{\scriptsize Rec: 06/05/2026 | Lím: 23/06/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\draw[arrow] (root.south) |- (n1.west);
+\draw[arrow] (root.south) |- (n2.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: Pendiente identidad (5 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- Pendiente identidad};
+\node[leaf,colIdentidad] (n0) at (0.0,0.0) {\textbf{INFONAVIT}\\{\scriptsize Folio: 340031000117726}\\{\scriptsize Rec: 14/04/2026 | Lím: 14/05/2026}};
+\node[leaf,colIdentidad] (n1) at (7.8,0.0) {\textbf{Secretaría del Trabajo y Previsión Social }\\{\scriptsize Folio: 340027100027726}\\{\scriptsize Rec: 14/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colIdentidad] (n2) at (15.6,0.0) {\textbf{Secretaría del Trabajo y Previsión Social }\\{\scriptsize Folio: 340027100027826}\\{\scriptsize Rec: 14/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colIdentidad] (n3) at (0.0,-2.05) {\textbf{INFONAVIT}\\{\scriptsize Folio: 340031000120726}\\{\scriptsize Rec: 17/04/2026 | Lím: 19/05/2026}};
+\node[leaf,colIdentidad] (n4) at (7.8,-2.05) {\textbf{INFONAVIT}\\{\scriptsize Folio: 340031000129926}\\{\scriptsize Rec: 29/04/2026 | Lím: 29/05/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\draw[arrow] (root.south) |- (n1.west);
+\draw[arrow] (root.south) |- (n2.west);
+\draw[arrow] (root.south) |- (n3.west);
+\draw[arrow] (root.south) |- (n4.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: Prevención / identidad (3 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- Prevención / identidad};
+\node[leaf,colPrevencion] (n0) at (0.0,0.0) {\textbf{Procuraduría de la Defensa del Contribuyen}\\{\scriptsize Folio: 340024200005926}\\{\scriptsize Rec: 20/04/2026 | Lím: 28/05/2026}};
+\node[leaf,colPrevencion] (n1) at (7.8,0.0) {\textbf{CEAV}\\{\scriptsize Folio: 340007600009126}\\{\scriptsize Rec: 14/05/2026 | Lím: 11/06/2026}};
+\node[leaf,colPrevencion] (n2) at (15.6,0.0) {\textbf{INFONAVIT}\\{\scriptsize Folio: 340031000137326}\\{\scriptsize Rec: 12/05/2026 | Lím: 11/06/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\draw[arrow] (root.south) |- (n1.west);
+\draw[arrow] (root.south) |- (n2.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: Parcialmente competente (1 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- Parcialmente competente};
+\node[leaf,colParcial] (n0) at (0.0,0.0) {\textbf{Consejo Nacional para Prevenir la Discrimi}\\{\scriptsize Folio: 340011300006826}\\{\scriptsize Rec: 14/05/2026 | Lím: 11/06/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+\begin{landscape}
+\section*{Organigrama cromático: Con prórroga (1 folios)}
+\begin{tikzpicture}[
+  node distance=1.0cm,
+  root/.style={draw=black, fill=black!85, text=white, rounded corners=2pt, minimum width=11cm, minimum height=0.9cm, font=\bfseries},
+  leaf/.style={draw=black!35, rounded corners=3pt, text width=6.8cm, minimum height=1.55cm, align=left, font=\footnotesize, inner sep=5pt},
+  colTerminada/.style={fill=green!18},
+  colProceso/.style={fill=blue!13},
+  colInfo/.style={fill=orange!18},
+  colIdentidad/.style={fill=yellow!25},
+  colPrevencion/.style={fill=red!14},
+  colParcial/.style={fill=purple!14},
+  colProrroga/.style={fill=gray!20},
+  arrow/.style={-Latex, thick, draw=black!45}
+]
+\node[root] (root) at (7.8,1.1) {Matriz de deflexiones PNT --- Con prórroga};
+\node[leaf,colProrroga] (n0) at (0.0,0.0) {\textbf{Secretaría Anticorrupción y  Buen Gobierno}\\{\scriptsize Folio: 340026500085326}\\{\scriptsize Rec: 16/04/2026 | Lím: 01/06/2026}};
+\draw[arrow] (root.south) |- (n0.west);
+\end{tikzpicture}
+\end{landscape}
+\clearpage
+
+
+\section*{Tabla maestra de folios y estatus}
+\small
+\begin{longtable}{|p{3.0cm}|p{4.2cm}|p{2.2cm}|p{2.2cm}|p{3.8cm}|p{4.2cm}|}
+\hline
+\textbf{Folio} & \textbf{Sujeto obligado} & \textbf{Recepción} & \textbf{Límite} & \textbf{Estatus} & \textbf{Vector de deflexión}\\
+\hline
+\endfirsthead
+\hline
+\textbf{Folio} & \textbf{Sujeto obligado} & \textbf{Recepción} & \textbf{Límite} & \textbf{Estatus} & \textbf{Vector de deflexión}\\
+\hline
+\endhead
+090165926000296 & INFO CDMX & 14/04/2026 & 27/04/2026 & Terminada & Cierre / salida formal \\ \hline
+450024600096126 & FGR & 14/04/2026 & 14/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340018001223026 & IMSS & 14/04/2026 & 14/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340031000117726 & INFONAVIT & 14/04/2026 & 14/05/2026 & Pendiente de acreditación de la identidad & Fricción por identidad \\ \hline
+340024200005626 & Procuraduría de la Defensa del Contribuyen & 14/04/2026 & 14/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340027700062326 & SAT & 14/04/2026 & 14/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340025500060126 & SICT & 14/04/2026 & 14/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340018100002626 & SICT-Instituto Mexicano del Transporte (*I & 14/04/2026 & 14/05/2026 & Terminada & Cierre / salida formal \\ \hline
+343224900038026 & Transparencia para el Pueblo & 16/04/2026 & 18/05/2026 & Terminada & Cierre / salida formal \\ \hline
+343204900019026 & Agencia de Transformación Digital y Teleco & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+342589700015526 & CFCRL & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340011300005926 & Consejo Nacional para Prevenir la Discrimi & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+450024600099626 & FGR & 17/04/2026 & 19/05/2026 & En proceso & Trámite activo \\ \hline
+420015000001126 & Fondo para el Desarrollo de Recursos Human & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340031000120726 & INFONAVIT & 17/04/2026 & 19/05/2026 & Pendiente de acreditación de la identidad & Fricción por identidad \\ \hline
+341000100043626 & Oficina de la Presidencia de la República & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340027700068926 & SAT & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+342259800048026 & SSPC-GN & 17/04/2026 & 19/05/2026 & Terminada & Cierre / salida formal \\ \hline
+340027100027726 & Secretaría del Trabajo y Previsión Social  & 14/04/2026 & 19/05/2026 & Pendiente de acreditación de la identidad & Fricción por identidad \\ \hline
+340027100027826 & Secretaría del Trabajo y Previsión Social  & 14/04/2026 & 19/05/2026 & Pendiente de acreditación de la identidad & Fricción por identidad \\ \hline
+360030900033426 & Comisión Nacional de los Derechos Humanos  & 17/04/2026 & 26/05/2026 & En proceso, información adicional & Carga adicional \\ \hline
+340024200005926 & Procuraduría de la Defensa del Contribuyen & 20/04/2026 & 28/05/2026 & En proceso con prevención, sin identidad acreditada & Prevención crítica \\ \hline
+340031000129926 & INFONAVIT & 29/04/2026 & 29/05/2026 & Pendiente de acreditación de la identidad & Fricción por identidad \\ \hline
+340026500085326 & Secretaría Anticorrupción y  Buen Gobierno & 16/04/2026 & 01/06/2026 & En proceso con prórroga & Extensión de plazo \\ \hline
+1550030526000856 & SCJN & 06/05/2026 & 03/06/2026 & En proceso & Trámite activo \\ \hline
+340026200089726 & SEGOB & 06/05/2026 & 03/06/2026 & En proceso & Trámite activo \\ \hline
+771277626000139 & VER - Poder Judicial del Estado de Veracru & 05/05/2026 & 03/06/2026 & En proceso & Trámite activo \\ \hline
+340024000011226 & Prevención y Reinserción Social & 08/05/2026 & 05/06/2026 & Terminada & Cierre / salida formal \\ \hline
+340007600009126 & CEAV & 14/05/2026 & 11/06/2026 & En proceso con prevención, sin identidad acreditada & Prevención crítica \\ \hline
+340009900012226 & Comisión Nacional para la Protección y Def & 14/05/2026 & 11/06/2026 & En proceso & Trámite activo \\ \hline
+340011300006826 & Consejo Nacional para Prevenir la Discrimi & 14/05/2026 & 11/06/2026 & En proceso, parcialmente competente & Competencia parcial \\ \hline
+341020400001026 & Fondo CEAV & 14/05/2026 & 11/06/2026 & Terminada & Cierre / salida formal \\ \hline
+490031200040126 & INEGI & 14/05/2026 & 11/06/2026 & En proceso & Trámite activo \\ \hline
+340031000137326 & INFONAVIT & 12/05/2026 & 11/06/2026 & En proceso con prevención, sin identidad acreditada & Prevención crítica \\ \hline
+342259800055226 & SSPC-GN & 08/05/2026 & 11/06/2026 & En proceso, información adicional & Carga adicional \\ \hline
+400030100034126 & ASF & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+343204900024226 & Agencia de Transformación Digital y Teleco & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340006100001726 & CENAPRED & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+341000500005726 & CULTURA-Instituto Nacional del Derecho de  & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340005000007626 & Centro Nacional de Inteligencia & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340005900000626 & Centro Nacional de Metrología (CENAM) & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340011300007026 & Consejo Nacional para Prevenir la Discrimi & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+400030200057126 & Cámara Diputados & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+490031200041226 & INEGI & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+341043300005026 & INFOTEC Centro de Investigación e Innovaci & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340021800165326 & IPN & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340017600031026 & Instituto Mexicano de la Propiedad Industr & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+450018900010926 & Instituto Nacional de Ciencias Penales (IN & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+343224900049926 & Transparencia para el Pueblo & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+410031900125326 & UNAM & 18/05/2026 & 15/06/2026 & En proceso & Trámite activo \\ \hline
+340010700011826 & CJEF & 19/05/2026 & 16/06/2026 & En proceso & Trámite activo \\ \hline
+340026800118026 & Secretaría de Relaciones Exteriores (SRE) & 06/05/2026 & 23/06/2026 & En proceso, información adicional & Carga adicional \\ \hline
+470030400200926 & Consejo de la Judicatura Federal (CJF) & 22/06/2026 & 05/08/2026 & En proceso & Trámite activo \\ \hline
+\end{longtable}
+
+\section*{Cierre operativo}
+Este organigrama no sustituye el análisis de contenido de cada respuesta. Su función es ordenar el campo de batalla documental: qué folios ya cerraron, cuáles siguen activos, cuáles trasladan carga al solicitante y cuáles revelan fricción competencial o de identidad. Para etapa posterior conviene cruzar cada respuesta terminada contra su petición original y clasificarla como: respuesta útil, incompetencia, inexistencia, prevención, canalización, evasión o respuesta parcialmente competente.
+
+\end{document}

@@ -1,0 +1,192 @@
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usepackage{microtype}
+\usepackage{hyperref}
+
+\geometry{top=1.65cm,bottom=1.8cm,left=1.55cm,right=1.55cm,headheight=28pt,headsep=8pt,footskip=18pt}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+
+\definecolor{AzulFederal}{HTML}{0B1F3A}
+\definecolor{AzulAcero}{HTML}{12395B}
+\definecolor{RojoPericial}{HTML}{8B1E1E}
+\definecolor{OroArchivo}{HTML}{B8860B}
+\definecolor{GrisFondo}{HTML}{F3F5F7}
+\definecolor{GrisTexto}{HTML}{2D3748}
+\definecolor{GrisLinea}{HTML}{AAB2BD}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=AzulFederal,
+  urlcolor=AzulAcero,
+  pdftitle={Anexo Pericial - Matriz Forense de Folios PNT},
+  pdfauthor={Genaro Carrasco Ozuna}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\sffamily\bfseries\footnotesize ANEXO PERICIAL}
+\rhead{\sffamily\footnotesize Matriz forense de folios PNT}
+\cfoot{\sffamily\footnotesize Página \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{AzulFederal}}
+  {\thesection}{0.6em}{}
+
+\renewcommand{\arraystretch}{1.18}
+\setlength{\tabcolsep}{5pt}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[AzulFederal] (current page.north west) rectangle ([yshift=-3.3cm]current page.north east);
+  \fill[RojoPericial] ([yshift=-3.3cm]current page.north west) rectangle ([yshift=-3.48cm]current page.north east);
+  \fill[OroArchivo] ([yshift=-3.48cm]current page.north west) rectangle ([yshift=-3.58cm]current page.north east);
+  \draw[GrisLinea, line width=0.3pt, opacity=.35] ([xshift=1.2cm,yshift=-4.2cm]current page.north west) grid[xstep=.8cm,ystep=.8cm] ([xshift=-1.2cm,yshift=1.6cm]current page.south east);
+\end{tikzpicture}
+
+\vspace*{0.15cm}
+{\sffamily\color{white}\bfseries\Large ANEXO PERICIAL DOCUMENTAL}\par
+\vspace{0.25cm}
+{\sffamily\color{white}\bfseries\fontsize{14.5}{17}\selectfont MATRIZ FORENSE DE FOLIOS, FECHAS Y SUJETOS OBLIGADOS}\par
+\vspace{0.2cm}
+{\sffamily\color{white}\normalsize Expediente de trazabilidad institucional para juicio de amparo}\par
+
+\vspace{2.2cm}
+
+\begin{tcolorbox}[
+  enhanced,
+  colback=GrisFondo,
+  colframe=AzulFederal,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=8pt,right=8pt,top=8pt,bottom=8pt
+]
+\textbf{Objeto del anexo.} Concentrar, sin narrativa y sin valoración argumentativa dentro de la tabla, los folios de solicitudes institucionales, sus fechas de recepción, sus fechas límite y el sujeto obligado correspondiente, para servir como matriz de ubicación documental, trazabilidad procesal y control de respuestas oficiales.
+
+\vspace{2mm}
+\textbf{Corte documental.} Archivo base: \texttt{mis\_solicitudes (9).xls}. Registros transcritos: \textbf{23}. Fecha de generación del anexo: \textbf{23 de abril de 2026}.
+\end{tcolorbox}
+
+\vfill
+
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,
+  colframe=RojoPericial,
+  boxrule=0.7pt,
+  arc=2mm,
+  left=8pt,right=8pt,top=7pt,bottom=7pt
+]
+\textbf{Nota de uso forense.} Esta matriz no sustituye los acuses, respuestas, adjuntos ni constancias originales. Su función es ordenar el rastro institucional para que el órgano jurisdiccional identifique de forma inmediata qué autoridad fue activada, cuándo fue activada y bajo qué folio quedó asentada la gestión.
+\end{tcolorbox}
+
+\end{titlepage}
+
+\section*{Matriz forense de solicitudes institucionales}
+
+\begin{tcolorbox}[
+  enhanced,
+  colback=AzulFederal!4,
+  colframe=AzulFederal,
+  boxrule=0.55pt,
+  arc=1.5mm,
+  left=6pt,right=6pt,top=5pt,bottom=5pt
+]
+\textbf{Criterio de lectura:} cada fila corresponde a un folio de la Plataforma Nacional de Transparencia o registro equivalente. Se omiten deliberadamente las narrativas de solicitud y respuesta; únicamente se preservan los campos de control necesarios para el anexo: folio, fechas y sujeto obligado.
+\end{tcolorbox}
+
+\vspace{2mm}
+
+\small
+\begin{longtable}{C{0.7cm} L{3.15cm} C{2.05cm} C{2.05cm} L{8.55cm}}
+\caption{Matriz de folios, fechas y sujetos obligados}\\
+\toprule
+\rowcolor{AzulFederal}
+{\color{white}\sffamily\bfseries No.} &
+{\color{white}\sffamily\bfseries Folio} &
+{\color{white}\sffamily\bfseries Recepción} &
+{\color{white}\sffamily\bfseries Límite} &
+{\color{white}\sffamily\bfseries Sujeto obligado} \\
+\midrule
+\endfirsthead
+
+\toprule
+\rowcolor{AzulFederal}
+{\color{white}\sffamily\bfseries No.} &
+{\color{white}\sffamily\bfseries Folio} &
+{\color{white}\sffamily\bfseries Recepción} &
+{\color{white}\sffamily\bfseries Límite} &
+{\color{white}\sffamily\bfseries Sujeto obligado} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{5}{r}{\sffamily\footnotesize Continúa en la siguiente página}\\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+1 & \texttt{340018100002626} & 14/04/2026 & 14/05/2026 & FED - SICT-Instituto Mexicano del Transporte (*IMT) \\
+2 & \texttt{340025500060126} & 14/04/2026 & 14/05/2026 & FED - Secretaría de Infraestructura, Comunicaciones y Transportes (SICT) \\
+3 & \texttt{340027100027726} & 14/04/2026 & 19/05/2026 & FED - Secretaría del Trabajo y Previsión Social (STPS) \\
+4 & \texttt{340024200005626} & 14/04/2026 & 14/05/2026 & FED - Procuraduría de la Defensa del Contribuyente (PRODECON) \\
+5 & \texttt{340027100027826} & 14/04/2026 & 19/05/2026 & FED - Secretaría del Trabajo y Previsión Social (STPS) \\
+6 & \texttt{340018001223026} & 14/04/2026 & 14/05/2026 & FED - Instituto Mexicano del Seguro Social (IMSS) \\
+7 & \texttt{340031000117726} & 14/04/2026 & 14/05/2026 & FED - Instituto del Fondo Nacional de la Vivienda para los Trabajadores (INFONAVIT) \\
+8 & \texttt{340027700062326} & 14/04/2026 & 14/05/2026 & FED - Servicio de Administración Tributaria (SAT) \\
+9 & \texttt{090165926000296} & 14/04/2026 & 27/04/2026 & CMX - Instituto de Transparencia, Acceso a la Información Pública, Protección de Datos Personales y Rendición de Cuentas de la Ciudad de México \\
+10 & \texttt{450024600096126} & 14/04/2026 & 14/05/2026 & FED - Fiscalía General de la República \\
+11 & \texttt{343224900038026} & 16/04/2026 & 18/05/2026 & FED - Transparencia para el Pueblo \\
+12 & \texttt{340026500085326} & 16/04/2026 & 18/05/2026 & FED - Secretaría Anticorrupción y  Buen Gobierno (buen gobierno) \\
+13 & \texttt{340031000120726} & 17/04/2026 & 19/05/2026 & FED - Instituto del Fondo Nacional de la Vivienda para los Trabajadores (INFONAVIT) \\
+14 & \texttt{343204900019026} & 17/04/2026 & 19/05/2026 & FED - Agencia de Transformación Digital y Telecomunicaciones (ATDT) \\
+15 & \texttt{342589700015526} & 17/04/2026 & 19/05/2026 & FED - Centro Federal de Conciliación y Registro Laboral (CFCRL) \\
+16 & \texttt{340011300005926} & 17/04/2026 & 19/05/2026 & FED - Consejo Nacional para Prevenir la Discriminación (CONAPRED) \\
+17 & \texttt{341000100043626} & 17/04/2026 & 19/05/2026 & FED - Oficina de la Presidencia de la República \\
+18 & \texttt{340027700068926} & 17/04/2026 & 19/05/2026 & FED - Servicio de Administración Tributaria (SAT) \\
+19 & \texttt{342259800048026} & 17/04/2026 & 19/05/2026 & FED - SSPC-Guardia Nacional \\
+20 & \texttt{360030900033426} & 17/04/2026 & 19/05/2026 & FED - Comisión Nacional de los Derechos Humanos (CNDH) \\
+21 & \texttt{420015000001126} & 17/04/2026 & 19/05/2026 & FED - Fondo para el Desarrollo de Recursos Humanos (FIDERH) \\
+22 & \texttt{450024600099626} & 17/04/2026 & 19/05/2026 & FED - Fiscalía General de la República \\
+23 & \texttt{340024200005926} & 20/04/2026 & 20/05/2026 & FED - Procuraduría de la Defensa del Contribuyente (PRODECON) \\
+
+\end{longtable}
+\normalsize
+
+\vspace{4mm}
+
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,
+  colframe=OroArchivo,
+  boxrule=0.7pt,
+  arc=2mm,
+  left=7pt,right=7pt,top=6pt,bottom=6pt
+]
+\textbf{Cierre técnico del anexo.} La concentración anterior permite observar la simultaneidad, repetición institucional y distribución de cargas entre sujetos obligados, sin mezclar el contenido narrativo de cada solicitud. Para el juicio de amparo, esta tabla funciona como índice probatorio de activación administrativa y como ruta de verificación de omisiones, incompetencias, prevenciones o respuestas fragmentadas.
+\end{tcolorbox}
+
+\end{document}
