@@ -6,7 +6,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "27/04/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F868B3E67EFD6F00AFD973A642715956"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F868B3E67EFD6F00AFD973A642715956",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "08/05/2026",
+    "sujeto_corto": "INFOCDMX",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=12PJad545F73Zf5fU_QpSo6g5mpF53D_m",
+    "drive_file": "Acuse-MI-InterposicionRR-090165926000296.pdf"
   },
   {
     "folio": "490031200040126",
@@ -15,7 +21,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/05/2026",
     "fecha_limite": "17/06/2026",
     "estatus": "En proceso, información adicional",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/04532A4770A4F1C4D687A5BBA6DA520F"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/04532A4770A4F1C4D687A5BBA6DA520F",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "14/05/2026",
+    "sujeto_corto": "INEGI",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "490031200041226",
@@ -24,7 +36,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/DD9C3E80BA3C0E20FD784A9B4647C5C0"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/DD9C3E80BA3C0E20FD784A9B4647C5C0",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "18/05/2026",
+    "sujeto_corto": "INEGI",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "1550030526000856",
@@ -33,7 +51,13 @@ const FOLIOS = [
     "fecha_recepcion": "06/05/2026",
     "fecha_limite": "03/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/1AA6243B8000E7E363C39F748030392A"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/1AA6243B8000E7E363C39F748030392A",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "06/05/2026",
+    "sujeto_corto": "SCJN",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "342259800048026",
@@ -42,7 +66,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D9595DBC4385F21525BB0C94EE95A450"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D9595DBC4385F21525BB0C94EE95A450",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "22/04/2026",
+    "sujeto_corto": "Guardia Nacional",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1rlYXObd2G-qSeG1IT6ruYacDn_bbWYSk",
+    "drive_file": "Acuse-MI-InterposicionRR-342259800048026.pdf"
   },
   {
     "folio": "342259800055226",
@@ -51,7 +81,13 @@ const FOLIOS = [
     "fecha_recepcion": "08/05/2026",
     "fecha_limite": "11/06/2026",
     "estatus": "En proceso, información adicional",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B9867D6CEC6AE7060BCC7D218D61BF7D"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B9867D6CEC6AE7060BCC7D218D61BF7D",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "08/05/2026",
+    "sujeto_corto": "Guardia Nacional",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "342589700015526",
@@ -60,7 +96,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A88E9EC8ADE3C8664C1C528103ED3ADA"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A88E9EC8ADE3C8664C1C528103ED3ADA",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "17/04/2026",
+    "sujeto_corto": "CFCRL",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "341020400001026",
@@ -69,7 +111,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/05/2026",
     "fecha_limite": "11/06/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/60C823AABDB0B13CB2CD5E630615C696"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/60C823AABDB0B13CB2CD5E630615C696",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "14/05/2026",
+    "sujeto_corto": "CEAV-FAARI",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "400030100034126",
@@ -78,7 +126,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C319E282D723D4F80F3BDA409C84E7C"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C319E282D723D4F80F3BDA409C84E7C",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "18/05/2026",
+    "sujeto_corto": "ASF",
+    "tiene_drive": true,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "400030200057126",
@@ -87,7 +141,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/66CF77B9D94A0D3E1E11650613046A6C"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/66CF77B9D94A0D3E1E11650613046A6C",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "21/05/2026",
+    "sujeto_corto": "Cámara de Diputados",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1XYKoNSAklf2JD2DvcQjZTVVaThHn2kZL",
+    "drive_file": "Acuse-MI-InterposicionRR-400030200057126.pdf"
   },
   {
     "folio": "410031900125326",
@@ -96,7 +156,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F8C3888920E522E93549D8582D3354D5"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F8C3888920E522E93549D8582D3354D5",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "420015000001126",
@@ -105,7 +171,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6D2F9DAA53EF57EC5917FF19A84C31C"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6D2F9DAA53EF57EC5917FF19A84C31C",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340005000007626",
@@ -114,7 +186,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B499568F8293C52BFDDB2C01EC2C97B7"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B499568F8293C52BFDDB2C01EC2C97B7",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340005900000626",
@@ -123,7 +201,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A94743E23A117A5FDB01A21AA9A5A4B9"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A94743E23A117A5FDB01A21AA9A5A4B9",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340009900012226",
@@ -132,7 +216,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/05/2026",
     "fecha_limite": "11/06/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/AB9D8B8E282E42E144F95B04A1B05376"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/AB9D8B8E282E42E144F95B04A1B05376",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340010700011826",
@@ -141,7 +231,13 @@ const FOLIOS = [
     "fecha_recepcion": "19/05/2026",
     "fecha_limite": "16/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FB8307058A4019F17F2BE0A7D226CA4B"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FB8307058A4019F17F2BE0A7D226CA4B",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340011300005926",
@@ -150,7 +246,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/699E8C4D1256F57BC3CDCB039D5150E4"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/699E8C4D1256F57BC3CDCB039D5150E4",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340011300006826",
@@ -159,7 +261,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/05/2026",
     "fecha_limite": "11/06/2026",
     "estatus": "En proceso, parcialmente competente",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C5E9E89A9271D80FA0E6CDCFB1D258F"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C5E9E89A9271D80FA0E6CDCFB1D258F",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340011300007026",
@@ -168,7 +276,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/CE6C077B3EF3D6DEC18DC461C97FC948"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/CE6C077B3EF3D6DEC18DC461C97FC948",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "341000100043626",
@@ -177,7 +291,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/EA42045C979D01829D2CC089E1274863"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/EA42045C979D01829D2CC089E1274863",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "04/05/2026",
+    "sujeto_corto": "Presidencia",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1HadKTdzSFY0qTApqnfQ6prnuFM4e_kMp",
+    "drive_file": "Acuse-MI-InterposicionRR-341000100043626.pdf"
   },
   {
     "folio": "341000500005726",
@@ -186,7 +306,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/147E227C5EB24FAA0E139B256951EFD7"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/147E227C5EB24FAA0E139B256951EFD7",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "341043300005026",
@@ -195,7 +321,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C3AA80AB5A2304E8FC674FCBE21514CA"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C3AA80AB5A2304E8FC674FCBE21514CA",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340025500060126",
@@ -204,7 +336,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A25D27A587905C968F52692E146E752D"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A25D27A587905C968F52692E146E752D",
+    "doc_tipo": "Compendio respuestas",
+    "doc_fecha": "14/04/2026",
+    "sujeto_corto": "SICT",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1nthsPeibguT_M7IN6aPnNKseVkjDAsXW",
+    "drive_file": "compendio_acuses_respuestas.pdf"
   },
   {
     "folio": "340026200089726",
@@ -213,7 +351,13 @@ const FOLIOS = [
     "fecha_recepcion": "06/05/2026",
     "fecha_limite": "03/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BEB090E27B64A9306A9D7673981EE08B"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BEB090E27B64A9306A9D7673981EE08B",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340026500085326",
@@ -222,7 +366,13 @@ const FOLIOS = [
     "fecha_recepcion": "16/04/2026",
     "fecha_limite": "01/06/2026",
     "estatus": "En proceso con prórroga",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3AE2EF6E08E29A90B8090B81A070E454"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3AE2EF6E08E29A90B8090B81A070E454",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340026800118026",
@@ -231,7 +381,13 @@ const FOLIOS = [
     "fecha_recepcion": "06/05/2026",
     "fecha_limite": "05/06/2026",
     "estatus": "En proceso, información adicional",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BA17A03B784E453831D56C85106BCF51"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BA17A03B784E453831D56C85106BCF51",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340027100027726",
@@ -240,7 +396,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Pendiente de acreditación de la identidad",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C62DFE642FD7752B51F82B32FFC880F5"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C62DFE642FD7752B51F82B32FFC880F5",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "20/05/2026",
+    "sujeto_corto": "STPS",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1JNm0609nVN4OOIQPIXnq3ZJuLnnxr9vb",
+    "drive_file": "Acuse-MI-InterposicionRR-340027100027726.pdf"
   },
   {
     "folio": "340027100027826",
@@ -249,7 +411,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Pendiente de acreditación de la identidad",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/604200C297EC0CE3874EB119523DC624"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/604200C297EC0CE3874EB119523DC624",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340027700062326",
@@ -258,7 +426,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F3E728853634A4DBE25958CC2AD25FFE"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F3E728853634A4DBE25958CC2AD25FFE",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "20/04/2026",
+    "sujeto_corto": "SAT",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1j22hI-U2tCcj3v8MWBjB4PxJd1r0v6de",
+    "drive_file": "Acuse-MI-InterposicionRR-340027700062326.pdf"
   },
   {
     "folio": "340027700068926",
@@ -267,7 +441,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/03965C76C8004CEC1D6EC908E6908732"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/03965C76C8004CEC1D6EC908E6908732",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "12/05/2026",
+    "sujeto_corto": "SAT",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=13gkhCnjJAo3qo_5oOvSACe77JWvczZ5f",
+    "drive_file": "Acuse-MI-InterposicionRR-340027700068926.pdf"
   },
   {
     "folio": "340031000117726",
@@ -276,7 +456,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Pendiente de acreditación de la identidad",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9ED628711DC2B5FBB8BEFEDE8F4D827E"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9ED628711DC2B5FBB8BEFEDE8F4D827E",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340031000120726",
@@ -285,7 +471,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Pendiente de acreditación de la identidad",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/54B025B8BE7C100CAC3CD3248AD39C5C"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/54B025B8BE7C100CAC3CD3248AD39C5C",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340031000129926",
@@ -294,7 +486,13 @@ const FOLIOS = [
     "fecha_recepcion": "29/04/2026",
     "fecha_limite": "29/05/2026",
     "estatus": "Pendiente de acreditación de la identidad",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/ABE0F45CDC0AB8787455AE47438A741E"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/ABE0F45CDC0AB8787455AE47438A741E",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340031000137326",
@@ -303,7 +501,13 @@ const FOLIOS = [
     "fecha_recepcion": "12/05/2026",
     "fecha_limite": "11/06/2026",
     "estatus": "En proceso con prevención, sin identidad acreditada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3A2298BD32D87C7C9A253EBF446826F3"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3A2298BD32D87C7C9A253EBF446826F3",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340021800165326",
@@ -312,7 +516,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3192F1F020E6DF62514C37437D7A52A1"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3192F1F020E6DF62514C37437D7A52A1",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340024000011226",
@@ -321,7 +531,13 @@ const FOLIOS = [
     "fecha_recepcion": "08/05/2026",
     "fecha_limite": "05/06/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F35F0FEA928A9170D3A3DDF77B77C348"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F35F0FEA928A9170D3A3DDF77B77C348",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "14/05/2026",
+    "sujeto_corto": "PRS",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1sgyJV_8ma6bvDhwyCxkTmy74GSoF0Nt0",
+    "drive_file": "Acuse-MI-InterposicionRR-340024000011226.pdf"
   },
   {
     "folio": "340024200005626",
@@ -330,7 +546,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B0AE0D708DD73FDD600A8667E1177F43"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B0AE0D708DD73FDD600A8667E1177F43",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340024200005926",
@@ -339,7 +561,13 @@ const FOLIOS = [
     "fecha_recepcion": "20/04/2026",
     "fecha_limite": "28/05/2026",
     "estatus": "En proceso con prevención, sin identidad acreditada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/79DF0F92AF873A0FB70BCB34534D5BDC"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/79DF0F92AF873A0FB70BCB34534D5BDC",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340006100001726",
@@ -348,7 +576,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/580AB81ACBDBDB2563AB3E09FF252620"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/580AB81ACBDBDB2563AB3E09FF252620",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340007600009126",
@@ -357,7 +591,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/05/2026",
     "fecha_limite": "11/06/2026",
     "estatus": "En proceso con prevención, sin identidad acreditada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/686C2D2E7A5DFE2F3E8DED5ABA07A6E6"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/686C2D2E7A5DFE2F3E8DED5ABA07A6E6",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "450018900010926",
@@ -366,7 +606,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FFC2B917A8F8BCB894740A7837A8413B"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FFC2B917A8F8BCB894740A7837A8413B",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "450024600096126",
@@ -375,7 +621,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D8735CCC4DB573B63022BB9F89CA7F2F"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D8735CCC4DB573B63022BB9F89CA7F2F",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "20/04/2026",
+    "sujeto_corto": "FGR",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1XJC2yVJHlDXHf6MG2W5VsAbNFCHpZsZ6",
+    "drive_file": "Acuse-MI-InterposicionRR-450024600096126.pdf"
   },
   {
     "folio": "450024600099626",
@@ -384,7 +636,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "02/06/2026",
     "estatus": "En proceso con prórroga",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/8DDBEAAF9AFB0FD181C96742DB90DB1E"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/8DDBEAAF9AFB0FD181C96742DB90DB1E",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340017600031026",
@@ -393,7 +651,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso, parcialmente competente",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/73C6FB10342C52B5D4D22564FE7E3626"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/73C6FB10342C52B5D4D22564FE7E3626",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "340018001223026",
@@ -402,7 +666,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/01C151AF37A4743D63D80B245BC480FE"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/01C151AF37A4743D63D80B245BC480FE",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "20/04/2026",
+    "sujeto_corto": "IMSS",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1vRO8O8vfjkiAzIHP8z_iXvQEDbVBgySR",
+    "drive_file": "Acuse-MI-InterposicionRR-340018001223026.pdf"
   },
   {
     "folio": "340018100002626",
@@ -411,7 +681,13 @@ const FOLIOS = [
     "fecha_recepcion": "14/04/2026",
     "fecha_limite": "14/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A0A1EDFDA7F4326AABFE55C2A68E7DA"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A0A1EDFDA7F4326AABFE55C2A68E7DA",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "343204900019026",
@@ -420,7 +696,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "19/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F226FF31B4E756078CDF11C9D346DE7C"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F226FF31B4E756078CDF11C9D346DE7C",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "22/04/2026",
+    "sujeto_corto": "ATDT",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1hZ0lO26qu2BZeU6Bban522mxWu9oB4qF",
+    "drive_file": "Acuse-MI-InterposicionRR-343204900019026.pdf"
   },
   {
     "folio": "343204900024226",
@@ -429,7 +711,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso, parcialmente competente",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F7B499A7502CAA8DD14A3DD026C1674D"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F7B499A7502CAA8DD14A3DD026C1674D",
+    "doc_tipo": "",
+    "doc_fecha": "",
+    "sujeto_corto": "",
+    "tiene_drive": false,
+    "drive_url": "",
+    "drive_file": ""
   },
   {
     "folio": "343224900038026",
@@ -438,7 +726,13 @@ const FOLIOS = [
     "fecha_recepcion": "16/04/2026",
     "fecha_limite": "18/05/2026",
     "estatus": "Terminada",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3DD2A2B6D2011B593B6940770C8A69CA"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3DD2A2B6D2011B593B6940770C8A69CA",
+    "doc_tipo": "Recurso de Revisión",
+    "doc_fecha": "29/04/2026",
+    "sujeto_corto": "Transparencia Pueblo",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1OGmhV9KwYmfwNyGsoZ5-Cfy-uBriEH8S",
+    "drive_file": "Acuse-MI-InterposicionRR-343224900038026.pdf"
   },
   {
     "folio": "343224900049926",
@@ -447,7 +741,13 @@ const FOLIOS = [
     "fecha_recepcion": "18/05/2026",
     "fecha_limite": "15/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/0E1E9DC2895ADC2D0208C16B006886B2"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/0E1E9DC2895ADC2D0208C16B006886B2",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "18/05/2026",
+    "sujeto_corto": "Transparencia Pueblo",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1S0y_F2Y-TQ3Kiz2jhc6dYWcFRmPmixmj",
+    "drive_file": "343224900049926.pdf"
   },
   {
     "folio": "360030900033426",
@@ -456,7 +756,13 @@ const FOLIOS = [
     "fecha_recepcion": "17/04/2026",
     "fecha_limite": "26/05/2026",
     "estatus": "En proceso, información adicional",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6C75FE7C3C9AABC368E02A0190C395D"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6C75FE7C3C9AABC368E02A0190C395D",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "17/04/2026",
+    "sujeto_corto": "CNDH",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1mnCGWFD_MANJ77neMr9IEBFMjgmgcVaZ",
+    "drive_file": "360030900033426.pdf"
   },
   {
     "folio": "771277626000139",
@@ -465,6 +771,12 @@ const FOLIOS = [
     "fecha_recepcion": "05/05/2026",
     "fecha_limite": "03/06/2026",
     "estatus": "En proceso",
-    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9B2A813D72FDAB814F305FCF7B0D41D1"
+    "url": "https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9B2A813D72FDAB814F305FCF7B0D41D1",
+    "doc_tipo": "Acuse de solicitud",
+    "doc_fecha": "04/05/2026",
+    "sujeto_corto": "PJ Veracruz",
+    "tiene_drive": true,
+    "drive_url": "https://drive.google.com/open?id=1xrJGMI3w_wI95nA-kxO5VJcDUialu96p",
+    "drive_file": "771277626000139.pdf"
   }
 ];
