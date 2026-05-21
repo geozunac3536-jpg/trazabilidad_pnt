@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: EL TERCER GEMELO DIGITAL
+message: "If you use this work, please cite it as below."
+type: software
+authors:
+  - family-names: Carrasco Ozuna
+    given-names: Genaro
+    orcid: https://orcid.org/0009-0005-6358-9910
+doi: 10.5281/zenodo.20331856
+repository-code: https://github.com/geozunac3536-jpg/trazabilidad_pnt
+license: CC-BY-4.0
+version: 1.0
+date-released: 2026-05-21
