@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MATRIZ ESTRATÉGICA PNT — CAOG840906RG3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&family=Barlow+Condensed:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg: #070a0f;
+    --panel: #0d1117;
+    --border: #1a2535;
+    --accent: #0d6efd;
+    --gold: #c8a84b;
+    --verde: #00c896;
+    --rojo: #e84040;
+    --naranja: #f07030;
+    --amarillo: #f0c030;
+    --gris: #8090a8;
+    --blanco: #dce8f0;
+    --texto: #b8c8d8;
+    --mono: 'Share Tech Mono', monospace;
+    --sans: 'Barlow Condensed', sans-serif;
+    --head: 'Rajdhani', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--texto);
+    font-family: var(--sans);
+    font-size: 14px;
+    min-height: 100vh;
+  }
+
+  /* ──── HEADER ──── */
+  .header {
+    background: linear-gradient(135deg, #080d14 0%, #0d1825 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 20px 32px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-left h1 {
+    font-family: var(--head); font-size: 22px; font-weight: 700;
+    color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
+  }
+  .header-left p {
+    font-family: var(--mono); font-size: 10px; color: var(--gris);
+    letter-spacing: 1px; margin-top: 2px;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .header-right .reloj {
+    font-family: var(--mono); font-size: 28px; color: var(--verde);
+    letter-spacing: 3px; line-height: 1;
+  }
+  .header-right .fecha-hoy {
+    font-family: var(--mono); font-size: 10px; color: var(--gris);
+    letter-spacing: 1px;
+  }
+
+  /* ──── STATS BAR ──── */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-item {
+    padding: 14px 16px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--mono); font-size: 30px; font-weight: 700;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--sans); font-size: 10px; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--gris); margin-top: 4px;
+  }
+  .s-verde { color: var(--verde); }
+  .s-rojo  { color: var(--rojo); }
+  .s-amarillo { color: var(--amarillo); }
+  .s-naranja { color: var(--naranja); }
+  .s-gris { color: var(--gris); }
+
+  /* ──── MAIN CONTENT ──── */
+  .main { padding: 24px 28px; }
+
+  /* ──── FILTROS ──── */
+  .filtros {
+    display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;
+    align-items: center;
+  }
+  .filtro-label {
+    font-family: var(--mono); font-size: 10px; color: var(--gris);
+    letter-spacing: 1px; margin-right: 4px;
+  }
+  .btn-filtro {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 1px;
+    padding: 5px 14px; border-radius: 2px; cursor: pointer;
+    border: 1px solid; text-transform: uppercase; transition: all .2s;
+    background: transparent;
+  }
+  .btn-filtro.activo, .btn-filtro:hover { color: #000; }
+  .btn-all { border-color: var(--gris); color: var(--gris); }
+  .btn-all.activo, .btn-all:hover { background: var(--gris); }
+  .btn-verde-f { border-color: var(--verde); color: var(--verde); }
+  .btn-verde-f.activo, .btn-verde-f:hover { background: var(--verde); }
+  .btn-rojo-f { border-color: var(--rojo); color: var(--rojo); }
+  .btn-rojo-f.activo, .btn-rojo-f:hover { background: var(--rojo); }
+  .btn-naranja-f { border-color: var(--naranja); color: var(--naranja); }
+  .btn-naranja-f.activo, .btn-naranja-f:hover { background: var(--naranja); }
+  .btn-amarillo-f { border-color: var(--amarillo); color: var(--amarillo); }
+  .btn-amarillo-f.activo, .btn-amarillo-f:hover { background: var(--amarillo); color: #000 !important; }
+
+  /* ──── TABLA PRINCIPAL ──── */
+  .tabla-wrap { overflow-x: auto; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px;
+  }
+  thead tr {
+    background: #111820;
+    border-bottom: 2px solid var(--gold);
+  }
+  th {
+    font-family: var(--head); font-weight: 600; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px; color: var(--gold);
+    padding: 10px 12px; text-align: left; white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background .15s;
+  }
+  tbody tr:hover { background: #0f1620; }
+  tbody tr.oculta { display: none; }
+  td {
+    padding: 9px 12px; vertical-align: middle;
+    font-family: var(--sans); line-height: 1.3;
+  }
+
+  /* ──── SEMÁFORO ──── */
+  .semaforo-cell { text-align: center; width: 48px; }
+  .dot {
+    display: inline-block; width: 16px; height: 16px; border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 8px currentColor;
+  }
+  .dot.verde   { background: var(--verde); color: var(--verde); }
+  .dot.rojo    { background: var(--rojo);  color: var(--rojo); }
+  .dot.amarillo{ background: var(--amarillo); color: var(--amarillo); }
+  .dot.naranja { background: var(--naranja); color: var(--naranja); }
+  .dot.gris    { background: var(--gris);  color: var(--gris); box-shadow: none; }
+  .dot.pulsa   { animation: pulsa 1.4s infinite; }
+  @keyframes pulsa {
+    0%, 100% { box-shadow: 0 0 6px currentColor; }
+    50% { box-shadow: 0 0 16px currentColor, 0 0 28px currentColor; }
+  }
+
+  /* ──── FOLIO ──── */
+  .folio-code {
+    font-family: var(--mono); font-size: 11px; color: var(--blanco);
+    letter-spacing: .5px;
+  }
+
+  /* ──── INSTITUCIÓN ──── */
+  .inst-name { color: var(--blanco); font-weight: 600; font-size: 13px; }
+  .inst-garante { font-size: 11px; color: var(--gris); margin-top: 2px; }
+
+  /* ──── ESTATUS ──── */
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 2px;
+    font-size: 10px; font-family: var(--mono); letter-spacing: .5px;
+    white-space: nowrap; text-transform: uppercase;
+  }
+  .tag-terminada    { background: #00c89620; color: var(--verde); border: 1px solid #00c89640; }
+  .tag-proceso      { background: #0d6efd20; color: #5ba3ff; border: 1px solid #0d6efd40; }
+  .tag-prevencion   { background: #f0303020; color: var(--rojo); border: 1px solid #f0303050; }
+  .tag-prorroga     { background: #f0702020; color: var(--naranja); border: 1px solid #f0702050; }
+  .tag-pendiente    { background: #f0c03020; color: var(--amarillo); border: 1px solid #f0c03050; }
+  .tag-info-adic    { background: #8090a820; color: var(--gris); border: 1px solid #8090a840; }
+
+  /* ──── FECHAS ──── */
+  .fecha-recep { font-family: var(--mono); font-size: 11px; color: var(--gris); }
+  .fecha-venc  { font-family: var(--mono); font-size: 11px; }
+  .venc-critico  { color: var(--rojo); font-weight: 700; }
+  .venc-proximo  { color: var(--naranja); font-weight: 600; }
+  .venc-normal   { color: var(--amarillo); }
+  .venc-ok       { color: var(--verde); }
+  .venc-pasado   { color: var(--gris); text-decoration: line-through; }
+
+  /* ──── DÍAS RESTANTES ──── */
+  .dias-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 2px;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    text-align: center; min-width: 52px;
+  }
+  .dias-critico  { background: #e8404030; color: var(--rojo); border: 1px solid var(--rojo); }
+  .dias-proximo  { background: #f0702030; color: var(--naranja); border: 1px solid var(--naranja); }
+  .dias-normal   { background: #f0c03030; color: var(--amarillo); border: 1px solid var(--amarillo); }
+  .dias-ok       { background: #00c89630; color: var(--verde); border: 1px solid var(--verde); }
+  .dias-pasado   { background: #8090a820; color: var(--gris); border: 1px solid var(--gris); }
+
+  /* ──── ALERTA RESPUESTA ──── */
+  .resp-icon { font-size: 14px; }
+
+  /* ──── COUNTDOWN VENCIMIENTOS ──── */
+  .section-title {
+    font-family: var(--head); font-size: 16px; font-weight: 700;
+    color: var(--gold); letter-spacing: 2px; text-transform: uppercase;
+    border-left: 3px solid var(--gold); padding-left: 12px;
+    margin: 32px 0 16px;
+  }
+
+  /* ──── MINI RELOJES CRÍTICOS ──── */
+  .relojes-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px; margin-bottom: 28px;
+  }
+  .reloj-card {
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 14px 16px; position: relative; overflow: hidden;
+  }
+  .reloj-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .reloj-card.critico::before  { background: var(--rojo); }
+  .reloj-card.proximo::before  { background: var(--naranja); }
+  .reloj-card.normal::before   { background: var(--amarillo); }
+  .reloj-card.ok::before       { background: var(--verde); }
+  .rc-folio { font-family: var(--mono); font-size: 10px; color: var(--gris); }
+  .rc-inst  { font-family: var(--head); font-size: 14px; font-weight: 600; color: var(--blanco); margin: 2px 0; }
+  .rc-tiempo {
+    font-family: var(--mono); font-size: 24px; font-weight: 700;
+    line-height: 1; margin-top: 8px;
+  }
+  .rc-venc { font-family: var(--mono); font-size: 10px; color: var(--gris); margin-top: 2px; }
+  .critico .rc-tiempo { color: var(--rojo); }
+  .proximo .rc-tiempo { color: var(--naranja); }
+  .normal  .rc-tiempo { color: var(--amarillo); }
+  .ok      .rc-tiempo { color: var(--verde); }
+
+  /* ──── FOOTER ──── */
+  .footer {
+    background: var(--panel); border-top: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px; color: var(--gris);
+    letter-spacing: 1px;
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <h1>MATRIZ ESTRATÉGICA PNT</h1>
+    <p>NCU-2026 &nbsp;|&nbsp; CAOG840906RG3 &nbsp;|&nbsp; INT-L000053-99A908278E-F26937B106</p>
+  </div>
+  <div class="header-right">
+    <div class="reloj" id="reloj-live">--:--:--</div>
+    <div class="fecha-hoy" id="fecha-hoy-txt"></div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num s-gris" id="s-total">0</div>
+    <div class="stat-label">Total Folios</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num s-verde" id="s-term">0</div>
+    <div class="stat-label">Terminadas</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num s-naranja" id="s-proc">0</div>
+    <div class="stat-label">En Proceso</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num s-rojo" id="s-prev">0</div>
+    <div class="stat-label">Prevención / Bloqueadas</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num s-amarillo" id="s-crit">0</div>
+    <div class="stat-label">Vencen ≤7 días</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- RELOJES CRÍTICOS -->
+  <div class="section-title">⚠ CONTADORES DE VENCIMIENTO — FRENTE ACTIVO</div>
+  <div class="relojes-grid" id="relojes-criticos"></div>
+
+  <!-- FILTROS -->
+  <div class="filtros">
+    <span class="filtro-label">FILTRAR:</span>
+    <button class="btn-filtro btn-all activo"     onclick="filtrar('all',    this)">TODOS</button>
+    <button class="btn-filtro btn-verde-f"         onclick="filtrar('term',   this)">TERMINADAS</button>
+    <button class="btn-filtro btn-naranja-f"       onclick="filtrar('proc',   this)">EN PROCESO</button>
+    <button class="btn-filtro btn-rojo-f"          onclick="filtrar('prev',   this)">PREVENCIÓN</button>
+    <button class="btn-filtro btn-amarillo-f"      onclick="filtrar('pend',   this)">PENDIENTE ID</button>
+  </div>
+
+  <!-- TABLA -->
+  <div class="tabla-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:44px">⬤</th>
+        <th>No. Folio PNT</th>
+        <th>Sujeto Obligado</th>
+        <th>Garante</th>
+        <th>Tipo</th>
+        <th>Estatus</th>
+        <th>Recep.</th>
+        <th>Vencimiento</th>
+        <th>Días Restantes</th>
+        <th>Resp.</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-body"></tbody>
+  </table>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span>ESTADO MAYOR JURÍDICO — NCU-2026 &nbsp;|&nbsp; plataformadetransparencia.org.mx</span>
+  <span id="footer-ts"></span>
+</div>
+
+<script>
+const HOY = new Date(2026,4,18); // 18 mayo 2026
+
+const DATA = [
+  {folio:"090165926000296",inst:"INFOCDMX",garante:"CMX - INFOCDMX",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"27/04/2026",resp:true,notas:"Orientación → otros SO"},
+  {folio:"490031200040126",inst:"INEGI",garante:"ATDT (INEGI)",tipo:"Info pública",estatus:"En proceso",recep:"14/05/2026",venc:"11/06/2026",resp:false,notas:"Estudio socioeconómico"},
+  {folio:"490031200041226",inst:"INEGI [C2-B04]",garante:"ATDT (INEGI)",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"1550030526000856",inst:"SCJN",garante:"Comité Transparencia SCJN",tipo:"Info pública",estatus:"En proceso",recep:"06/05/2026",venc:"03/06/2026",resp:false,notas:"Jurisprudencia inconstitucionalidad"},
+  {folio:"342259800048026",inst:"SSPC / Guardia Nacional",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"GN RR — respuesta con adjunto"},
+  {folio:"342259800055226",inst:"SSPC / Guardia Nacional",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso, info adicional",recep:"08/05/2026",venc:"11/06/2026",resp:true,notas:"Alegatos presentados; pendiente resolución"},
+  {folio:"342589700015526",inst:"CFCRL",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"17/04/2026",venc:"19/05/2026",resp:false,notas:"Certificación facultades R-Control"},
+  {folio:"341020400001026",inst:"CEAV-FAARI",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"Terminada",recep:"14/05/2026",venc:"11/06/2026",resp:true,notas:"Orientada → CEAV activo"},
+  {folio:"400030100034126",inst:"ASF [C2-C02]",garante:"OIC-Cámara de Diputados",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"400030200057126",inst:"Cámara de Diputados",garante:"OIC-Cámara de Diputados",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Vacío normativo listados laborales"},
+  {folio:"410031900125326",inst:"UNAM / IIMAS [C2-B01]",garante:"Autoridad Garante UNAM",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"420015000001126",inst:"FIDERH / Banco de México",garante:"OIC-Banco de México",tipo:"Info pública",estatus:"Terminada",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"Respuesta en adjunto"},
+  {folio:"340005000007626",inst:"CNI [C2-A03]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"340005900000626",inst:"CENAM [C2-A04]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"340009900012226",inst:"CONDUSEF",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"14/05/2026",venc:"11/06/2026",resp:false,notas:"Datos sensibles laborales"},
+  {folio:"340011300005926",inst:"CONAPRED",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"Oficio CONAPRED/UETAI/089/2026"},
+  {folio:"340011300006826",inst:"CONAPRED",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"14/05/2026",venc:"11/06/2026",resp:false,notas:"Discriminación algorítmica"},
+  {folio:"340011300007026",inst:"CONAPRED [C2-C03]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"341000100043626",inst:"Oficina de Presidencia",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"Respuesta adjunta"},
+  {folio:"341000500005726",inst:"INDAUTOR [C2-A06]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"341043300005026",inst:"INFOTEC [C2-B02]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"340025500060126",inst:"SICT",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Respuesta DGAF adjunta"},
+  {folio:"340026200089726",inst:"SEGOB",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"06/05/2026",venc:"03/06/2026",resp:false,notas:"Certificación R-Control"},
+  {folio:"340026500085326",inst:"Secretaría Anticorrupción (SABG)",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso con prórroga",recep:"16/04/2026",venc:"01/06/2026",resp:true,notas:"Incompetencia notoria declarada → RR activo"},
+  {folio:"340026800118026",inst:"SRE",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso, info adicional",recep:"06/05/2026",venc:"23/06/2026",resp:true,notas:"Prevención desahogada; plazo ampliado"},
+  {folio:"340027100027726",inst:"STPS (ARCO)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"Pendiente de acreditación",recep:"14/04/2026",venc:"19/05/2026",resp:true,notas:"⚠ Identidad pendiente — vence 19/05"},
+  {folio:"340027100027826",inst:"STPS (ARCO-2)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"Pendiente de acreditación",recep:"14/04/2026",venc:"19/05/2026",resp:true,notas:"⚠ Identidad pendiente — vence 19/05"},
+  {folio:"340027700062326",inst:"SAT",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Respuesta adjunta SAT"},
+  {folio:"340027700068926",inst:"SAT — RR activo [SAT2609690]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"Incompetencia → recurso revisión activo"},
+  {folio:"340031000117726",inst:"INFONAVIT (ARCO-1)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"Pendiente de acreditación",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Acumulado a 120726"},
+  {folio:"340031000120726",inst:"INFONAVIT (ARCO-2)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"Pendiente de acreditación",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"Presencial CESI 11/05; resp. puesta a disp."},
+  {folio:"340031000129926",inst:"INFONAVIT (ARCO-3)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"Pendiente de acreditación",recep:"29/04/2026",venc:"29/05/2026",resp:true,notas:"Acumulado a 120726; vence 29/05"},
+  {folio:"340031000137326",inst:"INFONAVIT (ARCO-4 crédito)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"En proceso con prevención",recep:"12/05/2026",venc:"11/06/2026",resp:true,notas:"Prevención desahogada 18/05"},
+  {folio:"340021800165326",inst:"IPN [C2-B05]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"340024000011226",inst:"PRS — Prevención y Reinserción",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"08/05/2026",venc:"05/06/2026",resp:true,notas:"Oficio SSPC/PRS/UALDHT/UNIT/278/2026"},
+  {folio:"340024200005626",inst:"PRODECON",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Respuesta adjunta"},
+  {folio:"340024200005926",inst:"PRODECON (ARCO)",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"En proceso con prevención",recep:"20/04/2026",venc:"28/05/2026",resp:true,notas:"Identidad no acreditada; prevención activa"},
+  {folio:"340006100001726",inst:"CENAPRED [C2-A01]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"340007600009126",inst:"CEAV",garante:"Transparencia para el Pueblo",tipo:"Datos Personales",estatus:"En proceso con prevención",recep:"14/05/2026",venc:"11/06/2026",resp:true,notas:"Prevención desahogada 18/05"},
+  {folio:"450018900010926",inst:"INACIPE [C2-B03]",garante:"OIC-FGR",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"450024600096126",inst:"FGR",garante:"OIC-FGR",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Respuesta en PDF adjunto"},
+  {folio:"450024600099626",inst:"FGR (2da solicitud)",garante:"OIC-FGR",tipo:"Info pública",estatus:"En proceso",recep:"17/04/2026",venc:"19/05/2026",resp:false,notas:"⚠ Vence 19/05/2026"},
+  {folio:"340017600031026",inst:"IMPI [C2-A05]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"340018001223026",inst:"IMSS",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Remitido SABG"},
+  {folio:"340018100002626",inst:"IMT / SICT",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"14/04/2026",venc:"14/05/2026",resp:true,notas:"Incompetencia → remitido DGAF"},
+  {folio:"343204900019026",inst:"ATDT",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"17/04/2026",venc:"19/05/2026",resp:true,notas:"Respuesta adjunta → RR activo ATDT2607389"},
+  {folio:"343204900024226",inst:"ATDT [C2-A02]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"343224900038026",inst:"Transparencia para el Pueblo",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"Terminada",recep:"16/04/2026",venc:"18/05/2026",resp:true,notas:"Incompetencia notoria → RR activo Trans2608173"},
+  {folio:"343224900049926",inst:"Transparencia para el Pueblo [C2-C01]",garante:"Transparencia para el Pueblo",tipo:"Info pública",estatus:"En proceso",recep:"18/05/2026",venc:"15/06/2026",resp:false,notas:"Frente Científico"},
+  {folio:"360030900033426",inst:"CNDH",garante:"OIC-CNDH",tipo:"Info pública",estatus:"En proceso, info adicional",recep:"17/04/2026",venc:"26/05/2026",resp:true,notas:"Prevención desahogada; arg. constitucional"},
+  {folio:"771277626000139",inst:"Poder Judicial Veracruz",garante:"Contraloría PJ Veracruz",tipo:"Info pública",estatus:"En proceso",recep:"05/05/2026",venc:"03/06/2026",resp:false,notas:"Expediente pensión / bloqueo licencias"},
+];
+
+// ── Utilidades ──
+function parseFecha(s) {
+  const [d,m,y] = s.split('/');
+  return new Date(+y, +m-1, +d);
+}
+function diasRestantes(venc) {
+  const v = parseFecha(venc);
+  const diff = Math.round((v - HOY) / 86400000);
+  return diff;
+}
+function classDias(d) {
+  if(d < 0)  return 'dias-pasado';
+  if(d <= 3) return 'dias-critico';
+  if(d <= 7) return 'dias-proximo';
+  if(d <= 20) return 'dias-normal';
+  return 'dias-ok';
+}
+function classDot(row) {
+  const s = row.estatus.toLowerCase();
+  const d = diasRestantes(row.venc);
+  if(s.includes('terminada')) return 'verde';
+  if(s.includes('prevención') || s.includes('prevencion')) return 'rojo pulsa';
+  if(s.includes('pendiente de acreditación')) return 'amarillo pulsa';
+  if(s.includes('prórroga') || s.includes('prorroga')) return 'naranja';
+  if(d <= 3 && d >= 0) return 'naranja pulsa';
+  return 'gris';
+}
+function tagEstatus(s) {
+  const sl = s.toLowerCase();
+  if(sl.includes('terminada')) return `<span class="tag tag-terminada">Terminada</span>`;
+  if(sl.includes('prevención') || sl.includes('prevencion')) return `<span class="tag tag-prevencion">${s}</span>`;
+  if(sl.includes('pendiente')) return `<span class="tag tag-pendiente">${s}</span>`;
+  if(sl.includes('prórroga') || sl.includes('prorroga')) return `<span class="tag tag-prorroga">${s}</span>`;
+  if(sl.includes('info adicional') || sl.includes('información adicional')) return `<span class="tag tag-info-adic">${s}</span>`;
+  return `<span class="tag tag-proceso">${s}</span>`;
+}
+function categoriaFiltro(row) {
+  const s = row.estatus.toLowerCase();
+  if(s.includes('terminada')) return 'term';
+  if(s.includes('prevención') || s.includes('prevencion')) return 'prev';
+  if(s.includes('pendiente')) return 'pend';
+  return 'proc';
+}
+
+// ── Construir tabla ──
+const tbody = document.getElementById('tabla-body');
+let nTotal=0, nTerm=0, nProc=0, nPrev=0, nCrit=0;
+
+DATA.forEach((row, idx) => {
+  const d = diasRestantes(row.venc);
+  const dc = classDias(d);
+  const dot = classDot(row);
+  const cat = categoriaFiltro(row);
+
+  nTotal++;
+  if(cat==='term') nTerm++;
+  else if(cat==='prev' || cat==='pend') nPrev++;
+  else nProc++;
+  if(d >= 0 && d <= 7) nCrit++;
+
+  const diasLabel = d < 0 ? `${Math.abs(d)}d EXPIRADO` : (d === 0 ? 'HOY' : `${d} días`);
+  const vencClass = d < 0 ? 'venc-pasado' : (d <= 3 ? 'venc-critico' : (d <= 7 ? 'venc-proximo' : (d <= 20 ? 'venc-normal' : 'venc-ok')));
+
+  const tr = document.createElement('tr');
+  tr.dataset.cat = cat;
+  tr.innerHTML = `
+    <td class="semaforo-cell"><span class="dot ${dot}"></span></td>
+    <td><span class="folio-code">${row.folio}</span></td>
+    <td>
+      <div class="inst-name">${row.inst}</div>
+      <div class="inst-garante">${row.notas}</div>
+    </td>
+    <td><span class="inst-garante">${row.garante}</span></td>
+    <td><span class="tag tag-info-adic" style="font-size:10px">${row.tipo}</span></td>
+    <td>${tagEstatus(row.estatus)}</td>
+    <td><span class="fecha-recep">${row.recep}</span></td>
+    <td><span class="fecha-venc ${vencClass}">${row.venc}</span></td>
+    <td><span class="dias-badge ${dc}">${diasLabel}</span></td>
+    <td class="resp-icon">${row.resp ? '✅' : '⬜'}</td>
+  `;
+  tbody.appendChild(tr);
+});
+
+document.getElementById('s-total').textContent = nTotal;
+document.getElementById('s-term').textContent = nTerm;
+document.getElementById('s-proc').textContent = nProc;
+document.getElementById('s-prev').textContent = nPrev;
+document.getElementById('s-crit').textContent = nCrit;
+
+// ── Mini relojes críticos ──
+const urgentes = DATA
+  .map(r => ({ ...r, dias: diasRestantes(r.venc) }))
+  .filter(r => r.dias >= 0 && r.dias <= 30 && !r.estatus.toLowerCase().includes('terminada'))
+  .sort((a,b) => a.dias - b.dias)
+  .slice(0, 12);
+
+const grid = document.getElementById('relojes-criticos');
+urgentes.forEach(r => {
+  const cls = r.dias <= 3 ? 'critico' : (r.dias <= 7 ? 'proximo' : (r.dias <= 15 ? 'normal' : 'ok'));
+  const label = r.dias === 0 ? '¡HOY!' : `${r.dias} DÍAS`;
+  const div = document.createElement('div');
+  div.className = `reloj-card ${cls}`;
+  div.innerHTML = `
+    <div class="rc-folio">${r.folio}</div>
+    <div class="rc-inst">${r.inst}</div>
+    <div class="rc-tiempo">${label}</div>
+    <div class="rc-venc">Vence: ${r.venc} &nbsp;|&nbsp; ${r.estatus.substring(0,30)}</div>
+  `;
+  grid.appendChild(div);
+});
+
+// ── Filtros ──
+function filtrar(cat, btn) {
+  document.querySelectorAll('.btn-filtro').forEach(b => b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.querySelectorAll('#tabla-body tr').forEach(tr => {
+    if(cat === 'all' || tr.dataset.cat === cat) tr.classList.remove('oculta');
+    else tr.classList.add('oculta');
+  });
+}
+
+// ── Reloj en vivo ──
+function actualizarReloj() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const s = String(now.getSeconds()).padStart(2,'0');
+  document.getElementById('reloj-live').textContent = `${h}:${m}:${s}`;
+  const dias = ['DOM','LUN','MAR','MIÉ','JUE','VIE','SÁB'];
+  const meses = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+  document.getElementById('fecha-hoy-txt').textContent =
+    `${dias[now.getDay()]} ${now.getDate()} ${meses[now.getMonth()]} ${now.getFullYear()}`;
+}
+actualizarReloj();
+setInterval(actualizarReloj, 1000);
+
+// Footer timestamp
+document.getElementById('footer-ts').textContent =
+  `Generado: 18/05/2026 &nbsp;|&nbsp; INT-L000053 &nbsp;|&nbsp; ${DATA.length} folios PNT activos`;
+</script>
+</body>
+</html>
