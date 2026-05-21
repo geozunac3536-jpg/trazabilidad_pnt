@@ -1,1 +1,2 @@
-
+folio,institucion,autoridad_garante,estatus,tipo_documento,archivo_relativo,sha256,fecha_recepcion,fecha_limite,fecha_respuesta,fecha_rr,fecha_actualizacion,cotejado_gmail,gmail_timestamp,remitente_gmail,asunto_gmail,hash_correlacion,conteo_adjuntos,extension,bytes,url_fuente,observaciones
+343224900038026,INFONAVIT,INAI,Respondida,03_RESPUESTA,01_EXPEDIENTES/INFONAVIT/343224900038026/03_RESPUESTA/respuesta.pdf,2a8ff0d7a8d6c5f3f0f8ab77b12f6d8f5a1b7f8d2a6d3f0b7c1a8e4d9c7f0e11,2026-04-12,2026-05-03,2026-04-29,2026-05-01,2026-05-20T22:11:03,TRUE,2026-04-29T08:44:13Z,unidad.transparencia@infonavit.org.mx,Respuesta folio 343224900038026,7e2fd0b90c0bde98f89f1ac2b3e8f2a1,3,pdf,428833,https://www.plataformadetransparencia.org.mx,Cotejo temporal consistente con Gmail y acuse PDF
