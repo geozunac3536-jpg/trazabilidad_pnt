@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESTADO MAYOR JURÍDICO · Cerco Documental PNT · CAOG840906RG3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap');
+
+  :root {
+    --bg-void:      #050709;
+    --bg-panel:     #0a0e13;
+    --bg-card:      #0d1219;
+    --bg-row:       #111820;
+    --bg-row-alt:   #0f151c;
+    --border-dim:   #1a2530;
+    --border-hi:    #263545;
+    --accent-gold:  #c8952a;
+    --accent-gold2: #e8b84b;
+    --accent-red:   #c0392b;
+    --accent-red2:  #e74c3c;
+    --accent-green: #1e7d4a;
+    --accent-green2:#27ae60;
+    --accent-amber: #d97706;
+    --accent-amber2:#f59e0b;
+    --accent-blue:  #1e4d7b;
+    --accent-blue2: #2980b9;
+    --accent-purple:#5b2d8e;
+    --accent-teal:  #0d6e6e;
+    --text-primary: #d8e4ef;
+    --text-dim:     #7a9bb5;
+    --text-muted:   #3d5a72;
+    --text-gold:    #c8952a;
+    --scan-line:    rgba(200,149,42,0.03);
+    --glow-gold:    0 0 12px rgba(200,149,42,0.3);
+    --glow-red:     0 0 12px rgba(192,57,43,0.4);
+    --glow-green:   0 0 12px rgba(39,174,96,0.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--bg-void);
+    color: var(--text-primary);
+    min-height: 100vh;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, var(--scan-line) 2px, var(--scan-line) 4px);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ───────────────────────────────────────────── */
+  .hq-header {
+    background: linear-gradient(180deg, #0a1520 0%, #060c12 100%);
+    border-bottom: 1px solid var(--accent-gold);
+    padding: 18px 28px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--glow-gold), 0 4px 20px rgba(0,0,0,0.8);
+  }
+  .hq-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .hq-logo-top {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .hq-logo-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-gold2);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: var(--glow-gold);
+  }
+  .hq-logo-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+  .hq-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+  }
+  .hq-timestamp {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+  }
+  .hq-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .pulse-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent-green2);
+    box-shadow: var(--glow-green);
+    animation: pulse 1.5s ease-in-out infinite;
+    margin-right: 5px;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.4;transform:scale(0.8);}
+  }
+
+  /* ── COMMAND STRIP ────────────────────────────────────── */
+  .cmd-strip {
+    background: #080d12;
+    border-bottom: 1px solid var(--border-dim);
+    padding: 10px 28px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cmd-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .cmd-input {
+    background: var(--bg-card);
+    border: 1px solid var(--border-hi);
+    border-radius: 3px;
+    padding: 6px 12px;
+    color: var(--text-primary);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    flex: 1;
+    min-width: 180px;
+  }
+  .cmd-input:focus { border-color: var(--accent-gold); box-shadow: var(--glow-gold); }
+  .cmd-btn {
+    background: none;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 6px 14px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .btn-all   { border-color: var(--text-muted); color: var(--text-dim); }
+  .btn-open  { border-color: var(--accent-amber); color: var(--accent-amber); }
+  .btn-done  { border-color: var(--accent-green2); color: var(--accent-green2); }
+  .btn-alert { border-color: var(--accent-red2); color: var(--accent-red2); }
+  .cmd-btn:hover { background: rgba(200,149,42,0.08); border-color: var(--accent-gold); color: var(--accent-gold2); }
+  .cmd-btn.active { background: rgba(200,149,42,0.15); border-color: var(--accent-gold); color: var(--accent-gold2); box-shadow: var(--glow-gold); }
+
+  /* ── KPI STRIP ────────────────────────────────────────── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--border-dim);
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .kpi-cell {
+    background: var(--bg-panel);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .kpi-val {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .kpi-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .kpi-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+  .kv-total   { color: var(--accent-gold2); text-shadow: var(--glow-gold); }
+  .kv-open    { color: var(--accent-amber2); }
+  .kv-done    { color: var(--accent-green2); }
+  .kv-alert   { color: var(--accent-red2); text-shadow: var(--glow-red); }
+  .kv-prorr   { color: #f472b6; }
+  .kv-prev    { color: var(--accent-blue2); }
+  .kv-dam     { color: var(--accent-gold2); font-size: 20px; }
+
+  /* ── MAIN TABLE ───────────────────────────────────────── */
+  .table-wrap {
+    padding: 0 0 40px 0;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    min-width: 1100px;
+  }
+  thead tr {
+    background: #060b10;
+    border-top: 1px solid var(--accent-gold);
+    border-bottom: 1px solid var(--border-dim);
+    position: sticky;
+    top: 98px;
+    z-index: 50;
+  }
+  th {
+    padding: 10px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text-gold);
+    text-transform: uppercase;
+    text-align: left;
+    white-space: nowrap;
+    border-right: 1px solid var(--border-dim);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  th:hover { background: rgba(200,149,42,0.08); }
+  th:last-child { border-right: none; }
+  th .sort-arrow { opacity: 0.4; margin-left: 4px; }
+  th.sorted .sort-arrow { opacity: 1; color: var(--accent-gold2); }
+
+  tbody tr {
+    background: var(--bg-row);
+    border-bottom: 1px solid var(--border-dim);
+    transition: background 0.15s, transform 0.1s;
+    cursor: pointer;
+  }
+  tbody tr:nth-child(even) { background: var(--bg-row-alt); }
+  tbody tr:hover { background: #162233; transform: translateX(2px); }
+  tbody tr.hidden-row { display: none; }
+
+  td {
+    padding: 9px 14px;
+    vertical-align: middle;
+    border-right: 1px solid var(--border-dim);
+    line-height: 1.4;
+  }
+  td:last-child { border-right: none; }
+
+  /* folio cell */
+  .td-folio {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-gold);
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+  }
+  .td-folio .folio-num { font-size: 8px; color: var(--text-muted); display: block; margin-top: 2px; }
+
+  /* institution */
+  .td-inst {
+    font-weight: 600;
+    color: var(--text-primary);
+    max-width: 220px;
+  }
+  .td-inst .inst-short {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-blue2);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .td-inst .inst-full {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  /* dates */
+  .td-date {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .date-limit { color: var(--accent-amber); }
+  .date-overdue { color: var(--accent-red2); font-weight: bold; }
+
+  /* status badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 2px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-left: 3px solid;
+  }
+  .badge::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; }
+
+  .b-done    { background: rgba(39,174,96,0.12); color: #4ade80; border-color: var(--accent-green2); }
+  .b-done::before { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+
+  .b-open    { background: rgba(245,158,11,0.12); color: var(--accent-amber2); border-color: var(--accent-amber); }
+  .b-open::before { background: var(--accent-amber2); animation: pulse 2s infinite; }
+
+  .b-prorr   { background: rgba(244,114,182,0.12); color: #f472b6; border-color: #db2777; }
+  .b-prorr::before { background: #f472b6; animation: pulse 1.5s infinite; }
+
+  .b-prev    { background: rgba(41,128,185,0.15); color: var(--accent-blue2); border-color: var(--accent-blue2); }
+  .b-prev::before { background: var(--accent-blue2); animation: pulse 2.5s infinite; }
+
+  .b-alert   { background: rgba(231,76,60,0.15); color: #f87171; border-color: var(--accent-red2); }
+  .b-alert::before { background: #f87171; box-shadow: 0 0 8px #f87171; animation: pulse 1s infinite; }
+
+  .b-rr      { background: rgba(139,92,246,0.15); color: #a78bfa; border-color: #7c3aed; }
+  .b-rr::before { background: #a78bfa; animation: pulse 1.8s infinite; }
+
+  /* type tag */
+  .type-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .t-info { background: rgba(41,128,185,0.15); color: #60a5fa; border: 1px solid #1e4d7b; }
+  .t-dato { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid #5b21b6; }
+
+  /* strategic notes */
+  .note-cell { max-width: 300px; }
+  .note-icon {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 14px;
+    font-size: 9px;
+    font-weight: bold;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .ni-crit  { background: var(--accent-red2); color: white; }
+  .ni-warn  { background: var(--accent-amber); color: black; }
+  .ni-ok    { background: var(--accent-green2); color: white; }
+  .ni-info  { background: var(--accent-blue2); color: white; }
+  .ni-rr    { background: #7c3aed; color: white; }
+
+  .note-text {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .note-text strong { color: var(--text-primary); }
+
+  /* days counter */
+  .days-cell { text-align: center; white-space: nowrap; }
+  .days-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+  .days-label { font-size: 9px; color: var(--text-muted); letter-spacing: 1px; }
+  .d-over  { color: var(--accent-red2); }
+  .d-soon  { color: var(--accent-amber2); }
+  .d-ok    { color: var(--accent-green2); }
+  .d-done  { color: var(--text-muted); }
+
+  /* GMAIL badge */
+  .gmail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    background: rgba(234,67,53,0.12);
+    color: #f87171;
+    border: 1px solid rgba(234,67,53,0.3);
+    white-space: nowrap;
+    margin-top: 3px;
+  }
+
+  /* ── DETAIL PANEL (expandable) ────────────────────────── */
+  .detail-row td {
+    padding: 0;
+    background: #060c12;
+    border-top: 1px solid var(--border-dim);
+    border-bottom: 2px solid var(--accent-gold);
+  }
+  .detail-inner {
+    padding: 18px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    font-size: 11.5px;
+  }
+  .detail-block h4 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--text-gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-dim);
+  }
+  .detail-block p {
+    color: var(--text-dim);
+    line-height: 1.6;
+    font-size: 11px;
+  }
+  .detail-block a {
+    color: var(--accent-blue2);
+    text-decoration: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    word-break: break-all;
+  }
+  .detail-block a:hover { color: var(--accent-gold2); }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  .hq-footer {
+    background: #060b10;
+    border-top: 1px solid var(--border-dim);
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-left {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .footer-right {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+    opacity: 0.6;
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg-void); }
+  ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent-gold); }
+
+  /* row highlight animation */
+  @keyframes rowFadeIn {
+    from { background: rgba(200,149,42,0.2); }
+    to   { background: transparent; }
+  }
+  .row-new { animation: rowFadeIn 2s ease-out; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hq-header">
+  <div class="hq-logo">
+    <span class="hq-logo-top">Estado Mayor Jurídico · Operación Cerco Documental</span>
+    <span class="hq-logo-title">⬡ MAPA DE FOLIOS PNT</span>
+    <span class="hq-logo-sub">RFC: CAOG840906RG3 · NSS: 67038434972 · ORCID: 0009-0005-6358-9910</span>
+  </div>
+  <div class="hq-meta">
+    <span class="hq-timestamp"><span class="pulse-dot"></span>ACTIVO · 17/05/2026 · 37 FOLIOS</span>
+    <span class="hq-id">FGR/CEDAC/0021/2026 · Daño diario: $1,393.60 MXN</span>
+    <span class="hq-id">Bloqueo R-Control desde 15/12/2025 · Día 154</span>
+  </div>
+</header>
+
+<!-- COMMAND BAR -->
+<div class="cmd-strip">
+  <span class="cmd-label">Filtro:</span>
+  <input class="cmd-input" type="text" id="searchBox" placeholder="Buscar institución, folio, estatus..." oninput="filterTable()">
+  <button class="cmd-btn btn-all active" onclick="filterStatus('all',this)">Todos</button>
+  <button class="cmd-btn btn-open" onclick="filterStatus('open',this)">En Proceso</button>
+  <button class="cmd-btn btn-done" onclick="filterStatus('done',this)">Terminados</button>
+  <button class="cmd-btn btn-alert" onclick="filterStatus('alert',this)">Alertas</button>
+</div>
+
+<!-- KPI STRIP -->
+<div class="kpi-grid">
+  <div class="kpi-cell">
+    <span class="kpi-val kv-total">37</span>
+    <span class="kpi-label">Total Folios</span>
+    <span class="kpi-sub">Cerco Documental PNT</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-open">18</span>
+    <span class="kpi-label">En Proceso</span>
+    <span class="kpi-sub">Respuesta pendiente</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-done">15</span>
+    <span class="kpi-label">Terminados</span>
+    <span class="kpi-sub">Respuesta recibida</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-alert">4</span>
+    <span class="kpi-label">Recursos de Revisión</span>
+    <span class="kpi-sub">Trans/OPR activos</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-prorr">2</span>
+    <span class="kpi-label">Con Prórroga</span>
+    <span class="kpi-sub">SAyBG · SRE</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-prev">4</span>
+    <span class="kpi-label">Prevención ID</span>
+    <span class="kpi-sub">Identidad pendiente</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-dam">$214,494</span>
+    <span class="kpi-label">Daño Acumulado MXN</span>
+    <span class="kpi-sub">154 días × $1,393.60</span>
+  </div>
+  <div class="kpi-cell">
+    <span class="kpi-val kv-total">$31.1M</span>
+    <span class="kpi-label">Reclamación Total</span>
+    <span class="kpi-sub">Patrimonial + TCDS</span>
+  </div>
+</div>
+
+<!-- MAIN TABLE -->
+<div class="table-wrap">
+<table id="mainTable">
+<thead>
+  <tr>
+    <th onclick="sortTable(0)" data-col="0">#<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(1)" data-col="1">FOLIO PNT<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(2)" data-col="2">INSTITUCIÓN<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(3)" data-col="3">TIPO<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(4)" data-col="4">RECEPCIÓN<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(5)" data-col="5">LÍMITE<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(6)" data-col="6">DÍAS<span class="sort-arrow">▲</span></th>
+    <th onclick="sortTable(7)" data-col="7">ESTATUS<span class="sort-arrow">▲</span></th>
+    <th>NOTA ESTRATÉGICA / GMAIL</th>
+  </tr>
+</thead>
+<tbody id="tableBody">
+</tbody>
+</table>
+</div>
+
+<!-- FOOTER -->
+<footer class="hq-footer">
+  <span class="footer-left">CERT-MX · INT-L000047 · Estado Mayor Jurídico CAOG840906RG3 · Generado 17/05/2026</span>
+  <span class="footer-right">FGR/CEDAC/0021/2026 · TFJA NULIDAD · AMPARO INDIRECTO V3 · CIDH</span>
+</footer>
+
+<script>
+const TODAY = new Date('2026-05-17');
+
+const rows = [
+  {
+    n:1, folio:'90165926000296', inst:'INFOCDMX', instFull:'CMX – Instituto de Transparencia, Acceso a la Información Pública y PDP de la CDMX',
+    tipo:'info', recep:'14/04/2026', limite:'27/04/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Orientación emitida. R-Control redirigido a otros SO. Evidencia de deflexión hacia autoridades federales. Se integra al Cerco.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Oficio de Orientación — remite a otros sujetos obligados.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F868B3E67EFD6F00AFD973A642715956'
+  },
+  {
+    n:2, folio:'490031200040126', inst:'INEGI', instFull:'FED – Instituto Nacional de Estadística y Geografía',
+    tipo:'info', recep:'14/05/2026', limite:'11/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Solicita estándares de estudios socioeconómicos laborales. Objeto: acreditar ilicitud del perfilamiento de R-Control. Respuesta esperada antes del 11/06.',
+    notaIcon:'ni-warn', gmailHit:'Registro PNT 14/05/2026',
+    resp:'Sin respuesta de fondo aún.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/04532A4770A4F1C4D687A5BBA6DA520F'
+  },
+  {
+    n:3, folio:'1550030526000856', inst:'SCJN', instFull:'FED – Suprema Corte de Justicia de la Nación',
+    tipo:'info', recep:'06/05/2026', limite:'03/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Jurisprudencia sobre particulares equiparables a autoridad para efectos de amparo. Clave para Amparo Indirecto V3.',
+    notaIcon:'ni-info', gmailHit:'',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/1AA6243B8000E7E363C39F748030392A'
+  },
+  {
+    n:4, folio:'342259800048026', inst:'SSPC/GN (1)', instFull:'FED – SSPC-Guardia Nacional · RR pendiente GN2607409',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Respuesta emitida. Ningún convenio con R-Control acreditado. Prueba maestra del Cerco. Activo RR GN2607409 ante Transparencia.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Ver archivo adjunto — sin convenio con R-Control.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D9595DBC4385F21525BB0C94EE95A450'
+  },
+  {
+    n:5, folio:'342259800055226', inst:'SSPC/GN (2)', instFull:'FED – SSPC-Guardia Nacional · Segunda solicitud 08/05/2026',
+    tipo:'info', recep:'08/05/2026', limite:'11/06/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'GMAIL 14/05: PNT registra respuesta. Respuesta de fondo recibida. Cierra el segundo vector GN.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 14/05 · Registro respuesta',
+    resp:'Respuesta emitida — información adicional.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B9867D6CEC6AE7060BCC7D218D61BF7D'
+  },
+  {
+    n:6, folio:'342589700015526', inst:'CFCRL', instFull:'FED – Centro Federal de Conciliación y Registro Laboral',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'⚠ Vence 19/05 — 2 días hábiles. Sin respuesta. Ningún convenio laboral con R-Control. Presión procesal máxima.',
+    notaIcon:'ni-crit', gmailHit:'',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A88E9EC8ADE3C8664C1C528103ED3ADA'
+  },
+  {
+    n:7, folio:'341020400001026', inst:'CEAV-FAARI', instFull:'FED – CEAV-Fondo de ayuda, asistencia y reparación integral',
+    tipo:'dato', recep:'14/05/2026', limite:'11/06/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'GMAIL 14/05: respuesta recibida. FAARI extinto desde 06/11/2020. Orienta a CEAV. Cierra vector. Expediente RENAVI continúa activo.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 14/05 · Respuesta + cambio tipo',
+    resp:'FAARI extinto. Remite a CEAV para ARCO.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/60C823AABDB0B13CB2CD5E630615C696'
+  },
+  {
+    n:8, folio:'400030200057126', inst:'Cámara Diputados', instFull:'FED – Cámara de Diputados (CD)',
+    tipo:'info', recep:'18/05/2026', limite:'15/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Solicita marco normativo federal sobre plataformas de exclusión laboral privadas. Objeto: documentar vacío regulatorio como argumento LFRPE.',
+    notaIcon:'ni-info', gmailHit:'Registro PNT 18/05/2026',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/66CF77B9D94A0D3E1E11650613046A6C'
+  },
+  {
+    n:9, folio:'420015000001126', inst:'FIDERH/Banxico', instFull:'FED – Fondo para el Desarrollo de Recursos Humanos (FIDERH)',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Respuesta emitida. Sin convenio con R-Control. Prueba de deflexión integrada al Cerco. Eslabón probatorio activo.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Se envía respuesta — sin convenio con R-Control.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6D2F9DAA53EF57EC5917FF19A84C31C'
+  },
+  {
+    n:10, folio:'340009900012226', inst:'CONDUSEF', instFull:'FED – Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros',
+    tipo:'info', recep:'14/05/2026', limite:'11/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Solicita estándares sobre estudios socioeconómicos laborales. Objeto: acreditar ilicitud del perfilamiento financiero de R-Control.',
+    notaIcon:'ni-warn', gmailHit:'Registro PNT 14/05/2026',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/AB9D8B8E282E42E144F95B04A1B05376'
+  },
+  {
+    n:11, folio:'340011300005926', inst:'CONAPRED (1)', instFull:'FED – Consejo Nacional para Prevenir la Discriminación',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Respuesta recibida: CONAPRED/UETAI/089/2026. Certificación oficial integrada al Cerco. Sin delegación a R-Control.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Oficio CONAPRED/UETAI/089/2026 — respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/699E8C4D1256F57BC3CDCB039D5150E4'
+  },
+  {
+    n:12, folio:'340011300006826', inst:'CONAPRED (2)', instFull:'FED – Consejo Nacional para Prevenir la Discriminación',
+    tipo:'info', recep:'14/05/2026', limite:'11/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Segunda solicitud CONAPRED — estándares de estudios socioeconómicos. Complementa folio 005926.',
+    notaIcon:'ni-info', gmailHit:'Registro PNT 14/05/2026',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C5E9E89A9271D80FA0E6CDCFB1D258F'
+  },
+  {
+    n:13, folio:'341000100043626', inst:'Presidencia Rep.', instFull:'FED – Oficina de la Presidencia de la República · RR OPR2608391 ACTIVO',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'rr',
+    statusLabel:'RR OPR2608391', statusClass:'b-rr',
+    nota:'⚔ CRÍTICO. Terminada con declaratoria de incompetencia impugnada. Recurso de Revisión OPR2608391 admitido 12/05. Alegatos presentados 17/05. Vence 22/05. Instructor: juan.rodriguez@transparencia.gob.mx',
+    notaIcon:'ni-crit', gmailHit:'Gmail 15/05 · ADMISIÓN (maria.mosqueda)',
+    resp:'Declaratoria de incompetencia — impugnada vía OPR2608391.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/EA42045C979D01829D2CC089E1274863'
+  },
+  {
+    n:14, folio:'340025500060126', inst:'SICT', instFull:'FED – Secretaría de Infraestructura, Comunicaciones y Transportes',
+    tipo:'info', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Respuesta emitida. Sin reporte contra licencia VER 0406090. Sin convenio SICT–R-Control. Prueba maestra: licencia federal intacta.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 14/05 · Registro respuesta SICT',
+    resp:'Respuesta de fondo — sin reporte activo ni convenio con R-Control.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A25D27A587905C968F52692E146E752D'
+  },
+  {
+    n:15, folio:'340026200089726', inst:'SEGOB', instFull:'FED – Secretaría de Gobernación',
+    tipo:'info', recep:'06/05/2026', limite:'03/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Solicita certificación de autorización/tolerancia a R-Control. Objeto: cierre del Cerco nivel Ejecutivo. Sin respuesta aún.',
+    notaIcon:'ni-warn', gmailHit:'',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BEB090E27B64A9306A9D7673981EE08B'
+  },
+  {
+    n:16, folio:'340026500085326', inst:'SAyBG', instFull:'FED – Secretaría Anticorrupción y Buen Gobierno · PRÓRROGA IMPUGNADA',
+    tipo:'info', recep:'16/04/2026', limite:'01/06/2026', statusKey:'prorr',
+    statusLabel:'Prórroga (impugnada)', statusClass:'b-prorr',
+    nota:'⚠ PRÓRROGA ILÍCITA. Gmail 15/05: rodrigo.garcia@buengobierno.gob.mx notifica ampliación. Causales: falta presupuesto + carga + capacitación — no previstas en LGTAIP. Contradicha por nóminas públicas. Invocada ante OPR2608391.',
+    notaIcon:'ni-crit', gmailHit:'Gmail 15/05 · Ampliación de plazo (rodrigo.garcia)',
+    resp:'Prórroga al 01/06 — causales no previstas en ley.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3AE2EF6E08E29A90B8090B81A070E454'
+  },
+  {
+    n:17, folio:'340026800118026', inst:'SRE', instFull:'FED – Secretaría de Relaciones Exteriores',
+    tipo:'info', recep:'06/05/2026', limite:'23/06/2026', statusKey:'alert',
+    statusLabel:'Prevención adicional', statusClass:'b-prev',
+    nota:'Gmail 08/05: UDT-03640/2026 — requerimiento adicional. Respuesta desahogada por K el 15/05. Vence 23/06. Sin convenio SRE–R-Control esperado.',
+    notaIcon:'ni-warn', gmailHit:'Gmail 08/05 · Requerimiento adicional (SRE)',
+    resp:'Prevención desahogada — en espera de respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BA17A03B784E453831D56C85106BCF51'
+  },
+  {
+    n:18, folio:'340027100027726', inst:'STPS-ARCO (1)', instFull:'FED – Secretaría del Trabajo y Previsión Social · Derechos ARCO',
+    tipo:'dato', recep:'14/04/2026', limite:'19/05/2026', statusKey:'alert',
+    statusLabel:'Prevención ID', statusClass:'b-prev',
+    nota:'Gmail 15/05: PNT registra respuesta. Pendiente acreditación identidad. Sin convenio STPS–R-Control esperado. Acumulable con folio 027826.',
+    notaIcon:'ni-warn', gmailHit:'Gmail 15/05 · Registro respuesta STPS',
+    resp:'VER ARCHIVO ANEXO — pendiente acreditación presencial.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C62DFE642FD7752B51F82B32FFC880F5'
+  },
+  {
+    n:19, folio:'340027100027826', inst:'STPS-ARCO (2)', instFull:'FED – Secretaría del Trabajo y Previsión Social · Segunda solicitud',
+    tipo:'dato', recep:'14/04/2026', limite:'19/05/2026', statusKey:'alert',
+    statusLabel:'Prevención ID', statusClass:'b-prev',
+    nota:'Gmail 15/05: PNT registra respuesta. Mismo patrón que 027726. Vence 19/05. Acumulación de folios STPS documentada.',
+    notaIcon:'ni-warn', gmailHit:'Gmail 15/05 · Registro respuesta STPS',
+    resp:'VER ARCHIVO ANEXO — pendiente acreditación presencial.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/604200C297EC0CE3874EB119523DC624'
+  },
+  {
+    n:20, folio:'340027700062326', inst:'SAT (1)', instFull:'FED – Servicio de Administración Tributaria · Folio 062326',
+    tipo:'info', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Respuesta emitida. Remite a SAyBG. Prueba de deflexión SAT. Folio queja SAT activo: 4132 / 9141.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Remite a SAyBG — sin pronunciamiento sobre R-Control.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F3E728853634A4DBE25958CC2AD25FFE'
+  },
+  {
+    n:21, folio:'340027700068926', inst:'SAT (2) + RR', instFull:'FED – SAT · Incompetencia · RR SAT2609690 admitido 12/05',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'rr',
+    statusLabel:'RR SAT2609690', statusClass:'b-rr',
+    nota:'Gmail 12/05: unidaddetransparenciasat — Comité confirmó incompetencia. RR SAT2609690 admitido 12/05. 40+20 días. Instructor: ricardo.vivas@transparencia.gob.mx. Email SAT 27/03 contradice incompetencia — arma primaria del RR.',
+    notaIcon:'ni-crit', gmailHit:'Gmail 12/05 · SAT confirma incompetencia',
+    resp:'Comité de Transparencia SAT confirma declaratoria de incompetencia — impugnada.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/03965C76C8004CEC1D6EC908E6908732'
+  },
+  {
+    n:22, folio:'340031000117726', inst:'INFONAVIT ARCO-1', instFull:'FED – INFONAVIT · Primera solicitud ARCO · Acumulada a 120726',
+    tipo:'dato', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada (acum.)', statusClass:'b-done',
+    nota:'Acumulada al folio 120726 por principio de acumulación (Art. 45 LFPA). Acreditación pendiente presencial. Subgerente: Félix Bautista Gómez.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 08/05 · Registro respuesta INFONAVIT',
+    resp:'Acumulada a 340031000120726 — pendiente acreditación presencial.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9ED628711DC2B5FBB8BEFEDE8F4D827E'
+  },
+  {
+    n:23, folio:'340031000120726', inst:'INFONAVIT ARCO-2', instFull:'FED – INFONAVIT · Segunda solicitud ARCO · Principal activa',
+    tipo:'dato', recep:'17/04/2026', limite:'19/05/2026', statusKey:'alert',
+    statusLabel:'Prevención ID', statusClass:'b-prev',
+    nota:'Identidad acreditada presencialmente 11/05 (CESI Fortín de las Flores). Información disponible. Pendiente entrega electrónica. Vence 19/05.',
+    notaIcon:'ni-warn', gmailHit:'',
+    resp:'Información puesta a disposición — pendiente acreditación presencial.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/54B025B8BE7C100CAC3CD3248AD39C5C'
+  },
+  {
+    n:24, folio:'340031000129926', inst:'INFONAVIT ARCO-3', instFull:'FED – INFONAVIT · Continuidad material · Vence 29/05',
+    tipo:'dato', recep:'29/04/2026', limite:'29/05/2026', statusKey:'alert',
+    statusLabel:'Prevención ID', statusClass:'b-prev',
+    nota:'Gmail 08/05: acumulada a 120726. Vence 29/05. Identidad ya acreditada presencialmente. Solicita entrega electrónica sin nueva comparecencia.',
+    notaIcon:'ni-warn', gmailHit:'Gmail 08/05 · Registro respuesta INFONAVIT',
+    resp:'Acumulada a 340031000120726 — pendiente acreditación presencial.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/ABE0F45CDC0AB8787455AE47438A741E'
+  },
+  {
+    n:25, folio:'340031000137326', inst:'INFONAVIT ARCO-4', instFull:'FED – INFONAVIT · Crédito 0518005586 · Clave 00',
+    tipo:'dato', recep:'12/05/2026', limite:'11/06/2026', statusKey:'alert',
+    statusLabel:'Prevención (desahogada)', statusClass:'b-prev',
+    nota:'Gmail 14/05: PNT registra respuesta. Prevención desahogada el 17/05 con documentación completa. Objeto: Clave 00 omitida 46 meses. Saldo INFONAVIT impugnado.',
+    notaIcon:'ni-warn', gmailHit:'Gmail 14/05 · Registro prevención desahogada',
+    resp:'Prevención notificada — desahogada por K el 17/05/2026.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3A2298BD32D87C7C9A253EBF446826F3'
+  },
+  {
+    n:26, folio:'340024000011226', inst:'PRS/SSPC', instFull:'FED – Prevención y Reinserción Social · RR PRS2610007',
+    tipo:'info', recep:'08/05/2026', limite:'05/06/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Gmail 14/05: SSPC/PRS/UALDHT/UNIT/278/2026 — pronunciamiento emitido. RR PRS2610007 admitido 14/05. Activo 40+20 días. Objeto: incompetencia disfrazada como negativa.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 14/05 · Pronunciamiento PRS + correo directo',
+    resp:'Oficio SSPC/PRS/UALDHT/UNIT/278/2026 — respuesta de fondo emitida.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F35F0FEA928A9170D3A3DDF77B77C348'
+  },
+  {
+    n:27, folio:'340024200005626', inst:'PRODECON (1)', instFull:'FED – Procuraduría de la Defensa del Contribuyente · Exp. 6394232-COA-QR-82-2026',
+    tipo:'info', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Gmail 14/05: respuesta emitida (unidaddetransparencia@prodecon.gob.mx). Expediente PRODECON Coahuila activo. Delegado: Aldo Cristian Torres Campos.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 14/05 · Respuesta directa PRODECON',
+    resp:'Respuesta de fondo emitida — adjunta archivo PDF.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B0AE0D708DD73FDD600A8667E1177F43'
+  },
+  {
+    n:28, folio:'340024200005926', inst:'PRODECON ARCO', instFull:'FED – PRODECON · Datos Personales · Prevención sin identidad',
+    tipo:'dato', recep:'20/04/2026', limite:'28/05/2026', statusKey:'alert',
+    statusLabel:'Prevención ID', statusClass:'b-prev',
+    nota:'Prevención activa. K argumenta que RFC + e.firma + FIREL constituyen identidad suficiente (Art. 13 LFPA). Vence 28/05. Urgente subsanar.',
+    notaIcon:'ni-warn', gmailHit:'',
+    resp:'Prevención — identidad no acreditada.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/79DF0F92AF873A0FB70BCB34534D5BDC'
+  },
+  {
+    n:29, folio:'340007600009126', inst:'CEAV', instFull:'FED – Comisión Ejecutiva de Atención a Víctimas · RENAVI',
+    tipo:'dato', recep:'14/05/2026', limite:'11/06/2026', statusKey:'alert',
+    statusLabel:'Prevención (desahogada)', statusClass:'b-prev',
+    nota:'Gmail 14/05: PNT registra respuesta. Prevención desahogada: K delimita objeto a existencia/inexistencia de instrumento normativo. CEAV coordina RENAVI. FUD activo.',
+    notaIcon:'ni-warn', gmailHit:'Gmail 14/05 · Respuesta + cambio tipo CEAV',
+    resp:'Prevención desahogada — en espera de respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/686C2D2E7A5DFE2F3E8DED5ABA07A6E6'
+  },
+  {
+    n:30, folio:'450024600096126', inst:'FGR (1)', instFull:'FED – Fiscalía General de la República · OIC-FGR',
+    tipo:'info', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Respuesta emitida (leydetransparencia@fgr.org.mx). Se integra al expediente FGR/CEDAC/0021/2026. Sin delegación FGR–R-Control.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Archivo PDF adjunto — pronunciamiento FGR emitido.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D8735CCC4DB573B63022BB9F89CA7F2F'
+  },
+  {
+    n:31, folio:'450024600099626', inst:'FGR (2)', instFull:'FED – Fiscalía General de la República · Segunda solicitud',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Vence 19/05. Sin respuesta de fondo. Activo FGR/CEDAC/0021/2026. FGR respondió FEMDO 11/05. Coordinación interinstitucional con FGR solicitada.',
+    notaIcon:'ni-warn', gmailHit:'',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/8DDBEAAF9AFB0FD181C96742DB90DB1E'
+  },
+  {
+    n:32, folio:'340018001223026', inst:'IMSS', instFull:'FED – Instituto Mexicano del Seguro Social · RR IMSS2607051 DESECHADO',
+    tipo:'info', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Gmail 12/05: RR IMSS2607051 DESECHADO (martin.torres@transparencia.gob.mx). Respuesta original: remite a SAyBG. Deflexión IMSS documentada. RR clausurado.',
+    notaIcon:'ni-ok', gmailHit:'Gmail 12/05 · DESECHAMIENTO IMSS2607051',
+    resp:'Remite a SAyBG — sin pronunciamiento sobre R-Control.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/01C151AF37A4743D63D80B245BC480FE'
+  },
+  {
+    n:33, folio:'340018100002626', inst:'IMT/SICT', instFull:'FED – SICT-Instituto Mexicano del Transporte',
+    tipo:'info', recep:'14/04/2026', limite:'14/05/2026', statusKey:'done',
+    statusLabel:'Terminada', statusClass:'b-done',
+    nota:'Remite a SICT/DGAF. Sin convenio IMT–R-Control. Prueba de deflexión integrada. Licencia VER 0406090 intacta en registros IMT.',
+    notaIcon:'ni-ok', gmailHit:'',
+    resp:'Incompetencia — remite a SICT. Sin convenio con R-Control.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A0A1EDFDA7F4326AABFE55C2A68E7DA'
+  },
+  {
+    n:34, folio:'343204900019026', inst:'ATDT', instFull:'FED – Agencia de Transformación Digital y Telecomunicaciones · RR ATDT2607389',
+    tipo:'info', recep:'17/04/2026', limite:'19/05/2026', statusKey:'rr',
+    statusLabel:'RR ATDT2607389', statusClass:'b-rr',
+    nota:'Terminada. RR ATDT2607389 activo. Instructor: mario.sanchez@transparencia.gob.mx. Directora: Martha Patricia García Medina. Sin convenio digital ATDT–R-Control.',
+    notaIcon:'ni-crit', gmailHit:'',
+    resp:'Respuesta emitida — RR activo contra incompetencia.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F226FF31B4E756078CDF11C9D346DE7C'
+  },
+  {
+    n:35, folio:'343224900038026', inst:'Transp. Pueblo', instFull:'FED – Transparencia para el Pueblo · RR Trans2608173 ACTIVO',
+    tipo:'info', recep:'16/04/2026', limite:'18/05/2026', statusKey:'rr',
+    statusLabel:'RR Trans2608173', statusClass:'b-rr',
+    nota:'⚔ Terminada con "notoria incompetencia" — impugnada. Gmail 13/05: Jonathan Aguilar notifica admisión. Alegatos presentados 13/05. Directora: Olga Guadalupe Cristino Sicairos. Vencimiento alegatos: 22/05.',
+    notaIcon:'ni-crit', gmailHit:'Gmail 13/05 · Acuerdo admisión (jonathan.aguilar)',
+    resp:'Notoria incompetencia — impugnada vía Trans2608173.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3DD2A2B6D2011B593B6940770C8A69CA'
+  },
+  {
+    n:36, folio:'360030900033426', inst:'CNDH', instFull:'FED – Comisión Nacional de los Derechos Humanos · Queja 2026/29815',
+    tipo:'info', recep:'17/04/2026', limite:'26/05/2026', statusKey:'alert',
+    statusLabel:'Info adicional', statusClass:'b-prev',
+    nota:'Prevención desahogada: K impugna requerimiento como formalismo contrario al Art. 17 CPEUM. Queja CNDH 2026/29815 activa paralela. Vence 26/05.',
+    notaIcon:'ni-warn', gmailHit:'',
+    resp:'Requerimiento adicional — desahogado por K.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6C75FE7C3C9AABC368E02A0190C395D'
+  },
+  {
+    n:37, folio:'771277626000139', inst:'Poder Judicial VER', instFull:'VER – Poder Judicial del Estado de Veracruz · Expediente familiar Córdoba',
+    tipo:'info', recep:'05/05/2026', limite:'03/06/2026', statusKey:'open',
+    statusLabel:'En Proceso', statusClass:'b-open',
+    nota:'Solicita estado procesal expediente familiar: actos contra licencia VER 0406090, notificaciones, retenedor Narcea. Objeto: incidente familiar activo. Sin afectar obligación alimentaria.',
+    notaIcon:'ni-info', gmailHit:'',
+    resp:'Sin respuesta de fondo.',
+    url:'https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9B2A813D72FDAB814F305FCF7B0D41D1'
+  }
+];
+
+function daysUntil(dateStr) {
+  const parts = dateStr.split('/');
+  const d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+  return Math.round((d - TODAY) / 86400000);
+}
+
+function daysClass(days, statusKey) {
+  if (statusKey === 'done') return 'd-done';
+  if (days < 0) return 'd-over';
+  if (days <= 5) return 'd-soon';
+  return 'd-ok';
+}
+
+function buildTable() {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+
+  rows.forEach((r, idx) => {
+    const days = daysUntil(r.limite);
+    const dc = daysClass(days, r.statusKey);
+    const daysDisplay = r.statusKey === 'done' ? '–' : (days < 0 ? `+${Math.abs(days)}` : days);
+    const daysLabel = r.statusKey === 'done' ? 'terminado' : (days < 0 ? 'VENCIDO' : 'días');
+    const typeEl = r.tipo === 'info'
+      ? '<span class="type-tag t-info">Info</span>'
+      : '<span class="type-tag t-dato">ARCO</span>';
+
+    const gmailEl = r.gmailHit
+      ? `<br><span class="gmail-badge">✉ ${r.gmailHit}</span>`
+      : '';
+
+    const trId = `row-${idx}`;
+    const detId = `det-${idx}`;
+
+    const tr = document.createElement('tr');
+    tr.id = trId;
+    tr.setAttribute('data-status', r.statusKey);
+    tr.setAttribute('data-search', `${r.inst} ${r.instFull} ${r.folio} ${r.statusLabel} ${r.nota}`.toLowerCase());
+    tr.onclick = () => toggleDetail(detId);
+
+    tr.innerHTML = `
+      <td style="color:var(--text-muted);font-family:'Share Tech Mono',monospace;font-size:10px;text-align:center">${r.n}</td>
+      <td class="td-folio">${r.folio}<span class="folio-num">${r.tipo.toUpperCase()}</span></td>
+      <td class="td-inst">
+        <span class="inst-short">${r.inst}</span>
+        <span class="inst-full">${r.instFull.replace(/ · .*/,'')}</span>
+      </td>
+      <td style="text-align:center">${typeEl}</td>
+      <td class="td-date">${r.recep}</td>
+      <td class="td-date"><span class="${r.statusKey!=='done' && days<=5 && days>=0 ? 'date-limit' : r.statusKey!=='done' && days<0 ? 'date-overdue' : ''}">${r.limite}</span></td>
+      <td class="days-cell">
+        <span class="days-num ${dc}">${daysDisplay}</span>
+        <span class="days-label">${daysLabel}</span>
+      </td>
+      <td><span class="badge ${r.statusClass}">${r.statusLabel}</span></td>
+      <td class="note-cell">
+        <span class="note-icon ${r.notaIcon}">!</span>
+        <span class="note-text">${r.nota}</span>
+        ${gmailEl}
+      </td>
+    `;
+    tbody.appendChild(tr);
+
+    // Detail row
+    const dtr = document.createElement('tr');
+    dtr.id = detId;
+    dtr.className = 'detail-row';
+    dtr.style.display = 'none';
+    dtr.innerHTML = `
+      <td colspan="9">
+        <div class="detail-inner">
+          <div class="detail-block">
+            <h4>Institución Completa</h4>
+            <p>${r.instFull}</p>
+          </div>
+          <div class="detail-block">
+            <h4>Respuesta / Estado</h4>
+            <p>${r.resp}</p>
+            ${r.gmailHit ? `<p style="margin-top:8px;color:var(--accent-amber2)">⚡ Gmail: ${r.gmailHit}</p>` : ''}
+          </div>
+          <div class="detail-block">
+            <h4>Adjunto / URL</h4>
+            <a href="${r.url}" target="_blank">Descargar adjunto PNT ↗</a>
+          </div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(dtr);
+  });
+}
+
+function toggleDetail(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? '' : 'none';
+}
+
+let currentStatus = 'all';
+let searchTerm = '';
+
+function filterTable() {
+  searchTerm = document.getElementById('searchBox').value.toLowerCase();
+  applyFilter();
+}
+
+function filterStatus(status, btn) {
+  currentStatus = status;
+  document.querySelectorAll('.cmd-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilter();
+}
+
+function applyFilter() {
+  const trs = document.querySelectorAll('#tableBody tr[data-status]');
+  trs.forEach(tr => {
+    const matchStatus = currentStatus === 'all'
+      || (currentStatus === 'open'  && ['open','alert'].includes(tr.dataset.status))
+      || (currentStatus === 'done'  && tr.dataset.status === 'done')
+      || (currentStatus === 'alert' && ['rr','prorr','alert'].includes(tr.dataset.status));
+    const matchSearch = !searchTerm || tr.dataset.search.includes(searchTerm);
+    tr.classList.toggle('hidden-row', !(matchStatus && matchSearch));
+  });
+}
+
+let sortDir = {};
+function sortTable(col) {
+  const dir = sortDir[col] = !(sortDir[col]);
+  const tbody = document.getElementById('tableBody');
+  // get pairs of (data-row, detail-row)
+  const pairs = [];
+  const children = Array.from(tbody.children);
+  for (let i = 0; i < children.length; i += 2) {
+    pairs.push([children[i], children[i+1]]);
+  }
+  pairs.sort((a, b) => {
+    const aVal = a[0].cells[col]?.textContent?.trim() || '';
+    const bVal = b[0].cells[col]?.textContent?.trim() || '';
+    const cmp = aVal.localeCompare(bVal, 'es', {numeric: true});
+    return dir ? cmp : -cmp;
+  });
+  pairs.forEach(([r, d]) => { tbody.appendChild(r); tbody.appendChild(d); });
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+  document.querySelectorAll('th')[col].classList.add('sorted');
+}
+
+// Live clock
+function updateClock() {
+  const now = new Date();
+  const ts = now.toISOString().replace('T',' ').substring(0,19) + ' UTC';
+  document.querySelector('.hq-timestamp').innerHTML = `<span class="pulse-dot"></span>ACTIVO · ${ts}`;
+}
+
+buildTable();
+updateClock();
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
