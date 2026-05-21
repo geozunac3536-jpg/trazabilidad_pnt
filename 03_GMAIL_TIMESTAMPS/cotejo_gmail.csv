@@ -1,1 +1,11 @@
-folio,institucion,tipo_documento,fecha_gmail,hora_gmail,remitente,asunto,archivo_cotejado,observaciones
+Folio_PNT,Timestamp_Gmail_Servidor,Estatus_Correo
+400030200057126,2026-05-20 18:23:00 CST,Registro de respuesta
+490031200040126,2026-05-20 16:00:00 CST,Registro de respuesta
+340007600009126,2026-05-14 13:03:00 CST,Cambio de tipo de solicitud
+341020400001026,2026-05-14 16:17:00 CST,Registro de respuesta
+090165926000296,2026-04-16 14:18:00 CST,Registro de respuesta (Orientación)
+342259800055226,2026-05-14 17:39:00 CST,Registro de respuesta
+342259800048026,2026-04-21 22:34:00 CST,Registro de respuesta
+1550030526000856,2026-05-05 06:38:00 CST,Registro de solicitud
+340026200089726,2026-05-05 06:56:00 CST,Registro de solicitud
+342589700015526,2026-05-19 11:31:00 CST,Registro de respuesta
