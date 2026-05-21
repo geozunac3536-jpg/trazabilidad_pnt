@@ -1,0 +1,6 @@
+pandas
+openpyxl
+jinja2
+pdfplumber
+pymupdf
+python-dateutil
