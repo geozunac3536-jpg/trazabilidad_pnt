@@ -86,3 +86,8 @@ Web of Science ResearcherID: OSH-8541-2025
 
 *Repositorio generado y mantenido por el titular en ejercicio de sus derechos de transparencia.*  
 *Última actualización automatizada: 26 de mayo de 2026.*
+## Sustento Científico e Indexación Global
+Este repositorio contiene la infraestructura técnica y los datos de trazabilidad que complementan las siguientes publicaciones de investigación:
+- **DOI 10.5281/zenodo.20331856:** Modelación matemática de la persistencia de falsos positivos y limitaciones de los derechos ARCO.
+- **DOI 10.5281/zenodo.20405451:** Gobernanza algorítmica, vacío de soberanía digital y el estándar de responsabilidad objetiva.
+- **Perfil Académico e Indexación de Jurisprudencia:** [Consultar en Google Scholar](https://scholar.google.com/)
