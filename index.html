@@ -1,260 +1,329 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trazabilidad PNT · CAOG840906RG3</title>
-  <style>
-    :root{
-      --bg:#0b0f1a;--surface:#111827;--border:#1e2d45;
-      --accent:#00d4ff;--accent2:#6e003c;
-      --text:#e2e8f0;--muted:#64748b;
-      --ok:#22c55e;--warn:#f59e0b;--err:#ef4444;--info:#3b82f6;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;font-size:13px;min-height:100vh}
-    header{border-bottom:1px solid var(--border);padding:18px 28px 14px;
-      display:flex;align-items:flex-start;gap:20px;
-      background:linear-gradient(135deg,#0d1829 0%,#111827 100%)}
-    .sigla{font-size:32px;font-weight:900;letter-spacing:-1px;color:var(--accent);line-height:1}
-    .sub{font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
-    .hm{flex:1}
-    .hm h1{font-size:15px;font-weight:700;color:var(--text);letter-spacing:.5px}
-    .hm p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.6}
-    .badge{display:inline-block;background:var(--accent2);color:#fff;font-size:10px;
-      padding:2px 8px;border-radius:3px;margin-right:6px;letter-spacing:1px;text-transform:uppercase}
-    .badge.g{background:#14532d}
-    .stats{display:flex;gap:1px;border-bottom:1px solid var(--border);background:var(--border)}
-    .stat{flex:1;background:var(--surface);padding:10px 14px;text-align:center}
-    .stat .n{font-size:22px;font-weight:900;color:var(--accent)}
-    .stat .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
-    .ctrl{display:flex;gap:10px;padding:12px 20px;background:var(--surface);
-      border-bottom:1px solid var(--border);flex-wrap:wrap;align-items:flex-end}
-    .cg{display:flex;flex-direction:column;gap:4px}
-    .cg label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-    .ctrl input,.ctrl select{background:var(--bg);border:1px solid var(--border);
-      color:var(--text);padding:6px 12px;font-family:inherit;font-size:12px;
-      border-radius:4px;outline:none}
-    .ctrl input{min-width:220px}
-    .ctrl input:focus,.ctrl select:focus{border-color:var(--accent)}
-    #cnt{font-size:11px;color:var(--muted);margin-left:auto;padding-bottom:6px}
-    .tw{overflow-x:auto;padding-bottom:60px}
-    table{width:100%;border-collapse:collapse}
-    thead th{background:#0d1422;color:var(--muted);font-size:10px;text-transform:uppercase;
-      letter-spacing:1.5px;padding:10px 14px;text-align:left;
-      border-bottom:2px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none}
-    thead th:hover{color:var(--accent)}
-    thead th.sorted{color:var(--accent)}
-    thead th.sorted::after{content:' \2195'}
-    tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
-    tbody tr:hover{background:#162032}
-    td{padding:9px 14px;vertical-align:middle;font-size:12px}
-    .fc{font-family:monospace;font-size:11px;color:var(--accent);white-space:nowrap}
-    .ic{max-width:230px;line-height:1.5;font-size:11px}
-    .tc{font-size:10px;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
-    .tip{background:#1e3a5f;color:#60a5fa}
-    .tdp{background:#3b1a5f;color:#c084fc}
-    .dc{color:var(--muted);white-space:nowrap;font-size:11px}
-    .dc.od{color:var(--err);font-weight:700}
-    .sc{display:inline-block;font-size:10px;padding:3px 8px;border-radius:3px;white-space:nowrap;font-weight:700;letter-spacing:.3px}
-    .st{background:#14532d;color:#86efac}
-    .sp{background:#1e3a5f;color:#93c5fd}
-    .spe{background:#451a03;color:#fca5a5}
-    .sv{background:#3b1a00;color:#fcd34d}
-    .sor{background:#1a1a3b;color:#a5b4fc}
-    .spc{background:#1a2e1a;color:#6ee7b7}
-    .xc{display:inline-block;font-size:9px;padding:2px 7px;border-radius:3px;white-space:nowrap;letter-spacing:.3px;font-weight:700}
-    .xrr{background:#431407;color:#fb923c}
-    .xac{background:#0f2922;color:#34d399}
-    .xco{background:#1a1507;color:#fbbf24}
-    .xno{color:#334155;font-size:11px}
-    .lc{white-space:nowrap}
-    .lc a{display:inline-block;font-size:10px;padding:3px 8px;border-radius:3px;
-      text-decoration:none;margin-right:4px;transition:opacity .15s}
-    .lc a:hover{opacity:.75}
-    .lp{background:#1e3a5f;color:#93c5fd}
-    .ld{background:#1a2e1a;color:#6ee7b7}
-    .ln{color:#334155;font-size:11px}
-    footer{text-align:center;padding:20px;font-size:10px;color:var(--muted);
-      border-top:1px solid var(--border);letter-spacing:1px}
-    footer span{color:var(--accent2)}
-    .empty{text-align:center;padding:60px 20px;color:var(--muted)}
-    @media(max-width:700px){
-      .stats{flex-wrap:wrap}.stat{min-width:45%}
-      header{flex-direction:column;gap:10px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trazabilidad PNT — CAOG840906RG3</title>
+<style>
+  :root {
+    --vino: #6e003c;
+    --navy: #00205f;
+    --gold: #b46400;
+    --green: #006432;
+    --gray-bg: #f6f7f9;
+    --border: #d0d5de;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--gray-bg); color: var(--text); font-size: 14px; }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--vino) 100%);
+    color: #fff; padding: 28px 32px 20px;
+    border-bottom: 4px solid var(--gold);
+  }
+  header h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: 0.3px; }
+  header .sub { font-size: 0.82rem; opacity: 0.78; margin-top: 5px; }
+  header .meta { display: flex; gap: 24px; margin-top: 14px; flex-wrap: wrap; }
+  header .meta span { font-size: 0.78rem; background: rgba(255,255,255,0.12); border-radius: 4px; padding: 3px 8px; }
+
+  /* ── STATS BAR ── */
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; padding: 18px 32px; background: #fff; border-bottom: 1px solid var(--border); }
+  .stat-card { background: var(--gray-bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px 18px; min-width: 110px; text-align: center; }
+  .stat-card .num { font-size: 1.6rem; font-weight: 800; line-height: 1; }
+  .stat-card .lbl { font-size: 0.7rem; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card.total .num { color: var(--navy); }
+  .stat-card.terminada .num { color: var(--green); }
+  .stat-card.proceso .num { color: var(--navy); }
+  .stat-card.prevencion .num { color: #c05000; }
+  .stat-card.parcial .num { color: var(--gold); }
+  .stat-card.prorroga .num { color: #7c4dff; }
+  .stat-card.espera .num { color: #0077aa; }
+
+  /* ── CONTROLS ── */
+  .controls { padding: 14px 32px; background: #fff; border-bottom: 1px solid var(--border); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .controls input[type=text] {
+    flex: 1; min-width: 200px; border: 1px solid var(--border); border-radius: 6px;
+    padding: 7px 12px; font-size: 0.85rem; outline: none;
+  }
+  .controls input:focus { border-color: var(--navy); box-shadow: 0 0 0 2px rgba(0,32,95,0.12); }
+  .controls select {
+    border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px;
+    font-size: 0.82rem; background: #fff; outline: none; cursor: pointer;
+  }
+  .controls .count { font-size: 0.8rem; color: var(--muted); white-space: nowrap; margin-left: auto; }
+
+  /* ── TABLE ── */
+  .table-wrap { padding: 18px 32px 40px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.07); }
+  thead tr { background: var(--navy); color: #fff; }
+  thead th { padding: 11px 12px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 600; white-space: nowrap; cursor: pointer; user-select: none; }
+  thead th:hover { background: rgba(255,255,255,0.1); }
+  thead th .sort-icon { margin-left: 4px; opacity: 0.5; }
+  thead th.sorted .sort-icon { opacity: 1; }
+  tbody tr { border-bottom: 1px solid #eef0f4; transition: background 0.12s; }
+  tbody tr:hover { background: #f0f4ff; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 10px 12px; vertical-align: middle; }
+  .folio { font-family: 'Courier New', monospace; font-size: 0.78rem; color: var(--navy); font-weight: 600; white-space: nowrap; }
+  .inst { font-size: 0.82rem; max-width: 280px; }
+  .tipo-badge { display: inline-block; font-size: 0.68rem; padding: 2px 7px; border-radius: 10px; font-weight: 600; white-space: nowrap; }
+  .tipo-info { background: #dbeafe; color: #1e40af; }
+  .tipo-datos { background: #fef3c7; color: #92400e; }
+  .fecha { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+  .fecha-venc { font-size: 0.78rem; white-space: nowrap; }
+  .fecha-venc.vencida { color: #dc2626; font-weight: 600; }
+  .fecha-venc.proxima { color: #d97706; font-weight: 600; }
+  .fecha-venc.ok { color: var(--muted); }
+
+  /* ── STATUS BADGES ── */
+  .badge { display: inline-block; padding: 3px 9px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3px; white-space: nowrap; }
+  .badge.terminada { background: #d1fae5; color: #065f46; }
+  .badge.proceso   { background: #dbeafe; color: #1e40af; }
+  .badge.prevencion{ background: #ffedd5; color: #9a3412; }
+  .badge.prorroga  { background: #ede9fe; color: #5b21b6; }
+  .badge.parcial   { background: #fef9c3; color: #854d0e; }
+  .badge.espera    { background: #cffafe; color: #164e63; }
+  .badge.pendiente { background: #fee2e2; color: #991b1b; }
+  .badge.otro      { background: #f3f4f6; color: #374151; }
+
+  /* ── DOC LINK ── */
+  .doc-link { display: inline-flex; align-items: center; gap: 4px; color: var(--vino); text-decoration: none; font-size: 0.75rem; font-weight: 600; }
+  .doc-link:hover { text-decoration: underline; }
+  .no-doc { color: #c0bfc8; font-size: 0.75rem; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); color: rgba(255,255,255,0.65); font-size: 0.72rem; padding: 16px 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer a { color: rgba(255,255,255,0.55); }
+
+  /* ── HIDDEN ── */
+  .hidden { display: none !important; }
+
+  @media (max-width: 700px) {
+    header, .stats, .controls, .table-wrap { padding-left: 14px; padding-right: 14px; }
+    .stat-card { min-width: 80px; }
+  }
+</style>
 </head>
 <body>
 
 <header>
-  <div style="flex-shrink:0">
-    <div class="sigla">PNT</div>
-    <div class="sub">Trazabilidad</div>
-  </div>
-  <div class="hm">
-    <h1>Repositorio de Folios PNT &middot; Expediente CAOG840906RG3</h1>
-    <p style="margin-top:8px">
-      <span class="badge">NCU</span>
-      <span class="badge g">Estrategia Multi-institucional</span>
-    </p>
-    <p>Caso <strong>Narcea / Tuc&#225;n / R-Control</strong> &middot; Bloqueo laboral desde 15/12/2025 &middot;
-       ID adverso: <code style="color:var(--warn);font-size:10px">006-033202305-SV1966111caog840906202958</code></p>
-    <p style="margin-top:4px">RFC: CAOG840906RG3 &nbsp;|&nbsp; CURP: CAOG840906HVZRZN08 &nbsp;|&nbsp; NSS: 67038434972 &nbsp;|&nbsp; Licencia: VER 0406090</p>
+  <h1>🗂️ Trazabilidad PNT — Matriz de Solicitudes Institucionales</h1>
+  <div class="sub">Expediente de Transparencia y Protección de Derechos · CAOG840906RG3</div>
+  <div class="meta">
+    <span>📋 CURP: CAOG840906HVZRZN08</span>
+    <span>🪪 RFC: CAOG840906RG3</span>
+    <span>🔬 ORCID: 0009-0005-6358-9910</span>
+    <span>📅 Actualizado: 26/05/2026</span>
+    <span>🔗 FGR: FGR/CEDAC/0021/2026</span>
+    <span>⚖️ PRODECON: 6394232-COA-QR-82-2026</span>
   </div>
 </header>
 
 <div class="stats">
-  <div class="stat"><div class="n" id="sT">0</div><div class="l">Total Folios</div></div>
-  <div class="stat"><div class="n" id="sTe" style="color:var(--ok)">0</div><div class="l">Terminadas</div></div>
-  <div class="stat"><div class="n" id="sPr" style="color:var(--info)">0</div><div class="l">En Proceso</div></div>
-  <div class="stat"><div class="n" id="sPe" style="color:var(--err)">0</div><div class="l">Pend. ID</div></div>
-  <div class="stat"><div class="n" id="sRR" style="color:#fb923c">0</div><div class="l">R. Revisi&#243;n</div></div>
-  <div class="stat"><div class="n" id="sDr" style="color:#34d399">0</div><div class="l">Con Drive</div></div>
+  <div class="stat-card total"><div class="num" id="s-total">78</div><div class="lbl">Total folios</div></div>
+  <div class="stat-card terminada"><div class="num" id="s-term">26</div><div class="lbl">Terminadas</div></div>
+  <div class="stat-card proceso"><div class="num" id="s-proc">39</div><div class="lbl">En proceso</div></div>
+  <div class="stat-card prevencion"><div class="num" id="s-prev">8</div><div class="lbl">Con prevención</div></div>
+  <div class="stat-card prorroga"><div class="num" id="s-prorr">1</div><div class="lbl">Prórroga</div></div>
+  <div class="stat-card parcial"><div class="num" id="s-parc">3</div><div class="lbl">Parcial</div></div>
+  <div class="stat-card espera"><div class="num" id="s-esp">1</div><div class="lbl">En espera</div></div>
 </div>
 
-<div class="ctrl">
-  <div class="cg">
-    <label>Buscar</label>
-    <input type="text" id="sb" placeholder="Folio, instituci&#243;n, estatus&#8230;" oninput="render()"/>
-  </div>
-  <div class="cg">
-    <label>Tipo solicitud</label>
-    <select id="ft" onchange="render()">
-      <option value="">Todos</option>
-      <option value="Informaci&#243;n p&#250;blica">Info. P&#250;blica</option>
-      <option value="Datos Personales">Datos Personales</option>
-    </select>
-  </div>
-  <div class="cg">
-    <label>Estatus</label>
-    <select id="fe" onchange="render()">
-      <option value="">Todos</option>
-      <option value="Terminada">Terminada</option>
-      <option value="En proceso">En proceso</option>
-      <option value="Pendiente">Pend. identidad</option>
-      <option value="prevenci&#243;n">Con prevenci&#243;n</option>
-      <option value="pr&#243;rroga">Con pr&#243;rroga</option>
-      <option value="parcialmente">Parc. competente</option>
-    </select>
-  </div>
-  <div class="cg">
-    <label>Documento</label>
-    <select id="fd" onchange="render()">
-      <option value="">Todos</option>
-      <option value="Recurso de Revisi&#243;n">Recurso de Revisi&#243;n</option>
-      <option value="Acuse de solicitud">Acuse</option>
-      <option value="drive">Con Drive</option>
-      <option value="sin_drive">Sin Drive</option>
-    </select>
-  </div>
-  <span id="cnt"></span>
+<div class="controls">
+  <input type="text" id="search" placeholder="🔍 Buscar folio, institución, estatus...">
+  <select id="filter-status">
+    <option value="">— Todos los estatus —</option>
+    <option value="terminada">Terminada</option>
+    <option value="proceso">En proceso</option>
+    <option value="prevencion">Con prevención</option>
+    <option value="prorroga">Prórroga</option>
+    <option value="parcial">Parcial</option>
+    <option value="espera">En espera</option>
+  </select>
+  <select id="filter-tipo">
+    <option value="">— Todos los tipos —</option>
+    <option value="Información pública">Información pública</option>
+    <option value="Datos Personales">Datos Personales</option>
+  </select>
+  <span class="count" id="vis-count">Mostrando 78 de 78</span>
 </div>
 
-<div class="tw">
-  <table>
-    <thead>
-      <tr>
-        <th onclick="sb2('folio')">No. Folio</th>
-        <th onclick="sb2('tipo')">Tipo</th>
-        <th onclick="sb2('institucion')">Instituci&#243;n</th>
-        <th onclick="sb2('fecha_recepcion')">Recepci&#243;n</th>
-        <th onclick="sb2('fecha_limite')">L&#237;mite</th>
-        <th onclick="sb2('estatus')">Estatus PNT</th>
-        <th onclick="sb2('doc_tipo')">Documento</th>
-        <th>Fuentes</th>
-      </tr>
-    </thead>
-    <tbody id="tb"></tbody>
-  </table>
-  <div class="empty" id="em" style="display:none">Sin resultados para los filtros aplicados.</div>
+<div class="table-wrap">
+<table id="main-table">
+<thead>
+<tr>
+  <th onclick="sortBy(0)">Folio <span class="sort-icon">⇅</span></th>
+  <th onclick="sortBy(1)">Institución <span class="sort-icon">⇅</span></th>
+  <th onclick="sortBy(2)">Tipo <span class="sort-icon">⇅</span></th>
+  <th onclick="sortBy(3)">Recepción <span class="sort-icon">⇅</span></th>
+  <th onclick="sortBy(4)">Límite <span class="sort-icon">⇅</span></th>
+  <th onclick="sortBy(5)">Estatus <span class="sort-icon">⇅</span></th>
+  <th>Respuesta</th>
+</tr>
+</thead>
+<tbody id="tbody">
+</tbody>
+</table>
 </div>
 
 <footer>
-  Trazabilidad PNT &middot; Expediente <span>CAOG840906RG3</span> &middot;
-  <span>geozunac3536@gmail.com</span> &middot; 21/05/2026 &middot;
-  <a href="https://github.com/geozunac3536-jpg/trazabilidad_pnt" style="color:var(--muted);text-decoration:none">GitHub &#8599;</a>
+  <span>GeoSigma TCDS · ORCID 0009-0005-6358-9910 · GitHub: geozunac3536-jpg/trazabilidad_pnt</span>
+  <span>Repositorio generado automáticamente · 26/05/2026</span>
 </footer>
 
 <script>
-const F=[{"folio":"090165926000296","tipo":"Información pública","institucion":"Instituto de Transparencia, Acceso a la Información Pública, Protección de Datos Personales y Rendición de Cuentas de la Ciudad de México","fecha_recepcion":"14/04/2026","fecha_limite":"27/04/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F868B3E67EFD6F00AFD973A642715956","doc_tipo":"Recurso de Revisión","doc_fecha":"08/05/2026","sujeto_corto":"INFOCDMX","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=12PJad545F73Zf5fU_QpSo6g5mpF53D_m","drive_file":"Acuse-MI-InterposicionRR-090165926000296.pdf"},{"folio":"490031200040126","tipo":"Información pública","institucion":"Instituto Nacional de Estadística y Geografía (INEGI)","fecha_recepcion":"14/05/2026","fecha_limite":"17/06/2026","estatus":"En proceso, información adicional","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/04532A4770A4F1C4D687A5BBA6DA520F","doc_tipo":"Acuse de solicitud","doc_fecha":"14/05/2026","sujeto_corto":"INEGI","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"490031200041226","tipo":"Información pública","institucion":"Instituto Nacional de Estadística y Geografía (INEGI)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/DD9C3E80BA3C0E20FD784A9B4647C5C0","doc_tipo":"Acuse de solicitud","doc_fecha":"18/05/2026","sujeto_corto":"INEGI","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"1550030526000856","tipo":"Información pública","institucion":"Suprema Corte de Justicia de la Nación (SCJN)","fecha_recepcion":"06/05/2026","fecha_limite":"03/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/1AA6243B8000E7E363C39F748030392A","doc_tipo":"Acuse de solicitud","doc_fecha":"06/05/2026","sujeto_corto":"SCJN","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"342259800048026","tipo":"Información pública","institucion":"SSPC-Guardia Nacional","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D9595DBC4385F21525BB0C94EE95A450","doc_tipo":"Recurso de Revisión","doc_fecha":"22/04/2026","sujeto_corto":"Guardia Nacional","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1rlYXObd2G-qSeG1IT6ruYacDn_bbWYSk","drive_file":"Acuse-MI-InterposicionRR-342259800048026.pdf"},{"folio":"342259800055226","tipo":"Información pública","institucion":"SSPC-Guardia Nacional","fecha_recepcion":"08/05/2026","fecha_limite":"11/06/2026","estatus":"En proceso, información adicional","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B9867D6CEC6AE7060BCC7D218D61BF7D","doc_tipo":"Acuse de solicitud","doc_fecha":"08/05/2026","sujeto_corto":"Guardia Nacional","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"342589700015526","tipo":"Información pública","institucion":"Centro Federal de Conciliación y Registro Laboral (CFCRL)","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A88E9EC8ADE3C8664C1C528103ED3ADA","doc_tipo":"Acuse de solicitud","doc_fecha":"17/04/2026","sujeto_corto":"CFCRL","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"341020400001026","tipo":"Datos Personales","institucion":"CEAV-Fondo de ayuda, asistencia y reparación integral","fecha_recepcion":"14/05/2026","fecha_limite":"11/06/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/60C823AABDB0B13CB2CD5E630615C696","doc_tipo":"Acuse de solicitud","doc_fecha":"14/05/2026","sujeto_corto":"CEAV-FAARI","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"400030100034126","tipo":"Información pública","institucion":"Auditoría Superior de la Federación (ASF)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C319E282D723D4F80F3BDA409C84E7C","doc_tipo":"Acuse de solicitud","doc_fecha":"18/05/2026","sujeto_corto":"ASF","tiene_drive":true,"drive_url":"","drive_file":""},{"folio":"400030200057126","tipo":"Información pública","institucion":"Cámara de Diputados (CD)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/66CF77B9D94A0D3E1E11650613046A6C","doc_tipo":"Recurso de Revisión","doc_fecha":"21/05/2026","sujeto_corto":"Cámara de Diputados","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1XYKoNSAklf2JD2DvcQjZTVVaThHn2kZL","drive_file":"Acuse-MI-InterposicionRR-400030200057126.pdf"},{"folio":"410031900125326","tipo":"Información pública","institucion":"Universidad Nacional Autónoma de México (UNAM)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F8C3888920E522E93549D8582D3354D5","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"420015000001126","tipo":"Información pública","institucion":"Fondo para el Desarrollo de Recursos Humanos (FIDERH)","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6D2F9DAA53EF57EC5917FF19A84C31C","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340005000007626","tipo":"Información pública","institucion":"Centro Nacional de Inteligencia","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B499568F8293C52BFDDB2C01EC2C97B7","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340005900000626","tipo":"Información pública","institucion":"Centro Nacional de Metrología (CENAM)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A94743E23A117A5FDB01A21AA9A5A4B9","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340009900012226","tipo":"Información pública","institucion":"Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros (CONDUSEF)","fecha_recepcion":"14/05/2026","fecha_limite":"11/06/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/AB9D8B8E282E42E144F95B04A1B05376","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340010700011826","tipo":"Información pública","institucion":"Consejería Jurídica del Ejecutivo Federal (CJEF)","fecha_recepcion":"19/05/2026","fecha_limite":"16/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FB8307058A4019F17F2BE0A7D226CA4B","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340011300005926","tipo":"Información pública","institucion":"Consejo Nacional para Prevenir la Discriminación (CONAPRED)","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/699E8C4D1256F57BC3CDCB039D5150E4","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340011300006826","tipo":"Información pública","institucion":"Consejo Nacional para Prevenir la Discriminación (CONAPRED)","fecha_recepcion":"14/05/2026","fecha_limite":"11/06/2026","estatus":"En proceso, parcialmente competente","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C5E9E89A9271D80FA0E6CDCFB1D258F","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340011300007026","tipo":"Información pública","institucion":"Consejo Nacional para Prevenir la Discriminación (CONAPRED)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/CE6C077B3EF3D6DEC18DC461C97FC948","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"341000100043626","tipo":"Información pública","institucion":"Oficina de la Presidencia de la República","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/EA42045C979D01829D2CC089E1274863","doc_tipo":"Recurso de Revisión","doc_fecha":"04/05/2026","sujeto_corto":"Presidencia","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1HadKTdzSFY0qTApqnfQ6prnuFM4e_kMp","drive_file":"Acuse-MI-InterposicionRR-341000100043626.pdf"},{"folio":"341000500005726","tipo":"Información pública","institucion":"CULTURA-Instituto Nacional del Derecho de Autor (INDAUTOR*)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/147E227C5EB24FAA0E139B256951EFD7","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"341043300005026","tipo":"Información pública","institucion":"INFOTEC Centro de Investigación e Innovación en Tecnologías de la Información y Comunicación (INFOTEC)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C3AA80AB5A2304E8FC674FCBE21514CA","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340025500060126","tipo":"Información pública","institucion":"Secretaría de Infraestructura, Comunicaciones y Transportes (SICT)","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A25D27A587905C968F52692E146E752D","doc_tipo":"Compendio respuestas","doc_fecha":"14/04/2026","sujeto_corto":"SICT","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1nthsPeibguT_M7IN6aPnNKseVkjDAsXW","drive_file":"compendio_acuses_respuestas.pdf"},{"folio":"340026200089726","tipo":"Información pública","institucion":"Secretaría de Gobernación (SEGOB)","fecha_recepcion":"06/05/2026","fecha_limite":"03/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BEB090E27B64A9306A9D7673981EE08B","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340026500085326","tipo":"Información pública","institucion":"Secretaría Anticorrupción y  Buen Gobierno (buen gobierno)","fecha_recepcion":"16/04/2026","fecha_limite":"01/06/2026","estatus":"En proceso con prórroga","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3AE2EF6E08E29A90B8090B81A070E454","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340026800118026","tipo":"Información pública","institucion":"Secretaría de Relaciones Exteriores (SRE)","fecha_recepcion":"06/05/2026","fecha_limite":"05/06/2026","estatus":"En proceso, información adicional","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BA17A03B784E453831D56C85106BCF51","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340027100027726","tipo":"Datos Personales","institucion":"Secretaría del Trabajo y Previsión Social (STPS)","fecha_recepcion":"14/04/2026","fecha_limite":"19/05/2026","estatus":"Pendiente de acreditación de la identidad","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C62DFE642FD7752B51F82B32FFC880F5","doc_tipo":"Recurso de Revisión","doc_fecha":"20/05/2026","sujeto_corto":"STPS","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1JNm0609nVN4OOIQPIXnq3ZJuLnnxr9vb","drive_file":"Acuse-MI-InterposicionRR-340027100027726.pdf"},{"folio":"340027100027826","tipo":"Datos Personales","institucion":"Secretaría del Trabajo y Previsión Social (STPS)","fecha_recepcion":"14/04/2026","fecha_limite":"19/05/2026","estatus":"Pendiente de acreditación de la identidad","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/604200C297EC0CE3874EB119523DC624","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340027700062326","tipo":"Información pública","institucion":"Servicio de Administración Tributaria (SAT)","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F3E728853634A4DBE25958CC2AD25FFE","doc_tipo":"Recurso de Revisión","doc_fecha":"20/04/2026","sujeto_corto":"SAT","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1j22hI-U2tCcj3v8MWBjB4PxJd1r0v6de","drive_file":"Acuse-MI-InterposicionRR-340027700062326.pdf"},{"folio":"340027700068926","tipo":"Información pública","institucion":"Servicio de Administración Tributaria (SAT)","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/03965C76C8004CEC1D6EC908E6908732","doc_tipo":"Recurso de Revisión","doc_fecha":"12/05/2026","sujeto_corto":"SAT","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=13gkhCnjJAo3qo_5oOvSACe77JWvczZ5f","drive_file":"Acuse-MI-InterposicionRR-340027700068926.pdf"},{"folio":"340031000117726","tipo":"Datos Personales","institucion":"Instituto del Fondo Nacional de la Vivienda para los Trabajadores (INFONAVIT)","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Pendiente de acreditación de la identidad","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9ED628711DC2B5FBB8BEFEDE8F4D827E","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340031000120726","tipo":"Datos Personales","institucion":"Instituto del Fondo Nacional de la Vivienda para los Trabajadores (INFONAVIT)","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Pendiente de acreditación de la identidad","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/54B025B8BE7C100CAC3CD3248AD39C5C","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340031000129926","tipo":"Datos Personales","institucion":"Instituto del Fondo Nacional de la Vivienda para los Trabajadores (INFONAVIT)","fecha_recepcion":"29/04/2026","fecha_limite":"29/05/2026","estatus":"Pendiente de acreditación de la identidad","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/ABE0F45CDC0AB8787455AE47438A741E","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340031000137326","tipo":"Datos Personales","institucion":"Instituto del Fondo Nacional de la Vivienda para los Trabajadores (INFONAVIT)","fecha_recepcion":"12/05/2026","fecha_limite":"11/06/2026","estatus":"En proceso con prevención, sin identidad acreditada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3A2298BD32D87C7C9A253EBF446826F3","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340021800165326","tipo":"Información pública","institucion":"Instituto Politécnico Nacional (IPN)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3192F1F020E6DF62514C37437D7A52A1","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340024000011226","tipo":"Información pública","institucion":"Prevención y Reinserción Social","fecha_recepcion":"08/05/2026","fecha_limite":"05/06/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F35F0FEA928A9170D3A3DDF77B77C348","doc_tipo":"Recurso de Revisión","doc_fecha":"14/05/2026","sujeto_corto":"PRS","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1sgyJV_8ma6bvDhwyCxkTmy74GSoF0Nt0","drive_file":"Acuse-MI-InterposicionRR-340024000011226.pdf"},{"folio":"340024200005626","tipo":"Información pública","institucion":"Procuraduría de la Defensa del Contribuyente (PRODECON)","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B0AE0D708DD73FDD600A8667E1177F43","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340024200005926","tipo":"Datos Personales","institucion":"Procuraduría de la Defensa del Contribuyente (PRODECON)","fecha_recepcion":"20/04/2026","fecha_limite":"28/05/2026","estatus":"En proceso con prevención, sin identidad acreditada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/79DF0F92AF873A0FB70BCB34534D5BDC","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340006100001726","tipo":"Información pública","institucion":"Centro Nacional de Prevención de Desastres (CENAPRED)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/580AB81ACBDBDB2563AB3E09FF252620","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340007600009126","tipo":"Datos Personales","institucion":"Comisión Ejecutiva de Atención a Víctimas (CEAV)","fecha_recepcion":"14/05/2026","fecha_limite":"11/06/2026","estatus":"En proceso con prevención, sin identidad acreditada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/686C2D2E7A5DFE2F3E8DED5ABA07A6E6","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"450018900010926","tipo":"Información pública","institucion":"Instituto Nacional de Ciencias Penales (INACIPE)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FFC2B917A8F8BCB894740A7837A8413B","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"450024600096126","tipo":"Información pública","institucion":"Fiscalía General de la República","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D8735CCC4DB573B63022BB9F89CA7F2F","doc_tipo":"Recurso de Revisión","doc_fecha":"20/04/2026","sujeto_corto":"FGR","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1XJC2yVJHlDXHf6MG2W5VsAbNFCHpZsZ6","drive_file":"Acuse-MI-InterposicionRR-450024600096126.pdf"},{"folio":"450024600099626","tipo":"Información pública","institucion":"Fiscalía General de la República","fecha_recepcion":"17/04/2026","fecha_limite":"02/06/2026","estatus":"En proceso con prórroga","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/8DDBEAAF9AFB0FD181C96742DB90DB1E","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340017600031026","tipo":"Información pública","institucion":"Instituto Mexicano de la Propiedad Industrial (IMPI)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso, parcialmente competente","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/73C6FB10342C52B5D4D22564FE7E3626","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"340018001223026","tipo":"Información pública","institucion":"Instituto Mexicano del Seguro Social (IMSS)","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/01C151AF37A4743D63D80B245BC480FE","doc_tipo":"Recurso de Revisión","doc_fecha":"20/04/2026","sujeto_corto":"IMSS","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1vRO8O8vfjkiAzIHP8z_iXvQEDbVBgySR","drive_file":"Acuse-MI-InterposicionRR-340018001223026.pdf"},{"folio":"340018100002626","tipo":"Información pública","institucion":"SICT-Instituto Mexicano del Transporte (*IMT)","fecha_recepcion":"14/04/2026","fecha_limite":"14/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A0A1EDFDA7F4326AABFE55C2A68E7DA","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"343204900019026","tipo":"Información pública","institucion":"Agencia de Transformación Digital y Telecomunicaciones (ATDT)","fecha_recepcion":"17/04/2026","fecha_limite":"19/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F226FF31B4E756078CDF11C9D346DE7C","doc_tipo":"Recurso de Revisión","doc_fecha":"22/04/2026","sujeto_corto":"ATDT","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1hZ0lO26qu2BZeU6Bban522mxWu9oB4qF","drive_file":"Acuse-MI-InterposicionRR-343204900019026.pdf"},{"folio":"343204900024226","tipo":"Información pública","institucion":"Agencia de Transformación Digital y Telecomunicaciones (ATDT)","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso, parcialmente competente","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F7B499A7502CAA8DD14A3DD026C1674D","doc_tipo":"","doc_fecha":"","sujeto_corto":"","tiene_drive":false,"drive_url":"","drive_file":""},{"folio":"343224900038026","tipo":"Información pública","institucion":"Transparencia para el Pueblo","fecha_recepcion":"16/04/2026","fecha_limite":"18/05/2026","estatus":"Terminada","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3DD2A2B6D2011B593B6940770C8A69CA","doc_tipo":"Recurso de Revisión","doc_fecha":"29/04/2026","sujeto_corto":"Transparencia Pueblo","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1OGmhV9KwYmfwNyGsoZ5-Cfy-uBriEH8S","drive_file":"Acuse-MI-InterposicionRR-343224900038026.pdf"},{"folio":"343224900049926","tipo":"Información pública","institucion":"Transparencia para el Pueblo","fecha_recepcion":"18/05/2026","fecha_limite":"15/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/0E1E9DC2895ADC2D0208C16B006886B2","doc_tipo":"Acuse de solicitud","doc_fecha":"18/05/2026","sujeto_corto":"Transparencia Pueblo","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1S0y_F2Y-TQ3Kiz2jhc6dYWcFRmPmixmj","drive_file":"343224900049926.pdf"},{"folio":"360030900033426","tipo":"Información pública","institucion":"Comisión Nacional de los Derechos Humanos (CNDH)","fecha_recepcion":"17/04/2026","fecha_limite":"26/05/2026","estatus":"En proceso, información adicional","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6C75FE7C3C9AABC368E02A0190C395D","doc_tipo":"Acuse de solicitud","doc_fecha":"17/04/2026","sujeto_corto":"CNDH","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1mnCGWFD_MANJ77neMr9IEBFMjgmgcVaZ","drive_file":"360030900033426.pdf"},{"folio":"771277626000139","tipo":"Información pública","institucion":"Poder Judicial del Estado de Veracruz","fecha_recepcion":"05/05/2026","fecha_limite":"03/06/2026","estatus":"En proceso","url":"https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9B2A813D72FDAB814F305FCF7B0D41D1","doc_tipo":"Acuse de solicitud","doc_fecha":"04/05/2026","sujeto_corto":"PJ Veracruz","tiene_drive":true,"drive_url":"https://drive.google.com/open?id=1xrJGMI3w_wI95nA-kxO5VJcDUialu96p","drive_file":"771277626000139.pdf"}];
-let sc='fecha_recepcion',sd=1;
-const TOD=new Date('2026-05-21');
-function pd(s){if(!s)return null;const[d,m,y]=s.split('/');return new Date(`${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`);}
-function stCls(s){
-  if(s.includes('Terminada'))return'st';
-  if(s.includes('pr\u00f3rroga'))return'sor';
-  if(s.includes('parcialmente'))return'spc';
-  if(s.includes('prevenci\u00f3n'))return'sv';
-  if(s.includes('Pendiente'))return'spe';
-  return'sp';
+const DATA = [
+  ["90165926000296","Instituto de Transparencia (INFOCDMX)","Información pública","14/04/2026","27/04/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F868B3E67EFD6F00AFD973A642715956"],
+  ["490031200040126","INEGI","Información pública","14/05/2026","17/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/04532A4770A4F1C4D687A5BBA6DA520F"],
+  ["490031200041226","INEGI","Información pública","18/05/2026","15/06/2026","En espera info adicional","espera","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/DD9C3E80BA3C0E20FD784A9B4647C5C0"],
+  ["490031200042926","INEGI","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/49D92015FD188CBFAB7F5686FE216AE6"],
+  ["1550030526000856","Suprema Corte de Justicia de la Nación (SCJN)","Información pública","06/05/2026","03/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/1AA6243B8000E7E363C39F748030392A"],
+  ["1550030526001104","Suprema Corte de Justicia de la Nación (SCJN)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/E61CEE10BC5F0E6C9BFEFAD37CF5BC30"],
+  ["342259800048026","SSPC-Guardia Nacional","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D9595DBC4385F21525BB0C94EE95A450"],
+  ["342259800055226","SSPC-Guardia Nacional","Información pública","08/05/2026","11/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B9867D6CEC6AE7060BCC7D218D61BF7D"],
+  ["342259800058926","SSPC-Guardia Nacional","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/793C7A691644FE585D641E2C686438EC"],
+  ["342589700015526","Centro Federal de Conciliación y Registro Laboral (CFCRL)","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A88E9EC8ADE3C8664C1C528103ED3ADA"],
+  ["341020400001026","CEAV-Fondo de Ayuda","Datos Personales","14/05/2026","11/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/60C823AABDB0B13CB2CD5E630615C696"],
+  ["400030100034126","Auditoría Superior de la Federación (ASF)","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C319E282D723D4F80F3BDA409C84E7C"],
+  ["400030200057126","Cámara de Diputados (CD)","Información pública","18/05/2026","15/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/66CF77B9D94A0D3E1E11650613046A6C"],
+  ["400030200061726","Cámara de Diputados (CD)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/25BCE0088CE10C9D8F6BD8F525E0A0CE"],
+  ["410031900125326","UNAM","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F8C3888920E522E93549D8582D3354D5"],
+  ["420015000001126","FIDERH — Banco de México","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6D2F9DAA53EF57EC5917FF19A84C31C"],
+  ["420030700106726","Banco de México (BANXICO)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/1C4EE3AF0D1B8BED3A17E8A618E5387F"],
+  ["340005000007626","Centro Nacional de Inteligencia","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B499568F8293C52BFDDB2C01EC2C97B7"],
+  ["340005900000626","Centro Nacional de Metrología (CENAM)","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A94743E23A117A5FDB01A21AA9A5A4B9"],
+  ["340009900012226","CONDUSEF","Información pública","14/05/2026","11/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/AB9D8B8E282E42E144F95B04A1B05376"],
+  ["340009900012726","CONDUSEF","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/54E4E38E12D6FFFB9B343C50C985ED6F"],
+  ["340010700011826","Consejería Jurídica del Ejecutivo Federal (CJEF)","Información pública","19/05/2026","16/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FB8307058A4019F17F2BE0A7D226CA4B"],
+  ["340011300005926","CONAPRED","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/699E8C4D1256F57BC3CDCB039D5150E4"],
+  ["340011300006826","CONAPRED","Información pública","14/05/2026","11/06/2026","Parcial","parcial","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7C5E9E89A9271D80FA0E6CDCFB1D258F"],
+  ["340011300007026","CONAPRED","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/CE6C077B3EF3D6DEC18DC461C97FC948"],
+  ["340011300007626","CONAPRED","Información pública","22/05/2026","19/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/5C7838C02EAE389FBB9A503DD2ABD329"],
+  ["341000100043626","Oficina de la Presidencia de la República","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/EA42045C979D01829D2CC089E1274863"],
+  ["341000100067426","Oficina de la Presidencia de la República","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/0F2098BE9ED04409E384C250289BCFC8"],
+  ["341000500005726","INDAUTOR — Sec. de Cultura","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/147E227C5EB24FAA0E139B256951EFD7"],
+  ["341043300005026","INFOTEC","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C3AA80AB5A2304E8FC674FCBE21514CA"],
+  ["340024300018626","PROFEDET","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F1CD597967144A702E8B349A5A5D1852"],
+  ["340025500060126","SICT","Información pública","14/04/2026","14/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A25D27A587905C968F52692E146E752D"],
+  ["340025500081426","SICT","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/82BC47EF672ECEA63E5C5FF10D17BF4C"],
+  ["340026200089726","Secretaría de Gobernación (SEGOB)","Información pública","06/05/2026","03/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BEB090E27B64A9306A9D7673981EE08B"],
+  ["340026200105326","Secretaría de Gobernación (SEGOB)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3BCAD545BD3176498098504590E1C5EB"],
+  ["340026300177026","SHCP","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3D1061D38A1D17BC08BA0FEECFD79CDB"],
+  ["340026500085326","Secretaría Anticorrupción y Buen Gobierno","Información pública","16/04/2026","01/06/2026","Prórroga activa","prorroga","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3AE2EF6E08E29A90B8090B81A070E454"],
+  ["340026500112626","Secretaría Anticorrupción y Buen Gobierno","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D9789E57FB4F969D265551C2B5B0509F"],
+  ["340026800118026","Secretaría de Relaciones Exteriores (SRE)","Información pública","06/05/2026","05/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/BA17A03B784E453831D56C85106BCF51"],
+  ["340027100027726","STPS","Datos Personales","14/04/2026","19/05/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/C62DFE642FD7752B51F82B32FFC880F5"],
+  ["340027100027826","STPS","Datos Personales","14/04/2026","19/05/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/604200C297EC0CE3874EB119523DC624"],
+  ["340027100035726","STPS","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/8E845C7CE8363E2DD606FCBE9FCB3CF4"],
+  ["340027700062326","SAT","Información pública","14/04/2026","14/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F3E728853634A4DBE25958CC2AD25FFE"],
+  ["340027700068926","SAT","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/03965C76C8004CEC1D6EC908E6908732"],
+  ["340027700094326","SAT","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D105A00A0D406228BA769CDCFBDD97C2"],
+  ["340031000117726","INFONAVIT","Datos Personales","14/04/2026","14/05/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9ED628711DC2B5FBB8BEFEDE8F4D827E"],
+  ["340031000120726","INFONAVIT","Datos Personales","17/04/2026","19/05/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/54B025B8BE7C100CAC3CD3248AD39C5C"],
+  ["340031000129926","INFONAVIT","Datos Personales","29/04/2026","29/05/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/ABE0F45CDC0AB8787455AE47438A741E"],
+  ["340031000137326","INFONAVIT","Datos Personales","12/05/2026","11/06/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3A2298BD32D87C7C9A253EBF446826F3"],
+  ["340031000146226","INFONAVIT","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/196334298344874AA5F5A5E8B611FF94"],
+  ["340021800165326","Instituto Politécnico Nacional (IPN)","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3192F1F020E6DF62514C37437D7A52A1"],
+  ["340024000011226","Prevención y Reinserción Social (PRS-SSPC)","Información pública","08/05/2026","05/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F35F0FEA928A9170D3A3DDF77B77C348"],
+  ["340024000012226","Prevención y Reinserción Social (PRS-SSPC)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/981180763815B4ACE6776C81350ADCBD"],
+  ["340024200005626","PRODECON","Información pública","14/04/2026","14/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/B0AE0D708DD73FDD600A8667E1177F43"],
+  ["340024200005926","PRODECON","Datos Personales","20/04/2026","28/05/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/79DF0F92AF873A0FB70BCB34534D5BDC"],
+  ["340024200009026","PRODECON","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/388098DC3C4525A8345108CAC5BD39E4"],
+  ["340006100001726","CENAPRED","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/580AB81ACBDBDB2563AB3E09FF252620"],
+  ["340007600009126","CEAV","Datos Personales","14/05/2026","11/06/2026","Con prevención","prevencion","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/686C2D2E7A5DFE2F3E8DED5ABA07A6E6"],
+  ["450018900010926","INACIPE","Información pública","18/05/2026","15/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/FFC2B917A8F8BCB894740A7837A8413B"],
+  ["450018900011126","INACIPE","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/365D3C2F6C0E036B12EE1CB72CA89FE9"],
+  ["450024600096126","Fiscalía General de la República (FGR)","Información pública","14/04/2026","14/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/D8735CCC4DB573B63022BB9F89CA7F2F"],
+  ["450024600099626","Fiscalía General de la República (FGR)","Información pública","17/04/2026","02/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/8DDBEAAF9AFB0FD181C96742DB90DB1E"],
+  ["470030400200926","Consejo de la Judicatura Federal (CJF)","Información pública","22/06/2026","05/08/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/7B35393F2C63F58CB21F0B8B090ECC16"],
+  ["340017600031026","IMPI","Información pública","18/05/2026","15/06/2026","Parcial","parcial","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/73C6FB10342C52B5D4D22564FE7E3626"],
+  ["340018001223026","Instituto Mexicano del Seguro Social (IMSS)","Información pública","14/04/2026","14/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/01C151AF37A4743D63D80B245BC480FE"],
+  ["340018001691126","Instituto Mexicano del Seguro Social (IMSS)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/2C4E00AA60AE005904CC846D633980D2"],
+  ["340018100002626","IMT — SICT","Información pública","14/04/2026","14/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A0A1EDFDA7F4326AABFE55C2A68E7DA"],
+  ["343204900019026","Agencia de Transformación Digital y Telecomunicaciones (ATDT)","Información pública","17/04/2026","19/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F226FF31B4E756078CDF11C9D346DE7C"],
+  ["343204900024226","ATDT","Información pública","18/05/2026","15/06/2026","Parcial","parcial","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F7B499A7502CAA8DD14A3DD026C1674D"],
+  ["343204900025226","ATDT","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/AABB6173C946A6397C1677C1272CF8A5"],
+  ["343224900038026","Transparencia para el Pueblo","Información pública","16/04/2026","18/05/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/3DD2A2B6D2011B593B6940770C8A69CA"],
+  ["343224900049926","Transparencia para el Pueblo","Información pública","18/05/2026","15/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/0E1E9DC2895ADC2D0208C16B006886B2"],
+  ["343224900052226","Transparencia para el Pueblo","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/27609A4E396A8672A9180C259E83FD2A"],
+  ["350030300046926","Senado de la República","Información pública","22/05/2026","19/06/2026","Terminada","terminada","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A3A8D7F48D462FF57F7E65ED44E3490"],
+  ["360030900033426","Comisión Nacional de los Derechos Humanos (CNDH)","Información pública","17/04/2026","26/05/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/A6C75FE7C3C9AABC368E02A0190C395D"],
+  ["360030900048926","CNDH","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/F1FEF5686D564967E1E618A610F72F74"],
+  ["370031400105226","Instituto Nacional Electoral (INE)","Información pública","22/05/2026","19/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/6A2089758AD8C27F4E1E693D470F5D2D"],
+  ["771277626000139","Poder Judicial del Estado de Veracruz","Información pública","05/05/2026","03/06/2026","En proceso","proceso","https://servicios.plataformadetransparencia.org.mx/inai3/rest/organoGarante/administracionControlDescarga/descargarAdjuntosPorSolicitud/9B2A813D72FDAB814F305FCF7B0D41D1"]
+];
+
+// parse date dd/mm/yyyy → comparable int
+function parseDate(s) {
+  if (!s || s==='nan') return 0;
+  const [d,m,y] = s.split('/');
+  return parseInt(y+m+d);
 }
-function docC(t){
-  if(!t)return'<span class="xno">—</span>';
-  if(t==='Recurso de Revisi\u00f3n')return'<span class="xc xrr">RR</span>';
-  if(t==='Compendio respuestas')return'<span class="xc xco">Compendio</span>';
-  return'<span class="xc xac">Acuse</span>';
+function dateCls(dateStr) {
+  const today = 20260526;
+  const d = parseDate(dateStr);
+  if (!d) return 'ok';
+  if (d < today) return 'vencida';
+  if (d <= today + 7) return 'proxima';
+  return 'ok';
 }
-function lnks(r){
-  let h='';
-  if(r.url)h+=`<a class="lp" href="${r.url}" target="_blank" rel="noopener">PNT &#8599;</a>`;
-  if(r.drive_url)h+=`<a class="ld" href="${r.drive_url}" target="_blank" rel="noopener" title="${r.drive_file||''}">Drive &#8599;</a>`;
-  return h||'<span class="ln">—</span>';
-}
-function sb2(c){if(sc===c)sd*=-1;else{sc=c;sd=1;}render();}
-function filtered(){
-  const q=document.getElementById('sb').value.toLowerCase().trim();
-  const tp=document.getElementById('ft').value;
-  const es=document.getElementById('fe').value.toLowerCase();
-  const dc=document.getElementById('fd').value;
-  return F.filter(r=>{
-    const tx=`${r.folio} ${r.institucion} ${r.estatus} ${r.tipo} ${r.doc_tipo||''}`.toLowerCase();
-    if(q&&!tx.includes(q))return false;
-    if(tp&&r.tipo!==tp)return false;
-    if(es&&!r.estatus.toLowerCase().includes(es))return false;
-    if(dc==='drive'&&!r.drive_url)return false;
-    if(dc==='sin_drive'&&r.drive_url)return false;
-    if(dc==='Recurso de Revisi\u00f3n'&&r.doc_tipo!=='Recurso de Revisi\u00f3n')return false;
-    if(dc==='Acuse de solicitud'&&r.doc_tipo!=='Acuse de solicitud')return false;
+
+let sortCol = 3, sortAsc = true;
+let rows = DATA.slice();
+
+function render() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const sf = document.getElementById('filter-status').value;
+  const tf = document.getElementById('filter-tipo').value;
+
+  let visible = rows.filter(r => {
+    const text = r.join(' ').toLowerCase();
+    if (q && !text.includes(q)) return false;
+    if (sf && r[6] !== sf) return false;
+    if (tf && r[2] !== tf) return false;
     return true;
-  }).sort((a,b)=>{
-    let va=a[sc]||'',vb=b[sc]||'';
-    if(sc==='fecha_recepcion'||sc==='fecha_limite'){
-      va=pd(va)||new Date(0);vb=pd(vb)||new Date(0);return sd*(va-vb);
-    }
-    return sd*String(va).localeCompare(String(vb),'es');
   });
-}
-function render(){
-  const data=filtered();
-  document.getElementById('sT').textContent=F.length;
-  document.getElementById('sTe').textContent=F.filter(r=>r.estatus.includes('Terminada')).length;
-  document.getElementById('sPr').textContent=F.filter(r=>r.estatus.startsWith('En proceso')).length;
-  document.getElementById('sPe').textContent=F.filter(r=>r.estatus.includes('Pendiente')).length;
-  document.getElementById('sRR').textContent=F.filter(r=>r.doc_tipo==='Recurso de Revisi\u00f3n').length;
-  document.getElementById('sDr').textContent=F.filter(r=>r.drive_url).length;
-  document.getElementById('cnt').textContent=`Mostrando ${data.length} de ${F.length}`;
-  const em=document.getElementById('em'),tb=document.getElementById('tb');
-  if(!data.length){tb.innerHTML='';em.style.display='block';return;}
-  em.style.display='none';
-  tb.innerHTML=data.map(r=>{
-    const lim=pd(r.fecha_limite);
-    const od=lim&&lim<TOD&&!r.estatus.includes('Terminada');
-    const tc=r.tipo.includes('Datos')
-      ?'<span class="tc tdp">Datos</span>'
-      :'<span class="tc tip">Info P\u00fab.</span>';
-    return`<tr>
-      <td class="fc">${r.folio}</td>
-      <td>${tc}</td>
-      <td class="ic">${r.institucion}</td>
-      <td class="dc">${r.fecha_recepcion||'\u2014'}</td>
-      <td class="dc${od?' od':''}">${r.fecha_limite||'\u2014'}${od?' \u26a0':''}</td>
-      <td><span class="sc ${stCls(r.estatus)}">${r.estatus}</span></td>
-      <td>${docC(r.doc_tipo||'')}</td>
-      <td class="lc">${lnks(r)}</td>
+
+  document.getElementById('vis-count').textContent = `Mostrando ${visible.length} de ${rows.length}`;
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = visible.map(r => {
+    const tipoCls = r[2].includes('Datos') ? 'tipo-datos' : 'tipo-info';
+    const dcls = dateCls(r[4]);
+    const docHtml = r[7]
+      ? `<a class="doc-link" href="${r[7]}" target="_blank" rel="noopener">📎 Ver</a>`
+      : `<span class="no-doc">—</span>`;
+    return `<tr data-cls="${r[6]}">
+      <td><span class="folio">${r[0]}</span></td>
+      <td><span class="inst">${r[1]}</span></td>
+      <td><span class="tipo-badge ${tipoCls}">${r[2]}</span></td>
+      <td><span class="fecha">${r[3]}</span></td>
+      <td><span class="fecha-venc ${dcls}">${r[4]}</span></td>
+      <td><span class="badge ${r[6]}">${r[5]}</span></td>
+      <td>${docHtml}</td>
     </tr>`;
   }).join('');
 }
+
+function sortBy(col) {
+  if (sortCol === col) sortAsc = !sortAsc; else { sortCol = col; sortAsc = true; }
+  rows.sort((a,b) => {
+    let va = a[col], vb = b[col];
+    if (col===3||col===4) { va = parseDate(va); vb = parseDate(vb); }
+    else { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+    return sortAsc ? (va > vb ? 1 : va < vb ? -1 : 0) : (va < vb ? 1 : va > vb ? -1 : 0);
+  });
+  document.querySelectorAll('thead th').forEach((th,i) => th.classList.toggle('sorted', i===col));
+  render();
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('filter-status').addEventListener('change', render);
+document.getElementById('filter-tipo').addEventListener('change', render);
+
 render();
 </script>
 </body>
