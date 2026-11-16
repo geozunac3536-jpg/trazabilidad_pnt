@@ -1,7 +1,116 @@
 {
   "integridad": {
     "algoritmo": "SHA256",
-    "generado": "2026-05-21T00:00:00",
-    "archivos": []
+    "generado": "2026-11-16",
+    "archivos": [
+      {
+        "ruta": "00_INDEX/index_maestro.csv",
+        "sha256": "189293e957340ce8468d89897a6a6138323bdcdae80a7e4822521521d21ac82b"
+      },
+      {
+        "ruta": "01_FUENTE_PNT/estado_previo_index_20260526.csv",
+        "sha256": "fd0faaf7b8e995a82ee270c7953f7c969b8759a66ed5ca7ef4f3df149e716d4e"
+      },
+      {
+        "ruta": "01_FUENTE_PNT/mis_solicitudes_pnt_20261116.xls",
+        "sha256": "f6f30924c7096e62c668fb5f4dbede826a15618fdb3a831d8b48ea18753042f1"
+      },
+      {
+        "ruta": "02_EVIDENCIA_DRIVE/LEEME.md",
+        "sha256": "50137247309b4260045376cf273b161e4da2242649ea923fdb462875e0b3b47f"
+      },
+      {
+        "ruta": "02_EVIDENCIA_DRIVE/indice_evidencia_drive.csv",
+        "sha256": "581de52d0b7af81a85d755bd95749f72a2cc244da9ba54c09b9a5b06fec03a7b"
+      },
+      {
+        "ruta": "03_GMAIL_TIMESTAMPS/cotejo_gmail.csv",
+        "sha256": "45f4c59376b0e9b8dfac8426def1d016f85eeadfd898bef0ea9b967f1e340f77"
+      },
+      {
+        "ruta": "03_INDEX/repositorio.xls",
+        "sha256": "488405296f2c6b33d6e87ae7daa2608e77556f07cde87f7e9efe730deffb0ed8"
+      },
+      {
+        "ruta": "CAMBIOS_20261116.md",
+        "sha256": "324305ce28fc058b7ccceb8adc6d16955c035e2c2355a29e3cd780bb41a22368"
+      },
+      {
+        "ruta": "CITATION.cff",
+        "sha256": "f6f79cd5a8c12e49a4cd768279d9d624fab6cf17f6a898b27c9b573a689a79be"
+      },
+      {
+        "ruta": "LICENSE",
+        "sha256": "70b6b3955bf7d4e3f351e959a9e2dd18124b9909e659590a622560985d1d5eb2"
+      },
+      {
+        "ruta": "README.md",
+        "sha256": "760f17115e6c4c40034829d17fda723428b2ceacd6dcee29648506dd397cf17a"
+      },
+      {
+        "ruta": "concentrado_general.md",
+        "sha256": "7c54c08217deca608a49646bde91dc685baa72ea3865b3fe797dc5168bb1cc11"
+      },
+      {
+        "ruta": "docs/INFORME_FORENSE_CARRASCO_V5.html",
+        "sha256": "5b22893fa31b1be62d103cd565c432854d0bb4ab555af02534a1672b082e5576"
+      },
+      {
+        "ruta": "docs/anexo_pericial_matriz_folios_pnt-3.tex",
+        "sha256": "3aa3a94e3f300c798743a8385f1b87bfdeefb58bc09a13cc6a9638fe6cd41b47"
+      },
+      {
+        "ruta": "docs/assets/js/buscador.js",
+        "sha256": "c25c753514ee72c110a110c710a7693de1b66b8d52f14191dd61eaa8aece4f9a"
+      },
+      {
+        "ruta": "docs/cerco_documental.html",
+        "sha256": "4bb084da7902688824cd2a9329bf5f771f2e203904cb3fc05ac6aa024b4b6900"
+      },
+      {
+        "ruta": "docs/index.html",
+        "sha256": "ee6e575a45650b41abda2fec7751e466316ef6dadb52cad0dd11654f2d6631d4"
+      },
+      {
+        "ruta": "docs/matriz_deflexiones_pnt_organigrama.tex",
+        "sha256": "eded7eca8029bf67547ac382e75b5238b0fb1604ba50e71b985fa2487d9c7b28"
+      },
+      {
+        "ruta": "docs/matriz_pnt_estrategica.html",
+        "sha256": "ee6e575a45650b41abda2fec7751e466316ef6dadb52cad0dd11654f2d6631d4"
+      },
+      {
+        "ruta": "index.html",
+        "sha256": "983c32f7db6c0c31fa5aa16191ba7f0d0f8791e22d8ec9a1d0ef6c17918bb5bc"
+      },
+      {
+        "ruta": "index_maestro.json",
+        "sha256": "81c7619714c4f5627ca31d7ef9f3e5435bc3ef85c275181ed26d05aa101e09ef"
+      },
+      {
+        "ruta": "metadata.json",
+        "sha256": "888498b4173cb5a83e92edc9b781541bb8444d375ed930cb00019e88d2ddcbf0"
+      },
+      {
+        "ruta": "reporte_global.md",
+        "sha256": "5ef6c0a887dc009536c7fb9f3709e261730234da5fe3361c29450c819863f846"
+      },
+      {
+        "ruta": "requirements.txt",
+        "sha256": "deea1d28ce4df208b700a1fa417422d8e2996df693ba76f6450b878bf8d4df0c"
+      },
+      {
+        "ruta": "robots.txt",
+        "sha256": "331ea9090db0c9f6f597bd9840fd5b171830f6e0b3ba1cb24dfa91f0c95aedc1"
+      },
+      {
+        "ruta": "scripts/actualizar_repo.py",
+        "sha256": "4be7b6dfe4ed075884d83b57c96f108ef73e1bd8f8c69d5d21e08782a97aa735"
+      },
+      {
+        "ruta": "timeline.md",
+        "sha256": "0ca398ced19f1f1cbd6a7cd92639e461962ed95aa5c03335a354ae2bf488904d"
+      }
+    ]
   }
 }
