@@ -1,0 +1,42 @@
+{
+  "title": "Trazabilidad PNT: matriz de solicitudes de transparencia y datos personales (soporte empírico de «El Tercer Gemelo Digital»)",
+  "upload_type": "dataset",
+  "language": "spa",
+  "license": "cc-by-nc-sa-4.0",
+  "creators": [
+    {
+      "name": "Carrasco Ozuna, Genaro",
+      "orcid": "0009-0005-6358-9910"
+    }
+  ],
+  "description": "<p>Repositorio de trazabilidad documental de las solicitudes de acceso a la información y de datos personales presentadas por el titular ante la Plataforma Nacional de Transparencia (PNT). Corte al 16/11/2026: 121 folios.</p><p>Contenido: exportación oficial de la PNT, índice maestro por folio, bitácora entre cortes, índice de evidencia documental, generador reproducible y sumas SHA-256. Sitio en vivo: <a href=\"https://geozunac3536-jpg.github.io/trazabilidad_pnt/\">geozunac3536-jpg.github.io/trazabilidad_pnt</a>.</p><p>Este conjunto de datos es el soporte empírico del estudio <em>El Tercer Gemelo Digital: Efectos reales de la identidad criptográficamente sellada cuando el poder de decisión se traslada a sistemas de software</em> (DOI <a href=\"https://doi.org/10.5281/zenodo.20331856\">10.5281/zenodo.20331856</a>), cuyo PDF se incluye como referencia en <code>docs/estudio/</code>.</p><p>Licencia del repositorio: CC BY-NC-SA 4.0. Los datos personales del titular quedan fuera de la licencia (ver AVISO_DATOS_PERSONALES.md).</p>",
+  "keywords": [
+    "Plataforma Nacional de Transparencia",
+    "Trazabilidad documental",
+    "Acceso a la información",
+    "Derechos ARCO",
+    "Protección de datos personales",
+    "Tercer Gemelo Digital",
+    "Algorithmic Accountability",
+    "Digital Identity",
+    "México"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.20331856",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "10.5281/zenodo.20405451",
+      "relation": "references",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://geozunac3536-jpg.github.io/trazabilidad_pnt/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}

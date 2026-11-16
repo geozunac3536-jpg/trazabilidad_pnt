@@ -30,6 +30,14 @@ Cambios respecto del corte 26/05/2026: ver [CAMBIOS_20261116.md](./CAMBIOS_20261
 
 ---
 
+## 📄 Estudio: El Tercer Gemelo Digital
+
+El estudio que da marco teórico a este repositorio se incluye íntegro en [`docs/estudio/3er_gemelo_digital.pdf`](./docs/estudio/3er_gemelo_digital.pdf). También tiene su propio DOI: [10.5281/zenodo.20331856](https://doi.org/10.5281/zenodo.20331856).
+
+La matriz de folios PNT de este repositorio es su soporte empírico verificable.
+
+---
+
 ## 🔍 Visualización interactiva
 
 👉 **[Ver índice completo (index.html)](./index.html)** — tabla filtrable y ordenable con enlaces directos a cada respuesta PNT.
