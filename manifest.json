@@ -4,6 +4,10 @@
     "generado": "2026-11-16",
     "archivos": [
       {
+        "ruta": ".zenodo.json",
+        "sha256": "2aef6178c113f69b931981a615130032462cd5b4a2f034f59ee5e9eb59519324"
+      },
+      {
         "ruta": "00_INDEX/index_maestro.csv",
         "sha256": "189293e957340ce8468d89897a6a6138323bdcdae80a7e4822521521d21ac82b"
       },
@@ -41,7 +45,7 @@
       },
       {
         "ruta": "CITATION.cff",
-        "sha256": "e38addea510ce3e33c7c578ca7304612f37a087bd4230c5c279b4a504a57bd10"
+        "sha256": "677f298d37b4a3b4fa90e1e05a60e49b4152baf0f7eeb2871f625ba296a0a074"
       },
       {
         "ruta": "LICENSE",
@@ -49,7 +53,7 @@
       },
       {
         "ruta": "README.md",
-        "sha256": "10419cd6e18b515d68192062906bf9bc9048c6d343bbdd829ae016a3310f4c7e"
+        "sha256": "a41edc805ef2ea7d60c96a7208d9968fa6ba1b9e87fc54bb7bee42003944aa9f"
       },
       {
         "ruta": "concentrado_general.md",
@@ -72,6 +76,14 @@
         "sha256": "4bb084da7902688824cd2a9329bf5f771f2e203904cb3fc05ac6aa024b4b6900"
       },
       {
+        "ruta": "docs/estudio/3er_gemelo_digital.pdf",
+        "sha256": "b2e57268cf23d300510b25a7e2a9da7b28189dc7a5b79907d86baf962a994dc6"
+      },
+      {
+        "ruta": "docs/estudio/LEEME.md",
+        "sha256": "07b9f74f61086ae198d9c888a134367410af86fac3402a49faacc996a6303683"
+      },
+      {
         "ruta": "docs/index.html",
         "sha256": "ee6e575a45650b41abda2fec7751e466316ef6dadb52cad0dd11654f2d6631d4"
       },
@@ -89,7 +101,7 @@
       },
       {
         "ruta": "index_maestro.json",
-        "sha256": "81c7619714c4f5627ca31d7ef9f3e5435bc3ef85c275181ed26d05aa101e09ef"
+        "sha256": "efa4e85fee2e20237a8e31c9c6fd075eac9a10b00428bad3d9afced1d75dbb82"
       },
       {
         "ruta": "metadata.json",
@@ -109,7 +121,7 @@
       },
       {
         "ruta": "scripts/actualizar_repo.py",
-        "sha256": "4be7b6dfe4ed075884d83b57c96f108ef73e1bd8f8c69d5d21e08782a97aa735"
+        "sha256": "40b1b7c3169af56a1f4e7e30134e3df53b6d03566ae3739553eb810f69f6876e"
       },
       {
         "ruta": "timeline.md",

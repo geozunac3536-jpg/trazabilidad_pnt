@@ -1,6 +1,6 @@
 {
   "repositorio": "trazabilidad_pnt",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "corte_datos": "2026-11-16",
   "fuente": "01_FUENTE_PNT/mis_solicitudes_pnt_20261116.xls",
   "sha256_fuente": "f6f30924c7096e62c668fb5f4dbede826a15618fdb3a831d8b48ea18753042f1",

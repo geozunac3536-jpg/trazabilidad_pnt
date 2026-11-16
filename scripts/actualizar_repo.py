@@ -4,7 +4,7 @@ Regenera los artefactos derivados del repositorio trazabilidad_pnt a partir
 del reporte crudo oficial exportado de la Plataforma Nacional de Transparencia.
 
 Uso:
-    python3 scripts/actualizar_repo.py 01_FUENTE_PNT/mis_solicitudes_pnt_AAAAMMDD.xls AAAA-MM-DD
+    python3 scripts/actualizar_repo.py 01_FUENTE_PNT/mis_solicitudes_pnt_AAAAMMDD.xls AAAA-MM-DD [VERSION]
 
 Principio de trazabilidad: ningún dato se captura a mano. Todo valor publicado
 (folio, institución, fechas, estatus, URL de adjuntos) proviene literalmente de
@@ -18,6 +18,7 @@ from datetime import date
 import pandas as pd
 
 SRC, CORTE = sys.argv[1], sys.argv[2]
+VERSION = sys.argv[3] if len(sys.argv) > 3 else "1.1.0"
 Y, M, D = CORTE.split("-")
 CORTE_MX = f"{D}/{M}/{Y}"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -232,7 +233,7 @@ open("README.md", "w", encoding="utf-8").write(RD)
 
 # ---- 9. CITATION.cff ----
 cff = open("CITATION.cff", encoding="utf-8").read()
-cff = re.sub(r"version: .*", "version: 1.1.0", cff)
+cff = re.sub(r"(?m)^version: .*", f"version: {VERSION}", cff)
 cff = re.sub(r"date-released: .*", f"date-released: {CORTE}", cff)
 open("CITATION.cff", "w", encoding="utf-8").write(cff)
 
@@ -247,7 +248,7 @@ files = sorted(os.path.relpath(os.path.join(dp, f), ROOT)
                for dp, dn, fn in os.walk(ROOT) if "/.git" not in dp + "/" and not dp.endswith(".git")
                for f in fn)
 files = [f for f in files if not f.startswith(".git/") and f not in skip]
-json.dump({"repositorio": "trazabilidad_pnt", "version": "1.1.0", "corte_datos": CORTE,
+json.dump({"repositorio": "trazabilidad_pnt", "version": VERSION, "corte_datos": CORTE,
            "fuente": SRC, "sha256_fuente": sha(SRC), "total_folios": N,
            "por_estatus": dict(est_cnt.most_common()),
            "folios": df["No. de folio"].tolist()},
