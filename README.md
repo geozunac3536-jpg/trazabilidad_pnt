@@ -125,6 +125,12 @@ trazabilidad_pnt/
 
 ---
 
+## 🔒 Datos personales y licencia
+
+Este repositorio contiene datos personales del titular, publicados por él mismo con fines de trazabilidad documental. La licencia ([CC BY-NC-SA 4.0](./LICENSE)) cubre solo derechos de autor; **no** licencia derechos de privacidad ni de la personalidad. Ver [AVISO_DATOS_PERSONALES.md](./AVISO_DATOS_PERSONALES.md).
+
+---
+
 ## 📐 Marco jurídico
 
 Este repositorio documenta la estrategia de transparencia institucional orientada a certificar la ausencia de habilitación legal de **Recurso Confiable S.A. de C.V. (R-Control, RFC: RCO970529F57)** para operar como sistema de evaluación laboral vinculante en el sector de autotransporte federal, en el contexto del expediente **FGR/CEDAC/0021/2026** y la demanda civil ante Tlalnepantla de Baz (daño reclamado: $31,150,480.81 MXN).

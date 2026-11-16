@@ -32,12 +32,16 @@
         "sha256": "488405296f2c6b33d6e87ae7daa2608e77556f07cde87f7e9efe730deffb0ed8"
       },
       {
+        "ruta": "AVISO_DATOS_PERSONALES.md",
+        "sha256": "58bf6d37d5c1561ed9f4efd10b4244243b501cb1f0cbacae23c6f32c72135f22"
+      },
+      {
         "ruta": "CAMBIOS_20261116.md",
         "sha256": "324305ce28fc058b7ccceb8adc6d16955c035e2c2355a29e3cd780bb41a22368"
       },
       {
         "ruta": "CITATION.cff",
-        "sha256": "f6f79cd5a8c12e49a4cd768279d9d624fab6cf17f6a898b27c9b573a689a79be"
+        "sha256": "e38addea510ce3e33c7c578ca7304612f37a087bd4230c5c279b4a504a57bd10"
       },
       {
         "ruta": "LICENSE",
@@ -45,7 +49,7 @@
       },
       {
         "ruta": "README.md",
-        "sha256": "760f17115e6c4c40034829d17fda723428b2ceacd6dcee29648506dd397cf17a"
+        "sha256": "10419cd6e18b515d68192062906bf9bc9048c6d343bbdd829ae016a3310f4c7e"
       },
       {
         "ruta": "concentrado_general.md",
