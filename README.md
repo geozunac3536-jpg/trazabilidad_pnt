@@ -30,6 +30,12 @@ Cambios respecto del corte 26/05/2026: ver [CAMBIOS_20261116.md](./CAMBIOS_20261
 
 ---
 
+## ⚖️ Recursos de revisión
+
+La carpeta [`04_RECURSOS_REVISION/`](./04_RECURSOS_REVISION/LEEME.md) registra los **18 recursos de revisión** interpuestos sobre folios del cerco, uno por folio y sin repeticiones. Para cada uno consta la autoridad garante, la ley aplicada, las fechas de interposición, admisión o prevención, ampliación, cierre y resolución, el sentido de la resolución y los días transcurridos entre etapas. Cada fecha remite al acuse, acuerdo o resolución correspondiente mediante su identificador estable de Drive.
+
+---
+
 ## 🔍 Visualización interactiva
 
 👉 **[Ver índice completo (index.html)](./index.html)** — tabla filtrable y ordenable con enlaces directos a cada respuesta PNT.
@@ -44,6 +50,7 @@ trazabilidad_pnt/
 ├── 01_FUENTE_PNT/                  ← Exportación cruda oficial PNT (16/11/2026) + estado previo
 ├── 00_INDEX/index_maestro.csv      ← Índice maestro derivado (1 fila por folio)
 ├── 02_EVIDENCIA_DRIVE/             ← Índice deduplicado de archivos crudos por folio (Drive)
+├── 04_RECURSOS_REVISION/           ← 18 recursos de revisión: un expediente por folio, actuaciones y plazos
 ├── metadata.json                   ← Registro íntegro de la exportación (JSON válido)
 ├── concentrado_general.md · reporte_global.md · timeline.md
 ├── CAMBIOS_20261116.md               ← Bitácora de folios nuevos y cambios de estatus
