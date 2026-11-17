@@ -73,7 +73,7 @@
       },
       {
         "ruta": "README.md",
-        "sha256": "e9b1640f80bc276adfd7d166cce91e39fa686aa25cef874146b9880ff5ea4b76"
+        "sha256": "6e65b1ca2605bb06e2145f3b98ed14b8e3292be5e8421ca8529d058d2af281b0"
       },
       {
         "ruta": "concentrado_general.md",
@@ -109,7 +109,7 @@
       },
       {
         "ruta": "index.html",
-        "sha256": "983c32f7db6c0c31fa5aa16191ba7f0d0f8791e22d8ec9a1d0ef6c17918bb5bc"
+        "sha256": "7594bf8c8f6bc5d8ba77007b4e9f62414b3d04e1a9a4801a2a2e9ac8dcad0bd4"
       },
       {
         "ruta": "index_maestro.json",
@@ -118,6 +118,10 @@
       {
         "ruta": "metadata.json",
         "sha256": "888498b4173cb5a83e92edc9b781541bb8444d375ed930cb00019e88d2ddcbf0"
+      },
+      {
+        "ruta": "recursos_revision.html",
+        "sha256": "e40d6bec57ecba03e9c612ca9aafbb8db993531a9b2a06c684a10c207d519d8f"
       },
       {
         "ruta": "reporte_global.md",
@@ -137,7 +141,7 @@
       },
       {
         "ruta": "scripts/recursos_revision.py",
-        "sha256": "242d27ccaed2d260933e4af527bb94b65fff13a540cfb8f195284e7b3b4cb477"
+        "sha256": "01d3f426bc945c594691ae280baf2d34f10338b86616a196cb13bd919fa2e487"
       },
       {
         "ruta": "timeline.md",
