@@ -32,13 +32,15 @@ Cambios respecto del corte 26/05/2026: ver [CAMBIOS_20261116.md](./CAMBIOS_20261
 
 ## ⚖️ Recursos de revisión
 
-La carpeta [`04_RECURSOS_REVISION/`](./04_RECURSOS_REVISION/LEEME.md) registra los **18 recursos de revisión** interpuestos sobre folios del cerco, uno por folio y sin repeticiones. Para cada uno consta la autoridad garante, la ley aplicada, las fechas de interposición, admisión o prevención, ampliación, cierre y resolución, el sentido de la resolución y los días transcurridos entre etapas. Cada fecha remite al acuse, acuerdo o resolución correspondiente mediante su identificador estable de Drive.
+La carpeta [`04_RECURSOS_REVISION/`](./04_RECURSOS_REVISION/LEEME.md) (vista web: [`recursos_revision.html`](./recursos_revision.html)) registra los **18 recursos de revisión** interpuestos sobre folios del cerco, uno por folio y sin repeticiones. Para cada uno consta la autoridad garante, la ley aplicada, las fechas de interposición, admisión o prevención, ampliación, cierre y resolución, el sentido de la resolución y los días transcurridos entre etapas. Cada fecha remite al acuse, acuerdo o resolución correspondiente mediante su identificador estable de Drive.
 
 ---
 
 ## 🔍 Visualización interactiva
 
 👉 **[Ver índice completo (index.html)](./index.html)** — tabla filtrable y ordenable con enlaces directos a cada respuesta PNT.
+
+👉 **[Ver recursos de revisión (recursos_revision.html)](./recursos_revision.html)** — contador por estado, sentido de cada resolución, plazos y línea de actuaciones de los 18 expedientes.
 
 ---
 

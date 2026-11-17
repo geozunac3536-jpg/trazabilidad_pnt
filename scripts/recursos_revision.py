@@ -288,6 +288,147 @@ Los dos expedientes de la STPS se desecharon porque, según la propia autoridad 
 open(f"{D}/LEEME.md", "w", encoding="utf-8").write(md)
 
 
+# ---------- sitio web: página de recursos y contador en index.html ----------
+import html as _h
+
+DRIVE = "https://drive.google.com/file/d/{}/view"
+CLS = {"Resuelto": "res", "Desechado": "des", "En trámite: sin resolución localizada": "tra",
+       "Sólo consta la interposición": "int"}
+
+
+def dmy(s):
+    return f"{s[8:10]}/{s[5:7]}/{s[:4]}" if s else "—"
+
+
+def doc_link(fid, txt):
+    return f'<a class="doc" href="{DRIVE.format(fid)}" target="_blank" rel="noopener">{txt}</a>' if fid else ""
+
+
+filas_html = []
+for x in filas:
+    ev = sorted(por_exp[x["expediente"]], key=lambda a: a["fecha"])
+    pasos = "".join(
+        f'<li><b>{dmy(a["fecha"])}</b> · {_h.escape(a["descripcion"])} '
+        f'{doc_link(a["drive_file_id"], "📄")}</li>' for a in ev)
+    anc = re.sub(r"[^A-Za-z0-9]", "", x["expediente"])
+    so = re.sub(r"^(FED|VER|CMX) - ", "", x["sujeto_obligado"])
+    filas_html.append(f"""<tr id="{anc}" data-estado="{CLS[x['estado_del_recurso']]}">
+<td><span class="exp">{_h.escape(x['expediente'])}</span><br><span class="folio">{x['folio']}</span></td>
+<td>{_h.escape(so)}<br><span class="muted">{_h.escape(x['autoridad_garante'])} · {_h.escape(x['regimen_legal_del_recurso'])}</span></td>
+<td>{dmy(x['fecha_interposicion_rr'])}</td>
+<td>{dmy(x['fecha_resolucion'])}</td>
+<td><span class="badge {CLS[x['estado_del_recurso']]}">{_h.escape(x['sentido_resolucion'] or x['estado_del_recurso'])}</span></td>
+<td class="num">{x['dh_admision_a_resolucion'] if x['dh_admision_a_resolucion'] != '' else '—'}</td>
+<td>{doc_link(x['drive_id_acuse_interposicion'], '📎 Acuse')} {doc_link(x['drive_id_resolucion'], '⚖️ Resolución')}</td>
+</tr>
+<tr class="det" data-estado="{CLS[x['estado_del_recurso']]}"><td colspan="7"><details><summary>{len(ev)} actuaciones</summary><ul>{pasos}</ul></details></td></tr>""")
+
+page = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos de revisión — Trazabilidad PNT</title>
+<meta name="description" content="{n} recursos de revisión sobre solicitudes PNT: fechas, autoridad garante, sentido de la resolución y plazos.">
+<link rel="canonical" href="https://geozunac3536-jpg.github.io/trazabilidad_pnt/recursos_revision.html">
+<style>
+:root{{--vino:#6e003c;--navy:#00205f;--gold:#b46400;--green:#006432;--gray-bg:#f6f7f9;--border:#d0d5de;--text:#1a1a2e;--muted:#6b7280}}
+*{{box-sizing:border-box;margin:0;padding:0}}
+body{{font-family:'Segoe UI',system-ui,sans-serif;background:var(--gray-bg);color:var(--text);font-size:14px}}
+header{{background:linear-gradient(135deg,var(--navy) 0%,var(--vino) 100%);color:#fff;padding:24px 28px 18px;border-bottom:4px solid var(--gold)}}
+header h1{{font-size:1.35rem}} header .sub{{font-size:.82rem;opacity:.8;margin-top:5px}}
+header a{{color:#fff}}
+.stats{{display:flex;flex-wrap:wrap;gap:10px;padding:16px 28px;background:#fff;border-bottom:1px solid var(--border)}}
+.stat-card{{background:var(--gray-bg);border:1px solid var(--border);border-radius:8px;padding:10px 16px;min-width:105px;text-align:center;cursor:pointer}}
+.stat-card.on{{outline:2px solid var(--navy)}}
+.stat-card .num{{font-size:1.55rem;font-weight:800;line-height:1}}
+.stat-card .lbl{{font-size:.68rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}}
+.c-all .num{{color:var(--navy)}} .c-res .num{{color:var(--green)}} .c-des .num{{color:#374151}} .c-tra .num{{color:var(--gold)}} .c-int .num{{color:#0077aa}} .c-rev .num{{color:var(--vino)}}
+.note{{padding:12px 28px;font-size:.82rem;color:var(--muted)}}
+.wrap{{padding:0 28px 28px;overflow-x:auto}}
+table{{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:8px}}
+th{{background:var(--navy);color:#fff;font-size:.75rem;text-align:left;padding:9px 10px}}
+td{{padding:9px 10px;border-top:1px solid #eef0f4;vertical-align:top}}
+tr.det td{{border-top:none;padding-top:0}}
+.exp{{font-weight:700;font-family:monospace}} .folio{{font-family:monospace;font-size:.78rem;color:var(--muted)}}
+.muted{{font-size:.74rem;color:var(--muted)}} .num{{text-align:center}}
+.badge{{display:inline-block;border-radius:10px;padding:2px 9px;font-size:.72rem;font-weight:600}}
+.badge.res{{background:#e3f4ea;color:var(--green)}} .badge.des{{background:#eceef2;color:#374151}}
+.badge.tra{{background:#fdf0dd;color:var(--gold)}} .badge.int{{background:#e0f2fb;color:#0077aa}}
+a.doc{{text-decoration:none;font-size:.78rem;white-space:nowrap}}
+details summary{{cursor:pointer;font-size:.76rem;color:var(--navy)}} details ul{{margin:6px 0 4px 18px;font-size:.78rem;line-height:1.5}}
+footer{{padding:16px 28px;font-size:.75rem;color:var(--muted)}}
+@media(max-width:700px){{header,.stats,.note,.wrap,footer{{padding-left:12px;padding-right:12px}}}}
+</style>
+</head>
+<body>
+<header>
+<h1>⚖️ Recursos de revisión</h1>
+<div class="sub">Capa procesal del cerco documental · {n} expedientes, uno por folio · corte {dmy(CORTE)} · <a href="index.html">← volver al índice de folios</a></div>
+</header>
+<div class="stats">
+<div class="stat-card c-all on" data-f=""><div class="num">{n}</div><div class="lbl">Recursos</div></div>
+<div class="stat-card c-res" data-f="res"><div class="num">{cnt.get("Resuelto", 0)}</div><div class="lbl">Resueltos (confirman)</div></div>
+<div class="stat-card c-des" data-f="des"><div class="num">{cnt.get("Desechado", 0)}</div><div class="lbl">Desechados</div></div>
+<div class="stat-card c-tra" data-f="tra"><div class="num">{cnt.get("En trámite: sin resolución localizada", 0)}</div><div class="lbl">En trámite</div></div>
+<div class="stat-card c-int" data-f="int"><div class="num">{cnt.get("Sólo consta la interposición", 0)}</div><div class="lbl">Sólo interposición</div></div>
+<div class="stat-card c-rev" data-f="none"><div class="num">{rev}</div><div class="lbl">Revocan o modifican</div></div>
+</div>
+<p class="note">DH = días hábiles aproximados de la admisión a la resolución (lunes a viernes, sin art.&nbsp;74 LFT ni suspensiones). Los acuses señalan un plazo de 40 días desde la admisión, ampliable una vez hasta por 20. Cada 📄 abre el documento en Drive si está compartido por enlace. Datos y método: <a href="04_RECURSOS_REVISION/LEEME.md">LEEME</a> · <a href="04_RECURSOS_REVISION/recursos_revision.csv">CSV</a> · <a href="04_RECURSOS_REVISION/actuaciones_rr.csv">actuaciones</a>.</p>
+<div class="wrap"><table>
+<thead><tr><th>Expediente / folio</th><th>Sujeto obligado · garante · ley</th><th>Interpuesto</th><th>Resuelto</th><th>Sentido</th><th>DH</th><th>Documentos</th></tr></thead>
+<tbody>
+{chr(10).join(filas_html)}
+</tbody></table></div>
+<footer>Generado con <code>scripts/recursos_revision.py</code> a partir de acuses, acuerdos y resoluciones; los archivos de Drive se citan por su identificador sin moverse ni modificarse.</footer>
+<script>
+document.querySelectorAll('.stat-card').forEach(c=>c.addEventListener('click',()=>{{
+document.querySelectorAll('.stat-card').forEach(x=>x.classList.remove('on'));c.classList.add('on');
+const f=c.dataset.f;document.querySelectorAll('tbody tr').forEach(r=>{{r.style.display=(!f||r.dataset.estado===f)?'':'none'}});}}));
+if(location.hash){{const t=document.querySelector(location.hash);if(t){{t.style.background='#fff7e0';t.scrollIntoView();}}}}
+</script>
+</body>
+</html>
+"""
+open("recursos_revision.html", "w", encoding="utf-8").write(page)
+
+# Contador y marcas en index.html (bloques delimitados; se reemplazan en cada corrida)
+idx = open("index.html", encoding="utf-8").read()
+mapa = {x["folio"]: re.sub(r"[^A-Za-z0-9]", "", x["expediente"]) for x in filas}
+etiq = {x["folio"]: x["expediente"] for x in filas}
+stat = (f'<!--RR-STAT--><a class="stat-card rr" href="recursos_revision.html" title="Ver los {n} recursos de revisión">'
+        f'<div class="num">{n}</div><div class="lbl">Recursos de revisión ›</div></a><!--/RR-STAT-->')
+css = ('<!--RR-CSS--><style>.stat-card.rr{text-decoration:none;color:inherit;border-color:var(--vino);background:#fbf3f7}'
+       '.stat-card.rr .num{color:var(--vino)}.stat-card.rr:hover{background:#f6e3ec}'
+       '.rr-badge{display:inline-block;margin-left:6px;font-size:.68rem;font-weight:600;color:var(--vino);'
+       'border:1px solid var(--vino);border-radius:9px;padding:0 6px;text-decoration:none;white-space:nowrap}</style><!--/RR-CSS-->')
+js = ("<!--RR-JS--><script>(function(){const RR=" + json.dumps(mapa) + ",L=" + json.dumps(etiq, ensure_ascii=False) + ";"
+      "const tb=document.getElementById('tbody');if(!tb)return;"
+      "function mark(){tb.querySelectorAll('span.folio').forEach(s=>{const f=s.textContent.trim();"
+      "if(RR[f]&&!(s.nextElementSibling&&s.nextElementSibling.classList.contains('rr-badge'))){"
+      "const a=document.createElement('a');a.className='rr-badge';a.href='recursos_revision.html#'+RR[f];"
+      "a.textContent='⚖️ '+L[f];a.title='Recurso de revisión';s.after(a);}});}"
+      "new MutationObserver(mark).observe(tb,{childList:true});mark();})();</script><!--/RR-JS-->")
+
+
+def bloque(h, tag, nuevo, ancla, antes=True):
+    pat = re.compile(rf"<!--{tag}-->.*?<!--/{tag}-->", re.S)
+    if pat.search(h):
+        return pat.sub(lambda m: nuevo, h)
+    i = h.index(ancla)
+    return h[:i] + nuevo + "\n" + h[i:] if antes else h[:i + len(ancla)] + "\n" + nuevo + h[i + len(ancla):]
+
+
+m = re.search(r'<div class="stats">.*?\n</div>', idx, re.S)
+if "<!--RR-STAT-->" not in idx:
+    fin = m.end() - len("</div>")
+    idx = idx[:fin] + "  " + stat + "\n" + idx[fin:]
+else:
+    idx = bloque(idx, "RR-STAT", stat, "")
+idx = bloque(idx, "RR-CSS", css, "</head>")
+idx = bloque(idx, "RR-JS", js, "</body>")
+open("index.html", "w", encoding="utf-8").write(idx)
+
 # ---------- integridad ----------
 def sha(p):
     return hashlib.sha256(open(p, "rb").read()).hexdigest()
