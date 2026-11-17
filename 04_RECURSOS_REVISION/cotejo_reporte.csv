@@ -1,0 +1,49 @@
+expediente_en_reporte,campo,valor_en_reporte,valor_verificado,fuente_verificada
+CNPRD2613106,fecha de resolución o desechamiento,En Sustanciación,2026-09-07,resolución o acuerdo en Drive
+GN2607409,fecha de la solicitud,2026-04-02,2026-04-17,exportación oficial PNT
+GN2607409,fecha de resolución o desechamiento,En Sustanciación,2026-07-28,resolución o acuerdo en Drive
+GN2617625,fecha de la solicitud,2026-04-02,2026-05-22,exportación oficial PNT
+GN2617625,fecha de interposición,2026-04-22 11:24,2026-07-08 22:36,acuse de interposición PNT
+GN2617625,fecha de resolución o desechamiento,En Sustanciación,2026-10-16,resolución o acuerdo en Drive
+SAT2607042,fecha de la solicitud,2026-03-25,2026-04-14,exportación oficial PNT
+SAT2607042,fecha de resolución o desechamiento,2026-06-02,2026-07-24,resolución o acuerdo en Drive
+SAT2609690,fecha de la solicitud,2026-03-25,2026-04-17,exportación oficial PNT
+SAT2609690,fecha de interposición,2026-04-20 14:15,2026-05-12 14:32,acuse de interposición PNT
+SAT2609690,fecha de resolución o desechamiento,2026-06-02,2026-08-13,resolución o acuerdo en Drive
+STPS2610620,fecha de la solicitud,2026-03-30,2026-04-14,exportación oficial PNT
+STPS2610620,fecha de interposición,2026-04-14 12:45,2026-05-20 07:19,acuse de interposición PNT
+STPS2610620,fecha de resolución o desechamiento,2026-05-05,2026-08-14,resolución o acuerdo en Drive
+STPS2611014,fecha de la solicitud,2026-03-30,2026-04-14,exportación oficial PNT
+STPS2611014,fecha de interposición,2026-04-14 12:45,2026-05-25 09:00,acuse de interposición PNT
+STPS2611014,fecha de resolución o desechamiento,2026-05-05,2026-06-10,resolución o acuerdo en Drive
+ATDT2607389,fecha de la solicitud,2026-04-01,2026-04-17,exportación oficial PNT
+ATDT2607389,fecha de resolución o desechamiento,2026-05-20,2026-07-28,resolución o acuerdo en Drive
+OPR2608391,fecha de la solicitud,2026-04-01,2026-04-17,exportación oficial PNT
+OPR2608391,fecha de interposición,2026-05-17 20:34,2026-05-04 10:11,acuse de interposición PNT
+OPR2608391,fecha de resolución o desechamiento,2026-06-10,2026-08-06,resolución o acuerdo en Drive
+PRODE2612313,fecha de la solicitud,2026-05-02,2026-04-20,exportación oficial PNT
+FGR2607067,folio de la solicitud,340018001223026,450024600096126,acuse de interposición PNT
+FGR2607067,fecha de la solicitud,2026-04-02,2026-04-14,exportación oficial PNT
+FGR2607067,fecha de resolución o desechamiento,2026-05-11,2026-05-12,resolución o acuerdo en Drive
+IMSS2607051,folio de la solicitud,340024000011226,340018001223026,acuse de interposición PNT
+IMSS2607051,fecha de la solicitud,2026-04-01,2026-04-14,exportación oficial PNT
+IMSS2607051,fecha de interposición,2026-04-19 13:29,2026-04-20 09:00,acuse de interposición PNT
+IMSS2607051,fecha de resolución o desechamiento,2026-05-10,2026-05-08,resolución o acuerdo en Drive
+PRS2610007,fecha de la solicitud,2026-04-01,2026-05-08,exportación oficial PNT
+PRS2610007,fecha de interposición,2026-04-25 16:20,2026-05-14 01:12,acuse de interposición PNT
+PRS2610007,fecha de resolución o desechamiento,2026-05-28,2026-05-21,resolución o acuerdo en Drive
+Poder2612894,fecha de la solicitud,2026-05-20,2026-05-05,exportación oficial PNT
+Poder2612894,fecha de interposición,2026-06-18 15:40,2026-06-04 11:09,acuse de interposición PNT
+Poder2612894,fecha de resolución o desechamiento,En Sustanciación,2026-11-04,resolución o acuerdo en Drive
+Trans2608173,folio de la solicitud,450024600096126,343224900038026,acuse de interposición PNT
+Trans2608173,fecha de la solicitud,2026-04-28,2026-04-16,exportación oficial PNT
+Trans2608173,fecha de interposición,2026-05-25 10:15,2026-04-29 02:37,acuse de interposición PNT
+INFOCDMX2601,número de expediente,INFOCDMX2601,S/N-INFOCDMX,acuse de interposición PNT
+INFOCDMX2601,fecha de la solicitud,2026-04-10,2026-04-14,exportación oficial PNT
+INFOCDMX2601,fecha de interposición,2026-05-02 11:15,2026-05-08 12:39,acuse de interposición PNT
+INFOCDMX2601,fecha de resolución o desechamiento,2026-05-20,sin resolución localizada,resolución o acuerdo en Drive
+CDAI2600067,número de expediente,CDAI2600067,CD2610732,acuse de interposición PNT
+CDAI2600067,fecha de la solicitud,2026-04-15,2026-05-18,exportación oficial PNT
+CDAI2600067,fecha de interposición,2026-05-05 16:45,2026-05-21 02:59,acuse de interposición PNT
+CDAI2600067,fecha de resolución o desechamiento,2026-05-18,sin resolución localizada,resolución o acuerdo en Drive
+(no aparece),expediente omitido en el reporte,,STPS2620966 / 340027100052926,acuse de interposición PNT

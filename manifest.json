@@ -1,7 +1,7 @@
 {
   "integridad": {
     "algoritmo": "SHA256",
-    "generado": "2026-11-16",
+    "generado": "2026-11-17",
     "archivos": [
       {
         "ruta": "00_INDEX/index_maestro.csv",
@@ -32,6 +32,30 @@
         "sha256": "488405296f2c6b33d6e87ae7daa2608e77556f07cde87f7e9efe730deffb0ed8"
       },
       {
+        "ruta": "04_RECURSOS_REVISION/LEEME.md",
+        "sha256": "993fe722a5410efe6cbd9da88083ad44ed59b2023bfc06a065e2ecfcee215e19"
+      },
+      {
+        "ruta": "04_RECURSOS_REVISION/actuaciones_rr.csv",
+        "sha256": "d4777b0555809a96e01299d8b583ed550a4ca1c1643c97750d1cf793b0f9eea4"
+      },
+      {
+        "ruta": "04_RECURSOS_REVISION/cotejo_reporte.csv",
+        "sha256": "4979fc744a3b6fe6a67e5b87543fa331b842d551a62db5aa1a8a9e9e5af7c7e9"
+      },
+      {
+        "ruta": "04_RECURSOS_REVISION/cotejo_reporte_origen.json",
+        "sha256": "ebe61d2214f2ab81fb82963438a3bbed26687e7eba52e461e24db82f79a90dbd"
+      },
+      {
+        "ruta": "04_RECURSOS_REVISION/expedientes_base.csv",
+        "sha256": "6837ae7554b913f5477d46fae52887651a4bb543f188aa236cdda9d219ff9ed4"
+      },
+      {
+        "ruta": "04_RECURSOS_REVISION/recursos_revision.csv",
+        "sha256": "23f0ab66dd5f2524b252e6eb67c54e8e4e3bd2ae61b60d6cf2925d3df8141317"
+      },
+      {
         "ruta": "AVISO_DATOS_PERSONALES.md",
         "sha256": "58bf6d37d5c1561ed9f4efd10b4244243b501cb1f0cbacae23c6f32c72135f22"
       },
@@ -49,7 +73,7 @@
       },
       {
         "ruta": "README.md",
-        "sha256": "10419cd6e18b515d68192062906bf9bc9048c6d343bbdd829ae016a3310f4c7e"
+        "sha256": "e9b1640f80bc276adfd7d166cce91e39fa686aa25cef874146b9880ff5ea4b76"
       },
       {
         "ruta": "concentrado_general.md",
@@ -110,6 +134,10 @@
       {
         "ruta": "scripts/actualizar_repo.py",
         "sha256": "4be7b6dfe4ed075884d83b57c96f108ef73e1bd8f8c69d5d21e08782a97aa735"
+      },
+      {
+        "ruta": "scripts/recursos_revision.py",
+        "sha256": "242d27ccaed2d260933e4af527bb94b65fff13a540cfb8f195284e7b3b4cb477"
       },
       {
         "ruta": "timeline.md",
