@@ -101,12 +101,17 @@ for b in base:
     res = primera(ev, "resolucion")
     noti = [a for a in ev if a["etapa"] == "notificacion" and res and a["fecha"] >= res["fecha"]]
     fi, fa, fr = (fecha(x["fecha"]) if x else None for x in (i, adm, res))
+    est_pnt = [a for a in ev if a["etapa"] == "estatus_pnt" and "RESUELTO" in a["descripcion"].upper()]
     if res:
         estado = "Desechado" if "DESECHA" in res["descripcion"].upper() else "Resuelto"
+    elif est_pnt:
+        estado = "Resuelto en PNT sin documento notificado"
     elif adm or p:
         estado = "En trámite: sin resolución localizada"
-    else:
+    elif i:
         estado = "Sólo consta la interposición"
+    else:
+        estado = "Sólo citado por el sujeto obligado"
     filas.append({
         "expediente": e, "folio": f,
         "sujeto_obligado": r.get("Institución", ""),
@@ -260,6 +265,8 @@ Generador: `python3 scripts/recursos_revision.py [--reporte archivo.xlsx] [--cor
 - Desechados: **{cnt.get("Desechado", 0)}**.
 - En trámite sin resolución localizada en Drive: **{cnt.get("En trámite: sin resolución localizada", 0)}**.
 - Sólo consta la interposición: **{cnt.get("Sólo consta la interposición", 0)}**.
+- Marcados «RESUELTO SIN CUMPLIMIENTO» en la PNT sin que se haya notificado el documento de resolución: **{cnt.get("Resuelto en PNT sin documento notificado", 0)}**.
+- Recursos conocidos sólo porque el sujeto obligado los cita en su correspondencia (sin acuse ni acuerdo del garante localizado): **{cnt.get("Sólo citado por el sujeto obligado", 0)}**.
 - Resoluciones que revocan o modifican la respuesta del sujeto obligado: **{rev}**.
 
 {tabla()}
@@ -267,22 +274,25 @@ DH = días hábiles aproximados (lunes a viernes, sin los días del art. 74 LFT)
 
 ## Por qué hay folios en «Pendiente de acreditación de la identidad»
 
-La exportación oficial registra {len(pend)} folios de esta capa con ese estatus. Los tres fueron capturados por la PNT como solicitudes de **datos personales**, por lo que su trámite quedó detenido en la fase de acreditación de identidad y no llegó a la respuesta sustantiva. Sus recursos se tramitaron bajo la LGPDPPSO ante la Unidad de Protección de Datos Personales de la SABG:
+La exportación oficial registra {len(pend)} folios de esta capa con ese estatus. Todos fueron capturados por la PNT como solicitudes de **datos personales**, por lo que su trámite quedó detenido en la fase de acreditación de identidad y no llegó a la respuesta sustantiva por la plataforma. Sus recursos se rigen por la LGPDPPSO:
 
 {chr(10).join(linea_pend(x) for x in pend)}
 
-Los dos expedientes de la STPS se desecharon porque, según la propia autoridad garante de datos personales, la materia es **acceso a información pública**, que no le compete. El expediente de la PRODECON se amplió y no tiene resolución localizada. En los tres casos el estatus PNT sigue siendo «Pendiente de acreditación» al corte: la vía de datos personales se declara incompetente por tratarse de información pública, y la solicitud permanece clasificada como de datos personales.
+Los dos expedientes de la STPS se desecharon porque, según la propia autoridad garante de datos personales, la materia es **acceso a información pública**, que no le compete. El expediente de la PRODECON se amplió el 24/07/2026 y el 11/11/2026 la PNT lo pasó en dos minutos a «EN RESOLUCIÓN», «RESUELTO» y «RESUELTO SIN CUMPLIMIENTO», sin notificar el documento de resolución (114 días hábiles aproximados después de la admisión). En esos tres casos el estatus PNT sigue siendo «Pendiente de acreditación» al corte: la vía de datos personales se declara incompetente por tratarse de información pública, y la solicitud permanece clasificada como de datos personales.
+
+El folio del INFONAVIT muestra la otra cara del mismo estatus. La identidad del titular ya se había acreditado en persona ante el propio Instituto (CESI Fortín de las Flores, 11/05/2026, con constancia enviada por correo el 12/05/2026, que además fijó el correo como medio de entrega). Aun así, el 12/10/2026 y el 11/11/2026 la respuesta se condicionó otra vez a una comparecencia presencial con apercibimiento de destrucción a los 60 días, sin decir qué documentos se entregarían. El detalle está en [`05_CERCO_ADICIONAL`](../05_CERCO_ADICIONAL/LEEME.md).
 
 ## Lectura de los plazos
 
 - **Admisión → resolución.** Los expedientes con admisión y resolución documentadas consumieron entre {min(dhs)} y {max(dhs)} días hábiles aproximados, es decir, todos rebasaron los 40 días ordinarios. Tienen acuerdo de ampliación localizado: {", ".join(f"`{x}`" for x in con_amp) or "ninguno"}. Sin acuerdo de ampliación localizado en Drive: {", ".join(f"`{x}`" for x in sin_amp) or "ninguno"}. Las resoluciones de `SAT2607042` y `Trans2608173` relacionan tres suspensiones de plazos de Transparencia para el Pueblo publicadas en el DOF (11, 24 y 30 de junio de 2026), que este cómputo aproximado no descuenta.
 - **Resolución → notificación.** Cuando el correo de notificación está en Drive, el intervalo se registra en `dn_resolucion_a_notificacion`. El caso más extenso es `STPS2610620`: resolución firmada el 14/08/2026 y notificada por correo el 10/11/2026.
+- **Estatus «RESUELTO SIN CUMPLIMIENTO».** `Poder2612894` (09/11/2026) y `PRODE2612313` (11/11/2026) recorrieron tres estatus en avisos automáticos separados por uno o dos minutos. Ese estatus indica que la resolución no impone al sujeto obligado nada que cumplir. En `Poder2612894` la resolución confirmó la respuesta y el informe solicitado sigue sin entregarse; en `PRODE2612313` no se ha notificado el documento. En ambos casos queda cerrada la etapa de cumplimiento sin que el titular haya recibido el documento pedido, de modo que no existe incumplimiento que denunciar ni, en el segundo, una resolución notificada a partir de la cual impugnar.
 - **Desechamientos tempranos.** IMSS, FGR y PRS se desecharon en menos de un mes por causales de procedencia (prevención, consulta o ampliación de la solicitud); ninguno llegó al estudio de fondo.
 {cotejo_txt}
 ## Reglas de esta capa
 
 1. Ningún archivo de Drive se movió, renombró ni modificó; sólo se citan por su `drive_file_id`, que es estable y es el que aparece hipervinculado en los escritos presentados.
-2. `tipo_fuente = primaria`: el dato consta en el propio acuse, acuerdo, resolución o correo. `citada_en_resolucion`: el dato consta en la relación de antecedentes de la resolución del mismo expediente.
+2. `tipo_fuente = primaria`: el dato consta en el propio acuse, acuerdo, resolución o correo. `citada_en_resolucion`: el dato consta en la relación de antecedentes de la resolución del mismo expediente. `citada_por_sujeto_obligado`: el número de expediente sólo consta en la correspondencia del sujeto obligado; no se localizó acuse de interposición ni acuerdo del garante.
 3. Cuando un documento no se localizó, la fecha queda vacía; no se estima ni se completa con otras fuentes.
 """
 open(f"{D}/LEEME.md", "w", encoding="utf-8").write(md)
@@ -293,7 +303,8 @@ import html as _h
 
 DRIVE = "https://drive.google.com/file/d/{}/view"
 CLS = {"Resuelto": "res", "Desechado": "des", "En trámite: sin resolución localizada": "tra",
-       "Sólo consta la interposición": "int"}
+       "Sólo consta la interposición": "int",
+       "Resuelto en PNT sin documento notificado": "snd", "Sólo citado por el sujeto obligado": "cit"}
 
 
 def dmy(s):
@@ -343,7 +354,7 @@ header a{{color:#fff}}
 .stat-card.on{{outline:2px solid var(--navy)}}
 .stat-card .num{{font-size:1.55rem;font-weight:800;line-height:1}}
 .stat-card .lbl{{font-size:.68rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.5px}}
-.c-all .num{{color:var(--navy)}} .c-res .num{{color:var(--green)}} .c-des .num{{color:#374151}} .c-tra .num{{color:var(--gold)}} .c-int .num{{color:#0077aa}} .c-rev .num{{color:var(--vino)}}
+.c-all .num{{color:var(--navy)}} .c-res .num{{color:var(--green)}} .c-des .num{{color:#374151}} .c-tra .num{{color:var(--gold)}} .c-int .num{{color:#0077aa}} .c-snd .num{{color:#9a3412}} .c-cit .num{{color:#5b21b6}} .c-rev .num{{color:var(--vino)}}
 .note{{padding:12px 28px;font-size:.82rem;color:var(--muted)}}
 .wrap{{padding:0 28px 28px;overflow-x:auto}}
 table{{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:8px}}
@@ -354,7 +365,7 @@ tr.det td{{border-top:none;padding-top:0}}
 .muted{{font-size:.74rem;color:var(--muted)}} .num{{text-align:center}}
 .badge{{display:inline-block;border-radius:10px;padding:2px 9px;font-size:.72rem;font-weight:600}}
 .badge.res{{background:#e3f4ea;color:var(--green)}} .badge.des{{background:#eceef2;color:#374151}}
-.badge.tra{{background:#fdf0dd;color:var(--gold)}} .badge.int{{background:#e0f2fb;color:#0077aa}}
+.badge.tra{{background:#fdf0dd;color:var(--gold)}} .badge.int{{background:#e0f2fb;color:#0077aa}} .badge.snd{{background:#fde7dc;color:#9a3412}} .badge.cit{{background:#ede9fe;color:#5b21b6}}
 a.doc{{text-decoration:none;font-size:.78rem;white-space:nowrap}}
 details summary{{cursor:pointer;font-size:.76rem;color:var(--navy)}} details ul{{margin:6px 0 4px 18px;font-size:.78rem;line-height:1.5}}
 footer{{padding:16px 28px;font-size:.75rem;color:var(--muted)}}
@@ -372,6 +383,8 @@ footer{{padding:16px 28px;font-size:.75rem;color:var(--muted)}}
 <div class="stat-card c-des" data-f="des"><div class="num">{cnt.get("Desechado", 0)}</div><div class="lbl">Desechados</div></div>
 <div class="stat-card c-tra" data-f="tra"><div class="num">{cnt.get("En trámite: sin resolución localizada", 0)}</div><div class="lbl">En trámite</div></div>
 <div class="stat-card c-int" data-f="int"><div class="num">{cnt.get("Sólo consta la interposición", 0)}</div><div class="lbl">Sólo interposición</div></div>
+<div class="stat-card c-snd" data-f="snd"><div class="num">{cnt.get("Resuelto en PNT sin documento notificado", 0)}</div><div class="lbl">«Resuelto» sin documento</div></div>
+<div class="stat-card c-cit" data-f="cit"><div class="num">{cnt.get("Sólo citado por el sujeto obligado", 0)}</div><div class="lbl">Citado por el SO</div></div>
 <div class="stat-card c-rev" data-f="none"><div class="num">{rev}</div><div class="lbl">Revocan o modifican</div></div>
 </div>
 <p class="note">DH = días hábiles aproximados de la admisión a la resolución (lunes a viernes, sin art.&nbsp;74 LFT ni suspensiones). Los acuses señalan un plazo de 40 días desde la admisión, ampliable una vez hasta por 20. Cada 📄 abre el documento en Drive si está compartido por enlace. Datos y método: <a href="04_RECURSOS_REVISION/LEEME.md">LEEME</a> · <a href="04_RECURSOS_REVISION/recursos_revision.csv">CSV</a> · <a href="04_RECURSOS_REVISION/actuaciones_rr.csv">actuaciones</a>.</p>
