@@ -33,7 +33,7 @@ Cambios respecto del corte 26/05/2026: ver [CAMBIOS_20261116.md](./CAMBIOS_20261
 
 ## ⚖️ Recursos de revisión
 
-La carpeta [`04_RECURSOS_REVISION/`](./04_RECURSOS_REVISION/LEEME.md) (vista web: [`recursos_revision.html`](./recursos_revision.html)) registra los **18 recursos de revisión** interpuestos sobre folios del cerco, uno por folio y sin repeticiones. Para cada uno consta la autoridad garante, la ley aplicada, las fechas de interposición, admisión o prevención, ampliación, cierre y resolución, el sentido de la resolución y los días transcurridos entre etapas. Cada fecha remite al acuse, acuerdo o resolución correspondiente mediante su identificador estable de Drive.
+La carpeta [`04_RECURSOS_REVISION/`](./04_RECURSOS_REVISION/LEEME.md) (vista web: [`recursos_revision.html`](./recursos_revision.html)) registra los **19 recursos de revisión** interpuestos sobre folios del cerco, uno por folio y sin repeticiones. Para cada uno consta la autoridad garante, la ley aplicada, las fechas de interposición, admisión o prevención, ampliación, cierre y resolución, el sentido de la resolución y los días transcurridos entre etapas. Cada fecha remite al acuse, acuerdo o resolución correspondiente mediante su identificador estable de Drive.
 
 ---
 
@@ -41,7 +41,19 @@ La carpeta [`04_RECURSOS_REVISION/`](./04_RECURSOS_REVISION/LEEME.md) (vista web
 
 👉 **[Ver índice completo (index.html)](./index.html)** — tabla filtrable y ordenable con enlaces directos a cada respuesta PNT.
 
-👉 **[Ver recursos de revisión (recursos_revision.html)](./recursos_revision.html)** — contador por estado, sentido de cada resolución, plazos y línea de actuaciones de los 18 expedientes.
+👉 **[Ver recursos de revisión (recursos_revision.html)](./recursos_revision.html)** — contador por estado, sentido de cada resolución, plazos y línea de actuaciones de los 19 expedientes.
+
+## 🧭 Sección adicional del cerco
+
+La carpeta [`05_CERCO_ADICIONAL/`](./05_CERCO_ADICIONAL/LEEME.md) (vista web: [`cerco_adicional.html`](./cerco_adicional.html)) registra las vías que corren fuera de la PNT o alrededor de ella:
+
+- el derecho de acceso ejercido directamente ante Transportes Narcea y Correcaminos Tucán;
+- la queja ante PRODECON y su falta de movimiento desde el 25/09/2026;
+- la entrega del INFONAVIT condicionada a comparecencia en Fortín de las Flores;
+- el cierre «RESUELTO SIN CUMPLIMIENTO» del recurso ante el Poder Judicial de Veracruz;
+- los movimientos con IMSS, CONAPRED, CFCRL, CBP, SCJN y FGR.
+
+Cada actuación indica si su fuente es primaria, citada en otro documento, manifestación del titular o consulta no oficial.
 
 ---
 
@@ -53,7 +65,8 @@ trazabilidad_pnt/
 ├── 01_FUENTE_PNT/                  ← Exportación cruda oficial PNT (16/11/2026) + estado previo
 ├── 00_INDEX/index_maestro.csv      ← Índice maestro derivado (1 fila por folio)
 ├── 02_EVIDENCIA_DRIVE/             ← Índice deduplicado de archivos crudos por folio (Drive)
-├── 04_RECURSOS_REVISION/           ← 18 recursos de revisión: un expediente por folio, actuaciones y plazos
+├── 04_RECURSOS_REVISION/           ← 19 recursos de revisión: un expediente por folio, actuaciones y plazos
+├── 05_CERCO_ADICIONAL/             ← vías fuera de la PNT: acceso a datos ante particulares, quejas, entregas condicionadas
 ├── metadata.json                   ← Registro íntegro de la exportación (JSON válido)
 ├── concentrado_general.md · reporte_global.md · timeline.md
 ├── CAMBIOS_20261116.md               ← Bitácora de folios nuevos y cambios de estatus

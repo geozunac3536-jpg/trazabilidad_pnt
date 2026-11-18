@@ -1,0 +1,52 @@
+id,fecha,hora,emisor,descripcion,fuente,tipo_fuente
+ARCO-NARCEA,2026-11-10,17:17,Titular,"Envío del escrito de acceso (arts. 22, 27, 28 y 31 a 34 LFPDPPP), con identificación oficial y el estudio SV1966111 de Recurso Confiable en hipervínculo, a 12 buzones institucionales de Narcea; se pide canalizar al área o apoderado responsable y acusar recibo",Gmail - correo enviado 10/11/2026,primaria
+ARCO-NARCEA,2026-11-10,17:18,Servidor de correo,"Un buzón del área de verificación devuelve error 550 (dirección inexistente). Los otros 11, incluido el buzón nominal de la apoderada de la empresa, no generan rebote",Gmail - avisos de entrega,primaria
+ARCO-NARCEA,2026-11-12,,Estación de servicio (emisor del CFDI),"CFDI de diésel (109.091 L, $3,000.00, uso G03) a nombre de Transportes Narcea (RFC TNA910502JI5), enviado al correo personal del titular: el responsable mantiene sus datos de contacto en su facturación",Gmail - CFDI XML adjunto,primaria
+ARCO-NARCEA,2026-11-18,10:59,Servicio de consulta no oficial (repsecheck),"La consulta indica que el RFC de Narcea no aparece en el padrón público REPSE; pendiente de verificación en el padrón oficial de la STPS",Gmail - respuesta automática,consulta_no_oficial
+ARCO-TUCAN,2026-11-10,17:17,Titular,"Envío del escrito de acceso al único buzón institucional conocido de Correcaminos Tucán, en el mismo correo dirigido a Narcea",Gmail - correo enviado 10/11/2026,primaria
+ARCO-TUCAN,2026-11-11,17:43,Servidor de correo,Primer aviso de entrega demorada (problema temporal del servidor destino),Gmail - aviso de entrega,primaria
+ARCO-TUCAN,2026-11-12,21:04,Servidor de correo,Segundo aviso de entrega demorada,Gmail - aviso de entrega,primaria
+ARCO-TUCAN,2026-11-13,22:36,Servidor de correo,Fallo definitivo de entrega tras los reintentos,Gmail - aviso de entrega,primaria
+PRODECON-QR82,2026-06-03,18:23,PRODECON - Delegación Coahuila,Notificación del acuerdo de trámite de la queja,Gmail - correo PRODECON,primaria
+PRODECON-QR82,2026-06-03,20:28,Titular,Remisión del alcance probatorio forense contable y herramienta documental,Gmail - correo enviado,primaria
+PRODECON-QR82,2026-07-03,17:53,PRODECON - Delegación Coahuila,Notificación de acuerdo de acciones de investigación (primero),Gmail - correo PRODECON,primaria
+PRODECON-QR82,2026-07-07,16:23,Titular,Escrito de coadyuvancia técnica (v2),Gmail - correo enviado,primaria
+PRODECON-QR82,2026-08-13,22:36,Titular,Escrito de impulso procesal,Gmail - correo enviado,primaria
+PRODECON-QR82,2026-08-24,16:47,PRODECON - Delegación Coahuila,Remite los informes rendidos por las retenedoras Correcaminos Tucán y Transportes Narcea,Gmail - correo PRODECON,primaria
+PRODECON-QR82,2026-09-04,15:07,PRODECON - Delegación Coahuila,Notificación de acuerdo de acciones de investigación (segundo),Gmail - correo PRODECON,primaria
+PRODECON-QR82,2026-09-18,14:58,Titular,Desahogo de la vista sobre los informes de las retenedoras,Gmail - correo enviado,primaria
+PRODECON-QR82,2026-09-25,17:20,PRODECON - Delegación Coahuila,Notificación de acuerdo de acciones de investigación (tercero; archivo 45.-QR-82 AAIN.pdf). Última actuación de PRODECON localizada,Gmail - correo PRODECON,primaria
+PRODECON-QR82,2026-10-13,17:51,Titular,Copia a PRODECON del escrito dirigido al INFONAVIT (folio 340031000240226) para que conste el trámite,Gmail - correo enviado,primaria
+PRODECON-QR82,2026-11-11,17:52,PNT - avisos automáticos,"El recurso PRODE2612313 (datos personales en posesión de PRODECON) pasa a RESUELTO SIN CUMPLIMIENTO sin notificar documento",Gmail - avisos PNT,primaria
+INFONAVIT-ENTREGA,2026-04-24,,INFONAVIT,Respuesta al folio 340031000120726,Citada en el correo del titular del 08/05/2026,citada_en_documento
+INFONAVIT-ENTREGA,2026-05-07,,INFONAVIT,Acumula el folio 340031000129926 al 340031000120726,Citada en el correo del titular del 08/05/2026,citada_en_documento
+INFONAVIT-ENTREGA,2026-05-08,09:30,INFONAVIT - Unidad de Transparencia,"Ofrece tres oficinas (Fortín de las Flores, Xalapa y Saltillo) para recibir la respuesta en persona (art. 46 LGPDPPSO) y pide al titular elegir oficina y fecha",Gmail - correo INFONAVIT,primaria
+INFONAVIT-ENTREGA,2026-05-08,12:08,Titular,"Confirma asistencia al CESI Fortín de las Flores el 11/05/2026 para acreditar identidad y pide que ese día se entreguen completos ambos folios acumulados y el oficio GRFDX/FISC/9/0442/2026, además de su envío electrónico, para evitar un segundo traslado",Gmail - correo enviado,primaria
+INFONAVIT-ENTREGA,2026-05-11,,Titular,Comparece y acredita su identidad en el CESI Fortín de las Flores,Constancia del CESI Fortín (enviada por INFONAVIT el 12/05/2026),primaria
+INFONAVIT-ENTREGA,2026-05-11,,Titular,"En la comparecencia no se le entregó lo comprometido; se le indicó que debía esperar varios días a que llegara por paquetería, aunque la cita se había confirmado con días de anticipación",Manifestación del titular,manifestacion_del_titular
+INFONAVIT-ENTREGA,2026-05-12,14:00,INFONAVIT - Unidad de Transparencia,"Reconoce la acreditación presencial (art. 91 Lineamientos) y el correo como medio de entrega; envía por correo una constancia y un único ANEXO de respuesta",Gmail - correo INFONAVIT con 2 PDF,primaria
+INFONAVIT-ENTREGA,2026-09-21,,Titular,Nueva solicitud de acceso a datos personales: folio 340031000240226,Exportación PNT / correo INFONAVIT del 14/10/2026,primaria
+INFONAVIT-ENTREGA,2026-10-12,,INFONAVIT,Respuesta puesta a disposición con comparecencia presencial obligatoria y apercibimiento de destrucción,Citada en el correo INFONAVIT del 14/10/2026,citada_en_documento
+INFONAVIT-ENTREGA,2026-10-13,17:51,Titular,"Impugna el oficio del 12/10/2026: no consiente el condicionamiento presencial ni el apercibimiento, pues su identidad consta acreditada desde el 11/05/2026, y reitera la entrega electrónica",Gmail - correo enviado,primaria
+INFONAVIT-ENTREGA,2026-10-13,18:10,INFONAVIT - Unidad de Transparencia,"Tres correos de respuesta (18:07, 18:11 y 18:21) seguidos de tres solicitudes de recuperación de mensaje (18:10, 18:18 y 18:24)",Gmail - correos INFONAVIT,primaria
+INFONAVIT-ENTREGA,2026-10-14,19:54,INFONAVIT - Unidad de Transparencia,Da conocimiento a la Unidad de Protección de Datos Personales de la SABG (art. 86 LGPDPPSO) y se refiere al titular como «hoy quejosa»,Gmail - correo INFONAVIT a UPDP,primaria
+INFONAVIT-ENTREGA,2026-11-11,17:44,INFONAVIT - Unidad de Transparencia,"Cita el RR INFON2634803 y pone la respuesta a disposición sólo en Fortín de las Flores, previa identificación (art. 43 LGPDPPSO), por 60 días con apercibimiento de destrucción. No describe qué documentos entregará y reconoce que la PNT tiene una falla que impide notificar. El asunto cita el folio 340031000232726 y el cuerpo el 340031000240226",Gmail - correo INFONAVIT,primaria
+PJEV-FAMILIAR,2026-05-05,,Titular,"Solicitud 771277626000139 para obtener el informe rendido por el patrón en un juicio del orden familiar",Exportación PNT,primaria
+PJEV-FAMILIAR,2026-06-04,11:09,Titular,Interposición del recurso de revisión Poder2612894,Acuse PNT,primaria
+PJEV-FAMILIAR,2026-09-17,,Contraloría de la Administración Judicial PJEV,Acuerdo y vista a la parte recurrente,Citado en la resolución,citada_en_documento
+PJEV-FAMILIAR,2026-09-30,,Contraloría de la Administración Judicial PJEV,Ampliación del plazo por veinte días,Acuerdo de ampliación,primaria
+PJEV-FAMILIAR,2026-10-23,,Contraloría de la Administración Judicial PJEV,Cierre de instrucción,Citado en la resolución,citada_en_documento
+PJEV-FAMILIAR,2026-11-04,,Contraloría de la Administración Judicial PJEV,Resolución: CONFIRMA la respuesta del sujeto obligado,Resolución,primaria
+PJEV-FAMILIAR,2026-11-09,16:18,PNT - avisos automáticos,"EN RESOLUCIÓN (16:15), RESUELTO (16:17) y RESUELTO SIN CUMPLIMIENTO (16:18): la resolución no impone cumplimiento y el informe sigue sin entregarse",Gmail - avisos PNT,primaria
+IMSS-CORDOBA,2026-11-09,,IMSS - Subdelegación Córdoba,"Requerimiento de contrato o convenio del porcentaje de pago y Cartas Porte o CFDI con el importe del flete, en 10 días hábiles (art. 18 LSS; art. 71 RACERF)",Gmail - correo IMSS,primaria
+IMSS-CORDOBA,2026-11-09,14:13,Titular,Desahogo del requerimiento para los dos folios,Gmail - correo enviado,primaria
+CONAPRED-ORIENTA,2026-11-06,,CONAPRED,"Envía por correo el oficio ORIENTA-1194-26, fechado el 06/08/2026, y el mismo día solicita recuperar el mensaje",Gmail - correo CONAPRED,primaria
+CONAPRED-ORIENTA,2026-11-08,22:24,Titular,Presentación formal del escrito de queja en atención al oficio ORIENTA-1194-26,Gmail - correo enviado,primaria
+CONAPRED-ORIENTA,2026-11-08,22:30,Titular,Escrito en alcance con precisiones y ratificación expresa de la queja,Gmail - correo enviado,primaria
+OTROS-MOVIMIENTOS,2026-11-06,,CFCRL,"Folio 342589700061926: requerimiento de información adicional (oficio CFCRL/CGRA-33/2329/2026), desahogado por el titular; límite de respuesta 07/12/2026",Exportación PNT / Gmail,primaria
+OTROS-MOVIMIENTOS,2026-11-13,,U.S. Customs and Border Protection,"Acuse de la solicitud FOIA CBP-FO-2027-013465 (recibida el 30/10/2026): aplica prórroga de 10 días hábiles y anticipa cuotas de hasta USD 25",Gmail - correo SecureRelease,primaria
+OTROS-MOVIMIENTOS,2026-11-13,,CFE,Aviso de programación de baja del servicio doméstico por adeudo,Gmail - correo CFE,primaria
+OTROS-MOVIMIENTOS,2026-11-11,14:04,Consejo de la Judicatura Federal,Error en el envío electrónico de una promoción al Juzgado 12.º de Distrito (Amparo 1172/2026),Gmail - aviso del portal,primaria
+OTROS-MOVIMIENTOS,2026-11-17,,Consejo de la Judicatura Federal (SISE),"Nueva generación del archivo único del Amparo 1172/2026 (también el 03, 06 y 13/11/2026)",Gmail - avisos SISE,primaria
+OTROS-MOVIMIENTOS,2026-11-17,14:40,Titular,"Promoción 32388 ante la SCJN (petición y puesta en conocimiento); el portal la registra como expediente no formado",Acuse de envío SCJN,primaria
+OTROS-MOVIMIENTOS,2026-11-17,,Titular,"Solicitud de acceso a datos personales a la FGR, folio 450024600267526; estatus «En proceso, sin identidad acreditada»; límite 15/12/2026",Exportación PNT,primaria
