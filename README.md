@@ -1,4 +1,5 @@
-# Trazabilidad PNT — Expediente CAOG840906RG3
+# GENARO CARRASCO OZUNA 
+#Trazabilidad PNT — Expediente CAOG840906RG3
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20331856.svg)](https://doi.org/10.5281/zenodo.20331856)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20405451.svg)](https://doi.org/10.5281/zenodo.20405451)
 > **Repositorio de trazabilidad pública** de solicitudes de acceso a la información y datos personales interpuestas ante instituciones del Estado Mexicano en el marco del caso **Narcea / Tucán / R-Control**.
